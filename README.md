@@ -86,6 +86,10 @@ SEORecommendation
   3. **Reflection**: What does Hindsight infer/synthesize from those memories?
   4. **Recommendation**: What concrete action is being proposed?
 
+> [!IMPORTANT]
+> **Evidence-Grounding & Contextual Specificity:**
+> SearchMind does not treat SEO as static universal rules. A single experiment outcome is an empirical data point within a specific context, not proof that a strategy will universally succeed. The agent preserves measured metrics, confidence bounds, and caveats to distinguish observed correlation from proven causation.
+
 ---
 
 ## Windows Setup & Installation

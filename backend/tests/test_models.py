@@ -221,6 +221,51 @@ def test_valid_experiment_outcome_creation():
     assert outcome.percentage_change == 72.22
 
 
+def test_experiment_outcome_zero_baseline_with_positive_after():
+    """Verify that when baseline is 0 and after > 0, percentage_change is None and absolute_change is recorded."""
+    outcome = ExperimentOutcome(
+        outcome_id="out_zero_01",
+        experiment_id="exp_301",
+        project_id="proj_01",
+        primary_metric_before=0.0,
+        primary_metric_after=15.0,
+        outcome_class=OutcomeClass.POSITIVE,
+        interpretation="Page went from zero clicks to 15 clicks after initial indexation.",
+    )
+    assert outcome.absolute_change == 15.0
+    assert outcome.percentage_change is None  # Undefined mathematically from zero baseline
+
+
+def test_experiment_outcome_both_before_and_after_zero():
+    """Verify that when both baseline and after are 0, percentage_change and absolute_change are 0.0."""
+    outcome = ExperimentOutcome(
+        outcome_id="out_zero_02",
+        experiment_id="exp_301",
+        project_id="proj_01",
+        primary_metric_before=0.0,
+        primary_metric_after=0.0,
+        outcome_class=OutcomeClass.NEUTRAL,
+        interpretation="No change observed; metric stayed at zero.",
+    )
+    assert outcome.absolute_change == 0.0
+    assert outcome.percentage_change == 0.0
+
+
+def test_experiment_outcome_negative_baseline():
+    """Verify directional percentage change when baseline is negative (e.g., negative ranking delta)."""
+    outcome = ExperimentOutcome(
+        outcome_id="out_neg_01",
+        experiment_id="exp_301",
+        project_id="proj_01",
+        primary_metric_before=-5.0,
+        primary_metric_after=-2.0,
+        outcome_class=OutcomeClass.POSITIVE,
+        interpretation="Deficit reduced from -5 to -2.",
+    )
+    assert outcome.absolute_change == 3.0
+    assert outcome.percentage_change == 60.0  # ((-2 - (-5)) / 5) * 100 = 60.0
+
+
 @pytest.mark.parametrize(
     "outcome_class_val",
     [
@@ -259,8 +304,8 @@ def test_valid_seo_recommendation_creation():
         recommendation_type="commercial_title_alignment",
         recommendation="Update title to emphasize commercial value propositions.",
         current_evidence="CTR is 1.8% despite top-3 average position.",
-        historical_evidence="Previous title test exp_301 on similar commercial page improved CTR from 1.8% to 3.1%.",
-        reflection="Historical evidence strongly supports commercial title alignment for product category pages.",
+        historical_evidence="Previous title test exp_301 on similar commercial page was correlated with CTR improvement from 1.8% to 3.1%.",
+        reflection="Prior test exp_301 suggests commercial title alignment may improve CTR for this intent, though results depend on SERP competition.",
         supporting_experiment_ids=["exp_301"],
         confidence=0.88,
         expected_impact="High (+50-70% CTR lift)",

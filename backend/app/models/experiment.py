@@ -103,14 +103,30 @@ class ExperimentOutcome(BaseDomainModel):
             raise ValueError(f"Field '{info.field_name}' cannot be empty or blank")
         return stripped
 
-    @model_validator(mode="after")
-    def compute_changes(self) -> "ExperimentOutcome":
-        """Automatically calculate absolute and percentage changes if not provided."""
-        if self.absolute_change is None:
-            self.absolute_change = round(self.primary_metric_after - self.primary_metric_before, 4)
-        if self.percentage_change is None and self.primary_metric_before != 0:
-            self.percentage_change = round(
-                ((self.primary_metric_after - self.primary_metric_before) / abs(self.primary_metric_before)) * 100,
-                2,
-            )
-        return self
+    @model_validator(mode="before")
+    @classmethod
+    def compute_changes(cls, data: Any) -> Any:
+        """
+        Automatically calculate absolute and percentage changes if not explicitly provided.
+
+        Baseline (primary_metric_before) handling:
+        - If before != 0: percentage_change is ((after - before) / abs(before)) * 100.
+        - If before == 0 and after == 0: percentage_change is 0.0 (no change).
+        - If before == 0 and after != 0: percentage_change is None (undefined mathematically
+          from zero baseline; absolute_change preserves the exact shift).
+        """
+        if isinstance(data, dict):
+            before = data.get("primary_metric_before")
+            after = data.get("primary_metric_after")
+            if before is not None and after is not None:
+                if data.get("absolute_change") is None:
+                    data["absolute_change"] = round(after - before, 4)
+                if data.get("percentage_change") is None:
+                    if before == 0:
+                        data["percentage_change"] = 0.0 if after == 0 else None
+                    else:
+                        data["percentage_change"] = round(
+                            ((after - before) / abs(before)) * 100,
+                            2,
+                        )
+        return data

@@ -48,12 +48,16 @@ class SEOObservation(BaseDomainModel):
             raise ValueError(f"Field '{info.field_name}' cannot be empty or blank")
         return stripped
 
-    @model_validator(mode="after")
-    def compute_delta(self) -> "SEOObservation":
+    @model_validator(mode="before")
+    @classmethod
+    def compute_delta(cls, data: Any) -> Any:
         """Automatically calculate delta if previous_value is set and delta is not explicitly provided."""
-        if self.delta is None and self.previous_value is not None:
-            self.delta = round(self.current_value - self.previous_value, 4)
-        return self
+        if isinstance(data, dict):
+            curr = data.get("current_value")
+            prev = data.get("previous_value")
+            if curr is not None and prev is not None and data.get("delta") is None:
+                data["delta"] = round(curr - prev, 4)
+        return data
 
 
 class OptimizationDecision(BaseDomainModel):
