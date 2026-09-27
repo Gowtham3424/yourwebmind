@@ -49,6 +49,10 @@ class HindsightService:
             os.environ["HINDSIGHT_API_LLM_MODEL"] = self.settings.HINDSIGHT_API_LLM_MODEL
             if self.settings.HINDSIGHT_API_LLM_BASE_URL:
                 os.environ["HINDSIGHT_API_LLM_BASE_URL"] = self.settings.HINDSIGHT_API_LLM_BASE_URL
+            if self.settings.HINDSIGHT_API_LLM_GROQ_SERVICE_TIER:
+                os.environ["HINDSIGHT_API_LLM_GROQ_SERVICE_TIER"] = self.settings.HINDSIGHT_API_LLM_GROQ_SERVICE_TIER
+            os.environ["HINDSIGHT_API_LLM_MAX_BACKOFF"] = str(self.settings.HINDSIGHT_API_LLM_MAX_BACKOFF)
+            os.environ["HINDSIGHT_API_WORKER_ENABLED"] = "true" if self.settings.HINDSIGHT_API_WORKER_ENABLED else "false"
             if self.settings.HINDSIGHT_API_DATABASE_URL:
                 os.environ["HINDSIGHT_API_DATABASE_URL"] = self.settings.HINDSIGHT_API_DATABASE_URL
 
@@ -185,7 +189,8 @@ class HindsightService:
         query: str,
         context: Optional[str] = None,
         budget: str = "low",
-        include_facts: bool = True,
+        include_facts: bool = False,
+        **kwargs: Any,
     ) -> ReflectResponse:
         """
         Reflect over stored memories to synthesize insights and conclusions.
@@ -196,6 +201,7 @@ class HindsightService:
             context: Optional additional context for reflection.
             budget: Reflection budget ('low', 'mid', 'high').
             include_facts: Whether to include supporting facts in the response.
+            **kwargs: Extra parameters passed to Hindsight client.
         """
         client = self.get_client()
         logger.info(f"Reflecting on bank '{bank_id}' with query: '{query}'")
@@ -205,6 +211,7 @@ class HindsightService:
             context=context,
             budget=budget,
             include_facts=include_facts,
+            **kwargs,
         )
 
 

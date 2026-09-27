@@ -25,6 +25,9 @@ class Settings(BaseSettings):
     HINDSIGHT_API_LLM_API_KEY: str = ""
     HINDSIGHT_API_LLM_MODEL: str = "gpt-4o-mini"
     HINDSIGHT_API_LLM_BASE_URL: Optional[str] = None
+    HINDSIGHT_API_LLM_GROQ_SERVICE_TIER: Optional[str] = "on_demand"
+    HINDSIGHT_API_LLM_MAX_BACKOFF: float = 3600.0
+    HINDSIGHT_API_WORKER_ENABLED: bool = False
     HINDSIGHT_API_DATABASE_URL: str = "pg0"
     HINDSIGHT_PROFILE: str = "searchmind"
 
