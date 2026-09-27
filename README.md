@@ -52,6 +52,42 @@ CURRENT SEO DATA + HISTORICAL SEO MEMORY
 
 ---
 
+## SearchMind Domain Model
+
+SearchMind models the SEO decision lifecycle as a structured, evidence-grounded pipeline:
+
+```text
+WebsiteFact
+    ↓
+SEOObservation
+    ↓
+OptimizationDecision
+    ↓
+SEOExperiment
+    ↓
+ExperimentOutcome
+    ↓
+Hindsight Retain
+    ↓
+Future Recall / Reflect
+    ↓
+SEORecommendation
+```
+
+### Domain Schema Definitions
+* **`WebsiteFact`**: Represents the current factual page state (URL, page type, title, meta description, keywords, search intent, word count, canonical URL, indexability, status code).
+* **`SEOObservation`**: Represents empirical, measurable SEO signals and diagnostic findings (metric delta, severity levels `info`/`low`/`medium`/`high`/`critical`, and raw evidence rather than an arbitrary universal score).
+* **`OptimizationDecision`**: Represents a concrete decision and falsifiable hypothesis proposed in response to SEO observations.
+* **`SEOExperiment`**: Represents a controlled test with baseline metrics, control/treatment definitions, primary/secondary metrics, and start/end dates.
+* **`ExperimentOutcome`**: Represents the observed empirical result (absolute and percentage changes, confidence notes, and outcome classification: `positive`, `negative`, `neutral`, `inconclusive`).
+* **`SEORecommendation`**: The structured output produced for SEO teams, cleanly separating:
+  1. **Current Evidence**: What is happening right now in the data?
+  2. **Historical Evidence**: What happened previously in relevant experiment contexts? (Optional for new projects with zero memory).
+  3. **Reflection**: What does Hindsight infer/synthesize from those memories?
+  4. **Recommendation**: What concrete action is being proposed?
+
+---
+
 ## Windows Setup & Installation
 
 ### Prerequisites
