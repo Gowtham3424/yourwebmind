@@ -16,6 +16,7 @@ from app.agents.historical_analyzer import HistoricalAnalyzer
 from app.agents.recommendation_engine import RecommendationEngine
 from app.agents.schemas import CurrentSEOEvidence, SEOAnalysisRequest, SEOWorkflowResult
 from app.agents.workflow import SEOWorkflowEngine
+from app.config import get_settings
 from app.experiments.service import ExperimentExecutionService
 from app.memory import (
     InMemoryRecallAdapter,
@@ -243,7 +244,11 @@ def get_demo_analysis() -> Dict[str, Any]:
             "conflicting_evidence": "exp_014 saw -20.1% CTR drop when adding discount/promotional modifiers on trekking boots.",
             "caveat": caveat_text,
             "reflect_available": True,
-            "reflect_status_note": None,
+            "reflect_status_note": (
+                "Reasoning synthesized via deterministic contextual precedent evaluation."
+                if get_settings().SEARCHMIND_DEMO_MODE
+                else "Reasoning synthesized with Hindsight Reflect."
+            ),
         },
         "recommendation": {
             "recommendation_id": rec.recommendation_id,

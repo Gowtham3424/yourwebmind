@@ -213,8 +213,21 @@
     reasoningCaveat.textContent = lrn.caveat;
     if (lrn.reflect_status_note) {
       reflectNoteText.textContent = lrn.reflect_status_note;
+    } else if (data.demo_mode) {
+      reflectNoteText.textContent = 'Reasoning synthesized via deterministic contextual precedent evaluation.';
     } else {
-      reflectNoteText.textContent = 'Reasoning synthesized via contextual precedent evaluation (Reflect active).';
+      reflectNoteText.textContent = 'Reasoning synthesized with Hindsight Reflect.';
+    }
+
+    // Dynamic Memory Browser Header
+    const headingBrowser = document.getElementById('heading-browser');
+    const browserIntro = document.querySelector('.browser-intro');
+    if (data.demo_mode) {
+      if (headingBrowser) headingBrowser.textContent = 'Search Demo SEO Memory';
+      if (browserIntro) browserIntro.textContent = 'Search the deterministic demo experiment records to explore positive, negative, neutral, and inconclusive precedents.';
+    } else {
+      if (headingBrowser) headingBrowser.textContent = 'Search Hindsight SEO Memory';
+      if (browserIntro) browserIntro.textContent = 'Query persistent experiment records retained in Hindsight to explore precedents across positive, negative, and inconclusive tests.';
     }
 
     // Recommendation Section

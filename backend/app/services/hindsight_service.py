@@ -53,6 +53,8 @@ class HindsightService:
             os.environ["HINDSIGHT_API_LLM_PROVIDER"] = self.settings.HINDSIGHT_API_LLM_PROVIDER
             os.environ["HINDSIGHT_API_LLM_API_KEY"] = self.settings.HINDSIGHT_API_LLM_API_KEY
             os.environ["HINDSIGHT_API_LLM_MODEL"] = self.settings.HINDSIGHT_API_LLM_MODEL
+            if self.settings.HINDSIGHT_API_LLM_PROVIDER.lower() == "gemini":
+                os.environ["GEMINI_API_KEY"] = self.settings.HINDSIGHT_API_LLM_API_KEY
             if self.settings.HINDSIGHT_API_LLM_BASE_URL:
                 os.environ["HINDSIGHT_API_LLM_BASE_URL"] = self.settings.HINDSIGHT_API_LLM_BASE_URL
             if self.settings.HINDSIGHT_API_LLM_GROQ_SERVICE_TIER:

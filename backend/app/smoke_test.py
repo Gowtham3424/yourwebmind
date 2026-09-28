@@ -16,7 +16,7 @@ from app.services.hindsight_service import get_hindsight_service
 logging.basicConfig(level=logging.INFO, format="%(asctime)s [%(levelname)s] %(name)s: %(message)s")
 logger = logging.getLogger("searchmind.smoke_test")
 
-SMOKE_TEST_BANK = "searchmind-smoke-test"
+SMOKE_TEST_BANK = "searchmind-live-test"
 SMOKE_TEST_CONTENT = (
     "SearchMind smoke test memory. The SEO team tested a title optimization on a commercial product page."
 )
@@ -54,7 +54,7 @@ def ensure_groq_capacity(settings, min_tokens: int = 6000, max_wait: int = 120) 
             time.sleep(5)
 
 
-def run_smoke_test(cleanup: bool = False) -> Dict[str, Any]:
+def run_smoke_test(bank_id: str = SMOKE_TEST_BANK, cleanup: bool = False) -> Dict[str, Any]:
     """
     Execute the Retain -> Recall -> Reflect smoke test against Hindsight.
 
@@ -67,7 +67,7 @@ def run_smoke_test(cleanup: bool = False) -> Dict[str, Any]:
         "llm_configured": settings.is_llm_configured,
         "llm_provider": settings.HINDSIGHT_API_LLM_PROVIDER,
         "llm_model": settings.HINDSIGHT_API_LLM_MODEL,
-        "memory_bank": SMOKE_TEST_BANK,
+        "memory_bank": bank_id,
         "retain_success": False,
         "recall_success": False,
         "reflect_success": False,
@@ -105,23 +105,25 @@ def run_smoke_test(cleanup: bool = False) -> Dict[str, Any]:
         results["errors"].append(f"Init exception: {exc}")
         return results
 
-    # Optional pre-cleanup to keep prompt size minimal
+    # Optional pre-cleanup to keep prompt size minimal (isolated test bank only)
     try:
-        service.get_client().delete_bank(SMOKE_TEST_BANK)
+        service.get_client().delete_bank(bank_id)
     except Exception:
         pass
 
-    # Ensure Groq has sufficient capacity before retain
+    # Ensure Groq has sufficient capacity before retain (skipped for Gemini)
     ensure_groq_capacity(settings, min_tokens=5500)
 
+    is_groq = settings.HINDSIGHT_API_LLM_PROVIDER.lower() == "groq"
+    retain_attempts = 3 if is_groq else 1
+
     # Step 2: Retain
-    logger.info("Step 2/4: Retaining smoke-test memory...")
-    retain_attempts = 3
+    logger.info(f"Step 2/4: Retaining smoke-test memory in bank '{bank_id}'...")
     for attempt in range(1, retain_attempts + 1):
         t0 = time.time()
         try:
             retain_resp = service.retain(
-                bank_id=SMOKE_TEST_BANK,
+                bank_id=bank_id,
                 content=SMOKE_TEST_CONTENT,
                 metadata={"source": "smoke_test", "topic": "seo_title_optimization"},
                 tags=["smoke_test", "commercial", "title_optimization"],
@@ -133,7 +135,7 @@ def run_smoke_test(cleanup: bool = False) -> Dict[str, Any]:
             break
         except Exception as exc:
             err_str = str(exc)
-            if ("429" in err_str or "Rate limit" in err_str or "quota" in err_str.lower()) and attempt < retain_attempts:
+            if is_groq and ("429" in err_str or "Rate limit" in err_str or "quota" in err_str.lower()) and attempt < retain_attempts:
                 wait_sec = 20 * attempt
                 logger.warning(
                     f"Retain hit rate limit on attempt {attempt}/{retain_attempts}. "
@@ -147,11 +149,11 @@ def run_smoke_test(cleanup: bool = False) -> Dict[str, Any]:
                 return results
 
     # Step 3: Recall
-    logger.info(f"Step 3/4: Recalling memories with query '{SMOKE_TEST_RECALL_QUERY}'...")
+    logger.info(f"Step 3/4: Recalling memories from bank '{bank_id}' with query '{SMOKE_TEST_RECALL_QUERY}'...")
     t0 = time.time()
     try:
         recall_resp = service.recall(
-            bank_id=SMOKE_TEST_BANK,
+            bank_id=bank_id,
             query=SMOKE_TEST_RECALL_QUERY,
             budget="mid",
         )
@@ -170,17 +172,18 @@ def run_smoke_test(cleanup: bool = False) -> Dict[str, Any]:
         results["status"] = "failed"
         return results
 
-    # Ensure Groq token bucket has recovered before Reflect
+    # Ensure Groq token bucket has recovered before Reflect (skipped for Gemini)
     ensure_groq_capacity(settings, min_tokens=5500)
 
+    reflect_attempts = 3 if is_groq else 1
+
     # Step 4: Reflect
-    logger.info(f"Step 4/4: Reflecting over memories with query '{SMOKE_TEST_REFLECT_QUERY}'...")
-    reflect_attempts = 3
+    logger.info(f"Step 4/4: Reflecting over memories in bank '{bank_id}' with query '{SMOKE_TEST_REFLECT_QUERY}'...")
     for attempt in range(1, reflect_attempts + 1):
         t0 = time.time()
         try:
             reflect_resp = service.reflect(
-                bank_id=SMOKE_TEST_BANK,
+                bank_id=bank_id,
                 query=SMOKE_TEST_REFLECT_QUERY,
                 budget="low",
                 include_facts=False,
@@ -197,7 +200,7 @@ def run_smoke_test(cleanup: bool = False) -> Dict[str, Any]:
             break
         except Exception as exc:
             err_str = str(exc)
-            if ("429" in err_str or "Rate limit" in err_str or "quota" in err_str.lower()) and attempt < reflect_attempts:
+            if is_groq and ("429" in err_str or "Rate limit" in err_str or "quota" in err_str.lower()) and attempt < reflect_attempts:
                 wait_sec = 65
                 logger.warning(
                     f"Reflect hit rate limit on attempt {attempt}/{reflect_attempts}. "
@@ -209,6 +212,12 @@ def run_smoke_test(cleanup: bool = False) -> Dict[str, Any]:
                 results["errors"].append(f"Reflect exception: {exc}")
                 results["status"] = "failed"
                 return results
+
+    if cleanup:
+        try:
+            service.get_client().delete_bank(bank_id)
+        except Exception:
+            pass
 
     results["status"] = "success"
     return results
