@@ -230,3 +230,61 @@ The synthetic dataset can be ingested directly into Hindsight to provide persist
 .\.venv\Scripts\python.exe -m pytest tests/test_demo_dataset.py -v
 ```
 
+---
+
+## SearchMind Agent Core & Workflow Engine
+
+SearchMind's SEO Agent coordinates evidence-based diagnostic analysis and context-aware optimization decisions through a deterministic, human-in-the-loop workflow:
+
+```
+CURRENT SEO DATA
+        ↓
+HISTORICAL CONTEXT (Hindsight Memory)
+        ↓
+SYNTHESIZED REFLECTION
+        ↓
+CONTEXT-AWARE RECOMMENDATION
+        ↓
+HUMAN APPROVAL GATEWAY (requires_approval = True)
+        ↓
+PLANNED EXPERIMENT PROPOSAL
+```
+
+### Strict Separation of Evidence & Reasoning
+SearchMind strictly distinguishes four cognitive components:
+1. **Current Evidence:** Observable, empirical present-state measurements (SERP position, organic CTR, impression/click volumes, diagnostic observations, severity). Missing data is explicitly marked as unavailable rather than fabricated.
+2. **Historical Evidence:** Recalled experiment records and measured outcomes from past trials on similar page types and search intents, categorized into positive, negative, neutral, and inconclusive precedents.
+3. **Reflection:** Synthesized reasoning that weighs historical precedents against the current context, evaluating nuances, seasonal caveats, algorithm volatility, and keyword placement.
+4. **Recommendation:** An actionable, falsifiable optimization proposal with bounded, explainable confidence (`0.10` to `0.85`), expected impact, and an enforced human approval requirement (`requires_approval = True`).
+
+### Decision Rules
+* **Rule A (Opportunity):** When CTR declines and relevant historical title precedents exist, propose a targeted title optimization trial.
+* **Rule B (Mixed Evidence):** When past trials show both positive and negative results, avoid declaring the technique proven and prescribe strict brand/intent guardrails.
+* **Rule C (Precedent Caution):** When precedents are predominantly negative, surface past failures and recommend caution or alternative on-page enhancements.
+* **Rule D (Inconclusive Precedent):** When past data was confounded by external factors (e.g. algorithm rollouts), propose a controlled measurement trial rather than guaranteed gains.
+* **Rule E (Contextual Divergence):** When page types or intents differ between precedents and the current target, reduce confidence and explicitly state the contextual difference.
+* **Rule F (Zero Precedent):** When no relevant experiments exist in memory, state that historical precedent is unavailable without inventing false confidence.
+
+### Token Conservation Policy
+During ordinary test execution and agent workflow development, SearchMind executes all analysis, retrieval, and decision rules deterministically in local memory with zero external LLM calls. Live Hindsight/Groq calls are preserved for persistent memory storage and milestone integration tests.
+
+### Running the Deterministic SEO Agent Demo
+```powershell
+# Run the deterministic local demonstration:
+.\.venv\Scripts\python.exe -m app.agents.demo_scenario
+
+# Run the complete deterministic agent test suite:
+.\.venv\Scripts\python.exe -m pytest tests/test_seo_agent.py -v
+```
+
+---
+
+## Future Frontend Design Principles
+
+SearchMind is an evidence-first analytical platform. Future UI implementations adhere to strict minimalist standards:
+* **Minimalist Aesthetics:** Primarily monochrome / neutral color palette with restrained, functional accent colors.
+* **Clarity Over Flash:** Thin borders, generous whitespace, clean tabular data, and readable typography.
+* **Zero Decorative Noise:** No gradients, no glassmorphism, no decorative 3D illustrations, no distracting layout animations, and no bloated CSS frameworks.
+* **Evidence Precedence:** Empirical measurements, historical comparisons, confidence bounds, and learning narratives must remain the focal point of every view.
+
+

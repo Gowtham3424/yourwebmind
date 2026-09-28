@@ -2,6 +2,7 @@
 
 from app.models.base import BaseDomainModel
 from app.models.enums import (
+    ApprovalStatus,
     ExperimentStatus,
     ObservationSeverity,
     OutcomeClass,
@@ -21,6 +22,7 @@ __all__ = [
     "ObservationSeverity",
     "ExperimentStatus",
     "OutcomeClass",
+    "ApprovalStatus",
     "WebsiteFact",
     "SEOObservation",
     "OptimizationDecision",

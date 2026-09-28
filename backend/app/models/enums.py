@@ -38,3 +38,12 @@ class OutcomeClass(str, Enum):
     NEGATIVE = "negative"
     NEUTRAL = "neutral"
     INCONCLUSIVE = "inconclusive"
+
+
+class ApprovalStatus(str, Enum):
+    """Human-in-the-loop review status for SEO recommendations."""
+
+    PENDING_APPROVAL = "pending_approval"
+    APPROVED = "approved"
+    REJECTED = "rejected"
+
