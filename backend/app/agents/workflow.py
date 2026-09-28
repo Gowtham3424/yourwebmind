@@ -25,6 +25,12 @@ from app.models.enums import ApprovalStatus, ExperimentStatus, ObservationSeveri
 from app.models.experiment import SEOExperiment
 from app.models.recommendation import SEORecommendation
 
+from app.memory import (
+    BaseRecallAdapter,
+    InMemoryRecallAdapter,
+    build_memory_query,
+)
+
 logger = logging.getLogger("searchmind.agents.workflow")
 
 
@@ -34,19 +40,24 @@ class SEOWorkflowEngine:
 
     Enforces:
     1. Distillation of current SEO data into structured evidence
-    2. Context-aware retrieval and synthesis of historical memory
-    3. Generation of qualified, non-dogmatic recommendations
-    4. Mandatory halt at Human-in-the-loop Approval Gateway (requires_approval = True)
-    5. Controlled generation of experiment proposals ONLY upon explicit human approval
+    2. Deterministic memory query generation and Hindsight Recall retrieval
+    3. Context-aware synthesis of historical memory and domain precedents
+    4. Generation of qualified, non-dogmatic recommendations
+    5. Mandatory halt at Human-in-the-loop Approval Gateway (requires_approval = True)
+    6. Controlled generation of experiment proposals ONLY upon explicit human approval
     """
 
     def __init__(
         self,
         historical_analyzer: Optional[HistoricalAnalyzer] = None,
         recommendation_engine: Optional[RecommendationEngine] = None,
+        recall_adapter: Optional[BaseRecallAdapter] = None,
+        default_bank_id: str = "searchmind-demo",
     ):
         self.analyzer = historical_analyzer or HistoricalAnalyzer()
         self.recommendation_engine = recommendation_engine or RecommendationEngine()
+        self.recall_adapter = recall_adapter
+        self.default_bank_id = default_bank_id
 
     def extract_current_evidence(self, request: SEOAnalysisRequest) -> CurrentSEOEvidence:
         """Distill raw SEO request facts, observations, and metrics into structured evidence."""
@@ -156,33 +167,75 @@ class SEOWorkflowEngine:
             highest_severity=highest_sev,
         )
 
-    def run_analysis_workflow(self, request: SEOAnalysisRequest) -> SEOWorkflowResult:
+    def run_analysis_workflow(
+        self,
+        request: SEOAnalysisRequest,
+        memory_bank: Optional[str] = None,
+    ) -> SEOWorkflowResult:
         """
         Execute the analysis workflow up to the Human Approval Gateway.
 
         Stages:
         1. Extract current SEO evidence
-        2. Retrieve and synthesize historical context from memory
-        3. Generate context-aware recommendation
-        4. HALT at Human Approval Gateway (status = PENDING_APPROVAL, proposal = None)
+        2. Formulate deterministic memory query and retrieve historical memories via recall adapter
+        3. Retrieve and synthesize historical context from memory and domain dataset
+        4. Generate context-aware recommendation
+        5. HALT at Human Approval Gateway (status = PENDING_APPROVAL, proposal = None)
         """
         # Step 1: Current SEO state
         current_evidence = self.extract_current_evidence(request)
 
-        # Step 2: Historical context
-        historical_context = self.analyzer.build_historical_context(
-            current_evidence=current_evidence,
-            technique_focus=request.technique_focus or "title_tag_optimization",
+        # Step 2: Formulate deterministic memory query
+        obs_type = (
+            request.current_observations[0].observation_type
+            if request.current_observations
+            else None
+        )
+        tech_focus = request.technique_focus or "title_tag_optimization"
+        memory_query = build_memory_query(
+            page_type=current_evidence.page_type,
+            search_intent=current_evidence.search_intent,
+            target_keyword=current_evidence.keyword,
+            observation_type=obs_type,
+            technique=tech_focus,
         )
 
-        # Step 3: Recommendation generation
+        # Step 3: Recall memories if adapter configured
+        recalled_items = None
+        memory_source = "local_dataset"
+        if self.recall_adapter is not None:
+            target_bank = memory_bank or self.default_bank_id
+            memory_source = (
+                "fixture"
+                if isinstance(self.recall_adapter, InMemoryRecallAdapter)
+                else "hindsight"
+            )
+            try:
+                recalled_items = self.recall_adapter.recall(
+                    query=memory_query,
+                    bank_id=target_bank,
+                )
+            except Exception as exc:
+                logger.warning(f"Recall retrieval encountered error: {exc}; proceeding with local dataset.")
+                recalled_items = []
+
+        # Step 4: Historical context synthesis
+        historical_context = self.analyzer.build_historical_context(
+            current_evidence=current_evidence,
+            technique_focus=tech_focus,
+            recalled_memories=recalled_items,
+            memory_source=memory_source,
+            memory_query=memory_query,
+        )
+
+        # Step 5: Recommendation generation
         recommendation = self.recommendation_engine.generate_recommendation(
             project_id=request.project_id,
             current_evidence=current_evidence,
             historical_context=historical_context,
         )
 
-        # Step 4: Strict halt at approval gateway
+        # Step 6: Strict halt at approval gateway
         return SEOWorkflowResult(
             request=request,
             current_evidence=current_evidence,

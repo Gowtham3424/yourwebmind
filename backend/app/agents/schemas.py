@@ -110,6 +110,10 @@ class HistoricalSEOContext(BaseDomainModel):
     query: str = Field(..., description="Query or criteria used to identify historical precedents")
     recalled_memories: List[Dict[str, Any]] = Field(default_factory=list, description="Raw memory units or experiment dicts")
     relevant_experiment_ids: List[str] = Field(default_factory=list, description="List of matched experiment IDs")
+    structured_experiment_ids: List[str] = Field(default_factory=list, description="IDs of structured experiments from domain dataset")
+    hindsight_memories: List[Dict[str, Any]] = Field(default_factory=list, description="Recalled memory units with provenance from Hindsight")
+    memory_source: str = Field(default="local_dataset", description="Origin of recalled memories: 'hindsight', 'fixture', or 'local_dataset'")
+    memory_query: Optional[str] = Field(default=None, description="Exact query string sent to Hindsight Recall")
     positive_examples: List[Dict[str, Any]] = Field(default_factory=list, description="Precedents with positive outcomes")
     negative_examples: List[Dict[str, Any]] = Field(default_factory=list, description="Precedents with negative outcomes")
     neutral_examples: List[Dict[str, Any]] = Field(default_factory=list, description="Precedents with neutral outcomes")
@@ -122,7 +126,7 @@ class HistoricalSEOContext(BaseDomainModel):
 
     def to_evidence_text(self) -> str:
         """Format historical precedent into clean, structured narrative text."""
-        if self.source_count == 0:
+        if self.source_count == 0 and not self.hindsight_memories:
             return "No relevant historical experiments found in memory bank for this page type and technique."
 
         lines = [
@@ -157,6 +161,14 @@ class HistoricalSEOContext(BaseDomainModel):
             lines.append("Contextual Caveats from Precedents:")
             for caveat in self.contextual_caveats:
                 lines.append(f"  * {caveat}")
+
+        if self.hindsight_memories:
+            lines.append(f"\nHindsight Recalled Memories (Source: {self.memory_source.upper()}):")
+            for m in self.hindsight_memories[:3]:
+                t = m.get("memory_text", "")
+                eid_str = f" [Linked: {m.get('experiment_id')}]" if m.get("experiment_id") else ""
+                out_str = f" [Outcome: {m.get('outcome').upper()}]" if m.get("outcome") else ""
+                lines.append(f"  * {t[:120]}...{eid_str}{out_str}")
 
         return "\n".join(lines)
 

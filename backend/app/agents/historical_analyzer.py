@@ -134,12 +134,16 @@ class HistoricalAnalyzer:
         self,
         current_evidence: CurrentSEOEvidence,
         technique_focus: Optional[str] = None,
+        recalled_memories: Optional[List[Any]] = None,
+        memory_source: str = "local_dataset",
+        memory_query: Optional[str] = None,
     ) -> HistoricalSEOContext:
         """
-        Build a comprehensive, structured HistoricalSEOContext for the given current evidence.
+        Build a comprehensive, structured HistoricalSEOContext for the given current evidence,
+        incorporating both structured domain dataset experiments and Hindsight recalled memories.
         """
         page_type = current_evidence.page_type or infer_page_type_from_url(str(current_evidence.target_url))
-        query_desc = f"Technique: '{technique_focus or 'general'}' on page_type: '{page_type}'"
+        query_desc = memory_query or f"Technique: '{technique_focus or 'general'}' on page_type: '{page_type}'"
 
         matches, has_mismatch, mismatch_reason = self.find_relevant_experiments(
             page_type=page_type,
@@ -148,7 +152,28 @@ class HistoricalAnalyzer:
             target_url=str(current_evidence.target_url),
         )
 
-        if not matches:
+        # Process external recalled memories (from Hindsight or test fixture)
+        processed_hindsight_memories: List[Dict[str, Any]] = []
+        if recalled_memories:
+            for item in recalled_memories:
+                m_dict = item.model_dump() if hasattr(item, "model_dump") else (item.dict() if hasattr(item, "dict") else dict(item))
+                processed_hindsight_memories.append(m_dict)
+                eid = m_dict.get("experiment_id")
+                # If memory refers to a known experiment not yet in matches, link it
+                if eid and eid in self.exp_by_id and not any(m["experiment_id"] == eid for m in matches):
+                    exp_obj = dict(self.exp_by_id[eid])
+                    outcome_obj = self.outcome_by_exp_id.get(eid, {})
+                    exp_obj["outcome"] = outcome_obj
+                    exp_obj["outcome_class"] = outcome_obj.get("outcome_class") or m_dict.get("outcome")
+                    exp_obj["interpretation"] = outcome_obj.get("interpretation", "")
+                    exp_obj["outcome_summary"] = (
+                        f"{exp_obj.get('primary_metric')}: {outcome_obj.get('primary_metric_before')} -> "
+                        f"{outcome_obj.get('primary_metric_after')} ({outcome_obj.get('percentage_change', 0.0):+.1f}%)"
+                    ) if outcome_obj else ""
+                    exp_obj["inferred_page_type"] = infer_page_type_from_url(exp_obj.get("url", ""))
+                    matches.append(exp_obj)
+
+        if not matches and not processed_hindsight_memories:
             reflection = (
                 f"No historical experiments in memory bank '{self._data.get('bank_id', 'searchmind-demo')}' "
                 f"specifically evaluate technique '{technique_focus or 'unspecified'}' on '{page_type}' pages. "
@@ -158,6 +183,10 @@ class HistoricalAnalyzer:
                 query=query_desc,
                 recalled_memories=[],
                 relevant_experiment_ids=[],
+                structured_experiment_ids=[],
+                hindsight_memories=[],
+                memory_source=memory_source,
+                memory_query=query_desc,
                 positive_examples=[],
                 negative_examples=[],
                 neutral_examples=[],
@@ -175,16 +204,17 @@ class HistoricalAnalyzer:
         inc: List[Dict[str, Any]] = []
         caveats: List[str] = []
         relevant_ids: List[str] = []
+        structured_ids: List[str] = []
 
         for exp in matches:
             eid = exp["experiment_id"]
             relevant_ids.append(eid)
+            structured_ids.append(eid)
             ocls = exp.get("outcome_class")
             interp = exp.get("interpretation", "")
 
             # Extract caveats from interpretation if present
             if "caveat" in interp.lower() or "overlap" in interp.lower() or "season" in interp.lower():
-                # Extract first sentence or entire clause containing caveat
                 clauses = [s.strip() for s in interp.split(".") if any(w in s.lower() for w in ["caveat", "however", "overlap", "season", "caution"])]
                 if clauses:
                     caveats.append(f"[{eid}] {clauses[0]}.")
@@ -199,6 +229,12 @@ class HistoricalAnalyzer:
                 neu.append(exp)
             elif ocls == OutcomeClass.INCONCLUSIVE or ocls == "inconclusive":
                 inc.append(exp)
+
+        # Also pull any explicit caveats from recalled memories
+        for hm in processed_hindsight_memories:
+            htext = hm.get("memory_text", "")
+            if any(w in htext.lower() for w in ["caveat", "seasonal", "volatility"]) and not any(htext[:40] in c for c in caveats):
+                caveats.append(f"[Hindsight] {htext[:140]}...")
 
         # Synthesize non-dogmatic reflection
         reflection_parts = []
@@ -247,6 +283,10 @@ class HistoricalAnalyzer:
             query=query_desc,
             recalled_memories=matches,
             relevant_experiment_ids=relevant_ids,
+            structured_experiment_ids=structured_ids,
+            hindsight_memories=processed_hindsight_memories,
+            memory_source=memory_source,
+            memory_query=query_desc,
             positive_examples=pos,
             negative_examples=neg,
             neutral_examples=neu,
