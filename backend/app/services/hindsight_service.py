@@ -6,6 +6,7 @@ supporting lifecycle management, Retain, Recall, and Reflect operations.
 
 import logging
 import os
+from datetime import datetime
 from typing import Any, Dict, List, Optional
 
 from hindsight import HindsightEmbedded
@@ -55,6 +56,14 @@ class HindsightService:
             os.environ["HINDSIGHT_API_WORKER_ENABLED"] = "true" if self.settings.HINDSIGHT_API_WORKER_ENABLED else "false"
             if self.settings.HINDSIGHT_API_DATABASE_URL:
                 os.environ["HINDSIGHT_API_DATABASE_URL"] = self.settings.HINDSIGHT_API_DATABASE_URL
+            os.environ["HINDSIGHT_API_REFLECT_MAX_CONTEXT_TOKENS"] = str(self.settings.HINDSIGHT_API_REFLECT_MAX_CONTEXT_TOKENS)
+            os.environ["HINDSIGHT_API_RECALL_MAX_TOKENS"] = str(self.settings.HINDSIGHT_API_RECALL_MAX_TOKENS)
+            os.environ["HINDSIGHT_API_RECALL_CHUNKS_MAX_TOKENS"] = str(self.settings.HINDSIGHT_API_RECALL_CHUNKS_MAX_TOKENS)
+            os.environ["HINDSIGHT_API_REFLECT_SOURCE_FACTS_MAX_TOKENS"] = str(self.settings.HINDSIGHT_API_REFLECT_SOURCE_FACTS_MAX_TOKENS)
+            os.environ["HINDSIGHT_API_REFLECT_LLM_MAX_RETRIES"] = str(self.settings.HINDSIGHT_API_REFLECT_LLM_MAX_RETRIES)
+            os.environ["HINDSIGHT_API_REFLECT_LLM_INITIAL_BACKOFF"] = str(self.settings.HINDSIGHT_API_REFLECT_LLM_INITIAL_BACKOFF)
+            os.environ["HINDSIGHT_API_REFLECT_LLM_MAX_BACKOFF"] = str(self.settings.HINDSIGHT_API_REFLECT_LLM_MAX_BACKOFF)
+            os.environ.pop("HINDSIGHT_API_REFLECT_MAX_COMPLETION_TOKENS", None)
 
             logger.info(
                 f"Initializing Hindsight Embedded runtime (Profile: {self.settings.HINDSIGHT_PROFILE}, "
@@ -131,6 +140,10 @@ class HindsightService:
         context: Optional[str] = None,
         metadata: Optional[Dict[str, str]] = None,
         tags: Optional[List[str]] = None,
+        document_id: Optional[str] = None,
+        timestamp: Optional[datetime] = None,
+        update_mode: Optional[str] = None,
+        **kwargs: Any,
     ) -> RetainResponse:
         """
         Retain an observation or experience in Hindsight persistent memory.
@@ -141,6 +154,10 @@ class HindsightService:
             context: Optional contextual information.
             metadata: Optional key-value metadata dict.
             tags: Optional list of categorization tags.
+            document_id: Optional document identifier for idempotent tracking.
+            timestamp: Optional event timestamp.
+            update_mode: Mode for updating existing document ('replace' or 'append').
+            **kwargs: Extra parameters passed to the Hindsight client.
         """
         client = self.get_client()
         logger.info(f"Retaining memory in bank '{bank_id}': {content[:60]}...")
@@ -150,6 +167,10 @@ class HindsightService:
             context=context,
             metadata=metadata,
             tags=tags,
+            document_id=document_id,
+            timestamp=timestamp,
+            update_mode=update_mode,
+            **kwargs,
         )
 
     def recall(
@@ -219,9 +240,11 @@ class HindsightService:
 _hindsight_service: Optional[HindsightService] = None
 
 
-def get_hindsight_service() -> HindsightService:
+def get_hindsight_service(settings: Optional[Settings] = None) -> HindsightService:
     """Return the application-wide HindsightService singleton."""
     global _hindsight_service
     if _hindsight_service is None:
-        _hindsight_service = HindsightService()
+        _hindsight_service = HindsightService(settings)
+    elif settings is not None:
+        _hindsight_service.settings = settings
     return _hindsight_service

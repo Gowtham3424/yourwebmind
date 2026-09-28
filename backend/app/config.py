@@ -31,6 +31,15 @@ class Settings(BaseSettings):
     HINDSIGHT_API_DATABASE_URL: str = "pg0"
     HINDSIGHT_PROFILE: str = "searchmind"
 
+    # Hindsight Token Budget Guardrails (prevents 413 Payload Too Large and multi-step 429 on Groq 8k TPM tier)
+    HINDSIGHT_API_REFLECT_MAX_CONTEXT_TOKENS: int = 2500
+    HINDSIGHT_API_RECALL_MAX_TOKENS: int = 1200
+    HINDSIGHT_API_RECALL_CHUNKS_MAX_TOKENS: int = 800
+    HINDSIGHT_API_REFLECT_SOURCE_FACTS_MAX_TOKENS: int = 1200
+    HINDSIGHT_API_REFLECT_LLM_MAX_RETRIES: int = 5
+    HINDSIGHT_API_REFLECT_LLM_INITIAL_BACKOFF: float = 4.0
+    HINDSIGHT_API_REFLECT_LLM_MAX_BACKOFF: float = 3600.0
+
     model_config = SettingsConfigDict(
         env_file=ENV_FILE_PATH if ENV_FILE_PATH.exists() else None,
         env_file_encoding="utf-8",

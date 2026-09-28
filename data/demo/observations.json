@@ -1,0 +1,777 @@
+[
+  {
+    "observation_id": "obs_001",
+    "project_id": "searchmind-demo-store",
+    "url": "https://demo-searchmind-store.example/products/waterproof-alpine-hiking-boots",
+    "keyword": "waterproof hiking boots",
+    "observation_type": "low_ctr",
+    "metric_name": "ctr",
+    "current_value": 1.8,
+    "previous_value": 3.2,
+    "delta": -1.4,
+    "unit": "%",
+    "severity": "high",
+    "evidence": {
+      "position": 3.1,
+      "impressions": 15400,
+      "clicks": 277,
+      "serp_features": [
+        "rich_snippets",
+        "shopping_graph"
+      ]
+    },
+    "observed_at": "2026-06-15T09:00:00Z"
+  },
+  {
+    "observation_id": "obs_002",
+    "project_id": "searchmind-demo-store",
+    "url": "https://demo-searchmind-store.example/collections/running-shoes",
+    "keyword": "running shoes",
+    "observation_type": "ranking_opportunity",
+    "metric_name": "position",
+    "current_value": 11.4,
+    "previous_value": 14.2,
+    "delta": -2.8,
+    "unit": "pos",
+    "severity": "medium",
+    "evidence": {
+      "impressions": 8200,
+      "top_queries": [
+        "trail running shoes",
+        "road running shoes"
+      ],
+      "gap": "page_2_threshold"
+    },
+    "observed_at": "2026-06-15T09:15:00Z"
+  },
+  {
+    "observation_id": "obs_003",
+    "project_id": "searchmind-demo-store",
+    "url": "https://demo-searchmind-store.example/products/trail-blazer-running-shoes",
+    "keyword": "trail running shoes",
+    "observation_type": "title_issue",
+    "metric_name": "ctr",
+    "current_value": 2.1,
+    "previous_value": 2.1,
+    "delta": 0.0,
+    "unit": "%",
+    "severity": "medium",
+    "evidence": {
+      "title_length": 42,
+      "missing_terms": [
+        "buy",
+        "vibram",
+        "free shipping"
+      ],
+      "position": 4.2
+    },
+    "observed_at": "2026-06-16T10:00:00Z"
+  },
+  {
+    "observation_id": "obs_004",
+    "project_id": "searchmind-demo-store",
+    "url": "https://demo-searchmind-store.example/guides/best-running-shoes-beginners",
+    "keyword": "best trail running shoes for beginners",
+    "observation_type": "impression_growth",
+    "metric_name": "impressions",
+    "current_value": 3900.0,
+    "previous_value": 2400.0,
+    "delta": 1500.0,
+    "unit": "count",
+    "severity": "info",
+    "evidence": {
+      "position": 2.6,
+      "organic_traffic_growth_pct": 62.5
+    },
+    "observed_at": "2026-06-18T11:00:00Z"
+  },
+  {
+    "observation_id": "obs_005",
+    "project_id": "searchmind-demo-store",
+    "url": "https://demo-searchmind-store.example/collections/outdoor-jackets",
+    "keyword": "outdoor jackets",
+    "observation_type": "ranking_decline",
+    "metric_name": "position",
+    "current_value": 8.3,
+    "previous_value": 4.2,
+    "delta": 4.1,
+    "unit": "pos",
+    "severity": "critical",
+    "evidence": {
+      "competitor_movements": [
+        "outdoor-brand-x added 3L comparison guide",
+        "serp pack displaced position 4"
+      ]
+    },
+    "observed_at": "2026-06-20T14:00:00Z"
+  },
+  {
+    "observation_id": "obs_006",
+    "project_id": "searchmind-demo-store",
+    "url": "https://demo-searchmind-store.example/products/apex-carbon-road-shoes",
+    "keyword": "carbon plate running shoes",
+    "observation_type": "intent_mismatch",
+    "metric_name": "ctr",
+    "current_value": 3.79,
+    "previous_value": 4.5,
+    "delta": -0.71,
+    "unit": "%",
+    "severity": "medium",
+    "evidence": {
+      "serp_intent": "transactional_purchase",
+      "page_copy": "informational_biomechanics_heavy"
+    },
+    "observed_at": "2026-06-22T09:30:00Z"
+  },
+  {
+    "observation_id": "obs_007",
+    "project_id": "searchmind-demo-store",
+    "url": "https://demo-searchmind-store.example/products/goretex-weather-jacket",
+    "keyword": "goretex rain jacket",
+    "observation_type": "meta_description_issue",
+    "metric_name": "ctr",
+    "current_value": 3.0,
+    "previous_value": 3.0,
+    "delta": 0.0,
+    "unit": "%",
+    "severity": "low",
+    "evidence": {
+      "meta_length": 86,
+      "call_to_action": "missing",
+      "position": 4.9
+    },
+    "observed_at": "2026-06-25T11:00:00Z"
+  },
+  {
+    "observation_id": "obs_008",
+    "project_id": "searchmind-demo-store",
+    "url": "https://demo-searchmind-store.example/products/lightweight-summit-backpack-45l",
+    "keyword": "ultralight backpack 45l",
+    "observation_type": "content_gap",
+    "metric_name": "position",
+    "current_value": 2.8,
+    "previous_value": 2.8,
+    "delta": 0.0,
+    "unit": "pos",
+    "severity": "info",
+    "evidence": {
+      "missing_faqs": [
+        "bear canister compatibility",
+        "actual dyneema weight specs"
+      ]
+    },
+    "observed_at": "2026-06-28T16:00:00Z"
+  },
+  {
+    "observation_id": "obs_009",
+    "project_id": "searchmind-demo-store",
+    "url": "https://demo-searchmind-store.example/guides/how-to-choose-hiking-boots",
+    "keyword": "how to choose hiking boots",
+    "observation_type": "internal_linking_opportunity",
+    "metric_name": "clicks",
+    "current_value": 754.0,
+    "previous_value": 520.0,
+    "delta": 234.0,
+    "unit": "count",
+    "severity": "medium",
+    "evidence": {
+      "top_ranking_guide": true,
+      "outbound_internal_links_to_products": 2
+    },
+    "observed_at": "2026-07-01T09:00:00Z"
+  },
+  {
+    "observation_id": "obs_010",
+    "project_id": "searchmind-demo-store",
+    "url": "https://demo-searchmind-store.example/products/pro-grip-bouldering-shoes",
+    "keyword": "bouldering shoes",
+    "observation_type": "technical_issue",
+    "metric_name": "position",
+    "current_value": 3.7,
+    "previous_value": 3.7,
+    "delta": 0.0,
+    "unit": "pos",
+    "severity": "low",
+    "evidence": {
+      "schema_type": "Product",
+      "issue": "missing aggregateRating and priceValidUntil"
+    },
+    "observed_at": "2026-07-02T13:00:00Z"
+  },
+  {
+    "observation_id": "obs_011",
+    "project_id": "searchmind-demo-store",
+    "url": "https://demo-searchmind-store.example/products/goretex-weather-jacket",
+    "keyword": "goretex rain jacket",
+    "observation_type": "intent_mismatch",
+    "metric_name": "bounce_rate",
+    "current_value": 68.0,
+    "previous_value": 52.0,
+    "delta": 16.0,
+    "unit": "%",
+    "severity": "medium",
+    "evidence": {
+      "sample_query": "goretex rain jacket",
+      "metric_tracked": "bounce_rate"
+    },
+    "observed_at": "2026-07-12T10:00:00Z"
+  },
+  {
+    "observation_id": "obs_012",
+    "project_id": "searchmind-demo-store",
+    "url": "https://demo-searchmind-store.example/products/pro-grip-bouldering-shoes",
+    "keyword": "bouldering shoes",
+    "observation_type": "traffic_decline",
+    "metric_name": "clicks",
+    "current_value": 180.0,
+    "previous_value": 260.0,
+    "delta": -80.0,
+    "unit": "count",
+    "severity": "high",
+    "evidence": {
+      "sample_query": "bouldering shoes",
+      "metric_tracked": "clicks"
+    },
+    "observed_at": "2026-07-13T10:00:00Z"
+  },
+  {
+    "observation_id": "obs_013",
+    "project_id": "searchmind-demo-store",
+    "url": "https://demo-searchmind-store.example/products/thermal-merino-base-layer",
+    "keyword": "merino wool base layer",
+    "observation_type": "impression_growth",
+    "metric_name": "impressions",
+    "current_value": 4200.0,
+    "previous_value": 2800.0,
+    "delta": 1400.0,
+    "unit": "count",
+    "severity": "info",
+    "evidence": {
+      "sample_query": "merino wool base layer",
+      "metric_tracked": "impressions"
+    },
+    "observed_at": "2026-07-14T10:00:00Z"
+  },
+  {
+    "observation_id": "obs_014",
+    "project_id": "searchmind-demo-store",
+    "url": "https://demo-searchmind-store.example/products/ultra-cushion-marathon-shoes",
+    "keyword": "max cushion running shoes",
+    "observation_type": "conversion_underperformance",
+    "metric_name": "cvr",
+    "current_value": 0.8,
+    "previous_value": 1.6,
+    "delta": -0.8,
+    "unit": "%",
+    "severity": "high",
+    "evidence": {
+      "sample_query": "max cushion running shoes",
+      "metric_tracked": "cvr"
+    },
+    "observed_at": "2026-07-15T10:00:00Z"
+  },
+  {
+    "observation_id": "obs_015",
+    "project_id": "searchmind-demo-store",
+    "url": "https://demo-searchmind-store.example/products/rugged-terrain-trekking-boots",
+    "keyword": "backpacking boots",
+    "observation_type": "meta_description_issue",
+    "metric_name": "ctr",
+    "current_value": 2.2,
+    "previous_value": 2.2,
+    "delta": 0.0,
+    "unit": "%",
+    "severity": "low",
+    "evidence": {
+      "sample_query": "backpacking boots",
+      "metric_tracked": "ctr"
+    },
+    "observed_at": "2026-07-16T10:00:00Z"
+  },
+  {
+    "observation_id": "obs_016",
+    "project_id": "searchmind-demo-store",
+    "url": "https://demo-searchmind-store.example/products/hydration-pack-vest-10l",
+    "keyword": "running hydration vest",
+    "observation_type": "low_ctr",
+    "metric_name": "ctr",
+    "current_value": 1.9,
+    "previous_value": 2.8,
+    "delta": -0.9,
+    "unit": "%",
+    "severity": "high",
+    "evidence": {
+      "sample_query": "running hydration vest",
+      "metric_tracked": "ctr"
+    },
+    "observed_at": "2026-07-17T10:00:00Z"
+  },
+  {
+    "observation_id": "obs_017",
+    "project_id": "searchmind-demo-store",
+    "url": "https://demo-searchmind-store.example/products/compact-camping-stove",
+    "keyword": "backpacking canister stove",
+    "observation_type": "ranking_opportunity",
+    "metric_name": "position",
+    "current_value": 11.2,
+    "previous_value": 13.5,
+    "delta": -2.3,
+    "unit": "pos",
+    "severity": "medium",
+    "evidence": {
+      "sample_query": "backpacking canister stove",
+      "metric_tracked": "position"
+    },
+    "observed_at": "2026-07-18T10:00:00Z"
+  },
+  {
+    "observation_id": "obs_018",
+    "project_id": "searchmind-demo-store",
+    "url": "https://demo-searchmind-store.example/products/all-weather-trail-socks",
+    "keyword": "anti blister running socks",
+    "observation_type": "content_gap",
+    "metric_name": "word_count",
+    "current_value": 550.0,
+    "previous_value": 950.0,
+    "delta": -400.0,
+    "unit": "count",
+    "severity": "low",
+    "evidence": {
+      "sample_query": "anti blister running socks",
+      "metric_tracked": "word_count"
+    },
+    "observed_at": "2026-07-19T10:00:00Z"
+  },
+  {
+    "observation_id": "obs_019",
+    "project_id": "searchmind-demo-store",
+    "url": "https://demo-searchmind-store.example/products/polarized-trail-sunglasses",
+    "keyword": "running sunglasses polarized",
+    "observation_type": "intent_mismatch",
+    "metric_name": "bounce_rate",
+    "current_value": 68.0,
+    "previous_value": 52.0,
+    "delta": 16.0,
+    "unit": "%",
+    "severity": "medium",
+    "evidence": {
+      "sample_query": "running sunglasses polarized",
+      "metric_tracked": "bounce_rate"
+    },
+    "observed_at": "2026-07-20T10:00:00Z"
+  },
+  {
+    "observation_id": "obs_020",
+    "project_id": "searchmind-demo-store",
+    "url": "https://demo-searchmind-store.example/products/collapsible-trekking-poles",
+    "keyword": "carbon fiber trekking poles",
+    "observation_type": "traffic_decline",
+    "metric_name": "clicks",
+    "current_value": 180.0,
+    "previous_value": 260.0,
+    "delta": -80.0,
+    "unit": "count",
+    "severity": "high",
+    "evidence": {
+      "sample_query": "carbon fiber trekking poles",
+      "metric_tracked": "clicks"
+    },
+    "observed_at": "2026-07-21T10:00:00Z"
+  },
+  {
+    "observation_id": "obs_021",
+    "project_id": "searchmind-demo-store",
+    "url": "https://demo-searchmind-store.example/products/insulated-down-jacket-800",
+    "keyword": "ultralight down jacket",
+    "observation_type": "impression_growth",
+    "metric_name": "impressions",
+    "current_value": 4200.0,
+    "previous_value": 2800.0,
+    "delta": 1400.0,
+    "unit": "count",
+    "severity": "info",
+    "evidence": {
+      "sample_query": "ultralight down jacket",
+      "metric_tracked": "impressions"
+    },
+    "observed_at": "2026-07-22T10:00:00Z"
+  },
+  {
+    "observation_id": "obs_022",
+    "project_id": "searchmind-demo-store",
+    "url": "https://demo-searchmind-store.example/guides/best-running-shoes-beginners",
+    "keyword": "best trail running shoes for beginners",
+    "observation_type": "conversion_underperformance",
+    "metric_name": "cvr",
+    "current_value": 0.8,
+    "previous_value": 1.6,
+    "delta": -0.8,
+    "unit": "%",
+    "severity": "high",
+    "evidence": {
+      "sample_query": "best trail running shoes for beginners",
+      "metric_tracked": "cvr"
+    },
+    "observed_at": "2026-07-23T10:00:00Z"
+  },
+  {
+    "observation_id": "obs_023",
+    "project_id": "searchmind-demo-store",
+    "url": "https://demo-searchmind-store.example/guides/how-to-choose-hiking-boots",
+    "keyword": "how to choose hiking boots",
+    "observation_type": "meta_description_issue",
+    "metric_name": "ctr",
+    "current_value": 2.2,
+    "previous_value": 2.2,
+    "delta": 0.0,
+    "unit": "%",
+    "severity": "low",
+    "evidence": {
+      "sample_query": "how to choose hiking boots",
+      "metric_tracked": "ctr"
+    },
+    "observed_at": "2026-07-24T10:00:00Z"
+  },
+  {
+    "observation_id": "obs_024",
+    "project_id": "searchmind-demo-store",
+    "url": "https://demo-searchmind-store.example/guides/waterproof-jacket-buying-guide",
+    "keyword": "waterproof jacket guide",
+    "observation_type": "low_ctr",
+    "metric_name": "ctr",
+    "current_value": 1.9,
+    "previous_value": 2.8,
+    "delta": -0.9,
+    "unit": "%",
+    "severity": "high",
+    "evidence": {
+      "sample_query": "waterproof jacket guide",
+      "metric_tracked": "ctr"
+    },
+    "observed_at": "2026-07-25T10:00:00Z"
+  },
+  {
+    "observation_id": "obs_025",
+    "project_id": "searchmind-demo-store",
+    "url": "https://demo-searchmind-store.example/guides/backpack-sizing-and-fit-guide",
+    "keyword": "how to measure torso for backpack",
+    "observation_type": "ranking_opportunity",
+    "metric_name": "position",
+    "current_value": 11.2,
+    "previous_value": 13.5,
+    "delta": -2.3,
+    "unit": "pos",
+    "severity": "medium",
+    "evidence": {
+      "sample_query": "how to measure torso for backpack",
+      "metric_tracked": "position"
+    },
+    "observed_at": "2026-07-01T10:00:00Z"
+  },
+  {
+    "observation_id": "obs_026",
+    "project_id": "searchmind-demo-store",
+    "url": "https://demo-searchmind-store.example/guides/trail-running-essential-gear-checklist",
+    "keyword": "trail running gear checklist",
+    "observation_type": "content_gap",
+    "metric_name": "word_count",
+    "current_value": 550.0,
+    "previous_value": 950.0,
+    "delta": -400.0,
+    "unit": "count",
+    "severity": "low",
+    "evidence": {
+      "sample_query": "trail running gear checklist",
+      "metric_tracked": "word_count"
+    },
+    "observed_at": "2026-07-02T10:00:00Z"
+  },
+  {
+    "observation_id": "obs_027",
+    "project_id": "searchmind-demo-store",
+    "url": "https://demo-searchmind-store.example/comparisons/trail-vs-road-running-shoes",
+    "keyword": "trail vs road running shoes",
+    "observation_type": "intent_mismatch",
+    "metric_name": "bounce_rate",
+    "current_value": 68.0,
+    "previous_value": 52.0,
+    "delta": 16.0,
+    "unit": "%",
+    "severity": "medium",
+    "evidence": {
+      "sample_query": "trail vs road running shoes",
+      "metric_tracked": "bounce_rate"
+    },
+    "observed_at": "2026-07-03T10:00:00Z"
+  },
+  {
+    "observation_id": "obs_028",
+    "project_id": "searchmind-demo-store",
+    "url": "https://demo-searchmind-store.example/comparisons/waterproof-vs-breathable-hiking-boots",
+    "keyword": "waterproof vs breathable hiking boots",
+    "observation_type": "traffic_decline",
+    "metric_name": "clicks",
+    "current_value": 180.0,
+    "previous_value": 260.0,
+    "delta": -80.0,
+    "unit": "count",
+    "severity": "high",
+    "evidence": {
+      "sample_query": "waterproof vs breathable hiking boots",
+      "metric_tracked": "clicks"
+    },
+    "observed_at": "2026-07-04T10:00:00Z"
+  },
+  {
+    "observation_id": "obs_029",
+    "project_id": "searchmind-demo-store",
+    "url": "https://demo-searchmind-store.example/comparisons/cushioned-vs-minimalist-running-shoes",
+    "keyword": "cushioned vs minimalist running shoes",
+    "observation_type": "impression_growth",
+    "metric_name": "impressions",
+    "current_value": 4200.0,
+    "previous_value": 2800.0,
+    "delta": 1400.0,
+    "unit": "count",
+    "severity": "info",
+    "evidence": {
+      "sample_query": "cushioned vs minimalist running shoes",
+      "metric_tracked": "impressions"
+    },
+    "observed_at": "2026-07-05T10:00:00Z"
+  },
+  {
+    "observation_id": "obs_030",
+    "project_id": "searchmind-demo-store",
+    "url": "https://demo-searchmind-store.example/comparisons/merino-wool-vs-synthetic-layers",
+    "keyword": "merino wool vs synthetic base layer",
+    "observation_type": "conversion_underperformance",
+    "metric_name": "cvr",
+    "current_value": 0.8,
+    "previous_value": 1.6,
+    "delta": -0.8,
+    "unit": "%",
+    "severity": "high",
+    "evidence": {
+      "sample_query": "merino wool vs synthetic base layer",
+      "metric_tracked": "cvr"
+    },
+    "observed_at": "2026-07-06T10:00:00Z"
+  },
+  {
+    "observation_id": "obs_031",
+    "project_id": "searchmind-demo-store",
+    "url": "https://demo-searchmind-store.example/comparisons/hardshell-vs-softshell-jackets",
+    "keyword": "hardshell vs softshell jacket",
+    "observation_type": "meta_description_issue",
+    "metric_name": "ctr",
+    "current_value": 2.2,
+    "previous_value": 2.2,
+    "delta": 0.0,
+    "unit": "%",
+    "severity": "low",
+    "evidence": {
+      "sample_query": "hardshell vs softshell jacket",
+      "metric_tracked": "ctr"
+    },
+    "observed_at": "2026-07-07T10:00:00Z"
+  },
+  {
+    "observation_id": "obs_032",
+    "project_id": "searchmind-demo-store",
+    "url": "https://demo-searchmind-store.example/",
+    "keyword": "outdoor trail equipment",
+    "observation_type": "low_ctr",
+    "metric_name": "ctr",
+    "current_value": 1.9,
+    "previous_value": 2.8,
+    "delta": -0.9,
+    "unit": "%",
+    "severity": "high",
+    "evidence": {
+      "sample_query": "outdoor trail equipment",
+      "metric_tracked": "ctr"
+    },
+    "observed_at": "2026-07-08T10:00:00Z"
+  },
+  {
+    "observation_id": "obs_033",
+    "project_id": "searchmind-demo-store",
+    "url": "https://demo-searchmind-store.example/collections/running-shoes",
+    "keyword": "running shoes",
+    "observation_type": "ranking_opportunity",
+    "metric_name": "position",
+    "current_value": 11.2,
+    "previous_value": 13.5,
+    "delta": -2.3,
+    "unit": "pos",
+    "severity": "medium",
+    "evidence": {
+      "sample_query": "running shoes",
+      "metric_tracked": "position"
+    },
+    "observed_at": "2026-07-09T10:00:00Z"
+  },
+  {
+    "observation_id": "obs_034",
+    "project_id": "searchmind-demo-store",
+    "url": "https://demo-searchmind-store.example/collections/trail-running",
+    "keyword": "trail running gear",
+    "observation_type": "content_gap",
+    "metric_name": "word_count",
+    "current_value": 550.0,
+    "previous_value": 950.0,
+    "delta": -400.0,
+    "unit": "count",
+    "severity": "low",
+    "evidence": {
+      "sample_query": "trail running gear",
+      "metric_tracked": "word_count"
+    },
+    "observed_at": "2026-07-10T10:00:00Z"
+  },
+  {
+    "observation_id": "obs_035",
+    "project_id": "searchmind-demo-store",
+    "url": "https://demo-searchmind-store.example/collections/hiking-boots",
+    "keyword": "hiking boots",
+    "observation_type": "intent_mismatch",
+    "metric_name": "bounce_rate",
+    "current_value": 68.0,
+    "previous_value": 52.0,
+    "delta": 16.0,
+    "unit": "%",
+    "severity": "medium",
+    "evidence": {
+      "sample_query": "hiking boots",
+      "metric_tracked": "bounce_rate"
+    },
+    "observed_at": "2026-07-11T10:00:00Z"
+  },
+  {
+    "observation_id": "obs_036",
+    "project_id": "searchmind-demo-store",
+    "url": "https://demo-searchmind-store.example/collections/backpacking-gear",
+    "keyword": "backpacking gear",
+    "observation_type": "traffic_decline",
+    "metric_name": "clicks",
+    "current_value": 180.0,
+    "previous_value": 260.0,
+    "delta": -80.0,
+    "unit": "count",
+    "severity": "high",
+    "evidence": {
+      "sample_query": "backpacking gear",
+      "metric_tracked": "clicks"
+    },
+    "observed_at": "2026-07-12T10:00:00Z"
+  },
+  {
+    "observation_id": "obs_037",
+    "project_id": "searchmind-demo-store",
+    "url": "https://demo-searchmind-store.example/collections/outdoor-jackets",
+    "keyword": "outdoor jackets",
+    "observation_type": "impression_growth",
+    "metric_name": "impressions",
+    "current_value": 4200.0,
+    "previous_value": 2800.0,
+    "delta": 1400.0,
+    "unit": "count",
+    "severity": "info",
+    "evidence": {
+      "sample_query": "outdoor jackets",
+      "metric_tracked": "impressions"
+    },
+    "observed_at": "2026-07-13T10:00:00Z"
+  },
+  {
+    "observation_id": "obs_038",
+    "project_id": "searchmind-demo-store",
+    "url": "https://demo-searchmind-store.example/collections/climbing-shoes",
+    "keyword": "climbing shoes",
+    "observation_type": "conversion_underperformance",
+    "metric_name": "cvr",
+    "current_value": 0.8,
+    "previous_value": 1.6,
+    "delta": -0.8,
+    "unit": "%",
+    "severity": "high",
+    "evidence": {
+      "sample_query": "climbing shoes",
+      "metric_tracked": "cvr"
+    },
+    "observed_at": "2026-07-14T10:00:00Z"
+  },
+  {
+    "observation_id": "obs_039",
+    "project_id": "searchmind-demo-store",
+    "url": "https://demo-searchmind-store.example/products/trail-blazer-running-shoes",
+    "keyword": "trail running shoes",
+    "observation_type": "meta_description_issue",
+    "metric_name": "ctr",
+    "current_value": 2.2,
+    "previous_value": 2.2,
+    "delta": 0.0,
+    "unit": "%",
+    "severity": "low",
+    "evidence": {
+      "sample_query": "trail running shoes",
+      "metric_tracked": "ctr"
+    },
+    "observed_at": "2026-07-15T10:00:00Z"
+  },
+  {
+    "observation_id": "obs_040",
+    "project_id": "searchmind-demo-store",
+    "url": "https://demo-searchmind-store.example/products/waterproof-alpine-hiking-boots",
+    "keyword": "waterproof hiking boots",
+    "observation_type": "low_ctr",
+    "metric_name": "ctr",
+    "current_value": 1.9,
+    "previous_value": 2.8,
+    "delta": -0.9,
+    "unit": "%",
+    "severity": "high",
+    "evidence": {
+      "sample_query": "waterproof hiking boots",
+      "metric_tracked": "ctr"
+    },
+    "observed_at": "2026-07-16T10:00:00Z"
+  },
+  {
+    "observation_id": "obs_041",
+    "project_id": "searchmind-demo-store",
+    "url": "https://demo-searchmind-store.example/products/apex-carbon-road-shoes",
+    "keyword": "carbon plate running shoes",
+    "observation_type": "ranking_opportunity",
+    "metric_name": "position",
+    "current_value": 11.2,
+    "previous_value": 13.5,
+    "delta": -2.3,
+    "unit": "pos",
+    "severity": "medium",
+    "evidence": {
+      "sample_query": "carbon plate running shoes",
+      "metric_tracked": "position"
+    },
+    "observed_at": "2026-07-17T10:00:00Z"
+  },
+  {
+    "observation_id": "obs_042",
+    "project_id": "searchmind-demo-store",
+    "url": "https://demo-searchmind-store.example/products/lightweight-summit-backpack-45l",
+    "keyword": "ultralight backpack 45l",
+    "observation_type": "content_gap",
+    "metric_name": "word_count",
+    "current_value": 550.0,
+    "previous_value": 950.0,
+    "delta": -400.0,
+    "unit": "count",
+    "severity": "low",
+    "evidence": {
+      "sample_query": "ultralight backpack 45l",
+      "metric_tracked": "word_count"
+    },
+    "observed_at": "2026-07-18T10:00:00Z"
+  }
+]

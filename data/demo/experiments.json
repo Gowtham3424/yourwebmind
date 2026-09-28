@@ -1,0 +1,447 @@
+[
+  {
+    "experiment_id": "exp_001",
+    "project_id": "searchmind-demo-store",
+    "url": "https://demo-searchmind-store.example/products/waterproof-alpine-hiking-boots",
+    "experiment_type": "title_tag_test",
+    "hypothesis": "Aligning product title with commercial purchase intent may improve CTR.",
+    "control_description": "Waterproof Alpine Hiking Boots | SearchMind Store",
+    "treatment_description": "Buy Waterproof Alpine Hiking Boots | 100% Leather & Free Returns",
+    "primary_metric": "ctr",
+    "secondary_metrics": [
+      "clicks",
+      "impressions",
+      "position"
+    ],
+    "baseline_metrics": {
+      "ctr": 1.8,
+      "position": 3.1,
+      "clicks": 277
+    },
+    "start_date": "2026-06-20T00:00:00Z",
+    "end_date": "2026-07-10T00:00:00Z",
+    "status": "completed",
+    "created_at": "2026-06-19T14:00:00Z"
+  },
+  {
+    "experiment_id": "exp_002",
+    "project_id": "searchmind-demo-store",
+    "url": "https://demo-searchmind-store.example/collections/running-shoes",
+    "experiment_type": "category_copy_update",
+    "hypothesis": "Adding 350-word buyer guide text to category header may push ranking from page 2 to top 8.",
+    "control_description": "Category page with product grid only and no contextual copy",
+    "treatment_description": "Category page with 350-word buyer guide discussing terrain and drop",
+    "primary_metric": "position",
+    "secondary_metrics": [
+      "impressions",
+      "clicks"
+    ],
+    "baseline_metrics": {
+      "position": 11.4,
+      "impressions": 8200,
+      "clicks": 114
+    },
+    "start_date": "2026-06-20T00:00:00Z",
+    "end_date": "2026-07-15T00:00:00Z",
+    "status": "completed",
+    "created_at": "2026-06-19T15:00:00Z"
+  },
+  {
+    "experiment_id": "exp_003",
+    "project_id": "searchmind-demo-store",
+    "url": "https://demo-searchmind-store.example/products/trail-blazer-running-shoes",
+    "experiment_type": "title_tag_test",
+    "hypothesis": "Shortening title to avoid mobile SERP truncation may improve mobile CTR.",
+    "control_description": "Trail Blazer Pro Running Shoes | SearchMind Store",
+    "treatment_description": "Trail Blazer Pro - Men's Vibram Trail Running Shoes",
+    "primary_metric": "ctr",
+    "secondary_metrics": [
+      "clicks",
+      "position"
+    ],
+    "baseline_metrics": {
+      "ctr": 2.1,
+      "position": 4.2,
+      "clicks": 388
+    },
+    "start_date": "2026-06-22T00:00:00Z",
+    "end_date": "2026-07-06T00:00:00Z",
+    "status": "completed",
+    "created_at": "2026-06-21T10:00:00Z"
+  },
+  {
+    "experiment_id": "exp_004",
+    "project_id": "searchmind-demo-store",
+    "url": "https://demo-searchmind-store.example/guides/best-running-shoes-beginners",
+    "experiment_type": "FAQ_content",
+    "hypothesis": "Adding structured FAQ schema may gain People Also Ask placements.",
+    "control_description": "Guide without FAQ section",
+    "treatment_description": "Guide with 4 structured FAQ accordions and FAQPage schema",
+    "primary_metric": "impressions",
+    "secondary_metrics": [
+      "clicks",
+      "ctr"
+    ],
+    "baseline_metrics": {
+      "impressions": 3900,
+      "clicks": 390,
+      "ctr": 10.0
+    },
+    "start_date": "2026-06-25T00:00:00Z",
+    "end_date": "2026-07-20T00:00:00Z",
+    "status": "completed",
+    "created_at": "2026-06-24T12:00:00Z"
+  },
+  {
+    "experiment_id": "exp_005",
+    "project_id": "searchmind-demo-store",
+    "url": "https://demo-searchmind-store.example/collections/outdoor-jackets",
+    "experiment_type": "content_refresh",
+    "hypothesis": "Adding technical breathability comparison table may reverse ranking drop.",
+    "control_description": "Standard category text",
+    "treatment_description": "Comprehensive breathability comparison chart with lab ratings",
+    "primary_metric": "position",
+    "secondary_metrics": [
+      "impressions",
+      "clicks"
+    ],
+    "baseline_metrics": {
+      "position": 8.3,
+      "impressions": 7400,
+      "clicks": 162
+    },
+    "start_date": "2026-06-25T00:00:00Z",
+    "end_date": "2026-07-25T00:00:00Z",
+    "status": "completed",
+    "created_at": "2026-06-24T15:00:00Z"
+  },
+  {
+    "experiment_id": "exp_006",
+    "project_id": "searchmind-demo-store",
+    "url": "https://demo-searchmind-store.example/products/apex-carbon-road-shoes",
+    "experiment_type": "keyword_alignment",
+    "hypothesis": "Shifting heading emphasis to carbon plate racer terminology may improve conversion and engagement.",
+    "control_description": "General marathon training terminology in H2s and intro",
+    "treatment_description": "Dedicated H2s highlighting carbon plate stiffness and energy return",
+    "primary_metric": "ctr",
+    "secondary_metrics": [
+      "clicks",
+      "position"
+    ],
+    "baseline_metrics": {
+      "ctr": 3.79,
+      "position": 3.4,
+      "clicks": 288
+    },
+    "start_date": "2026-06-28T00:00:00Z",
+    "end_date": "2026-07-19T00:00:00Z",
+    "status": "completed",
+    "created_at": "2026-06-27T11:00:00Z"
+  },
+  {
+    "experiment_id": "exp_007",
+    "project_id": "searchmind-demo-store",
+    "url": "https://demo-searchmind-store.example/products/goretex-weather-jacket",
+    "experiment_type": "meta_description_test",
+    "hypothesis": "Adding warranty and shipping hook to meta description may improve SERP click-through rate.",
+    "control_description": "Heavy storm protection with pit zips and helmet-compatible hood.",
+    "treatment_description": "Rated #1 Storm Hardshell. Includes Lifetime Storm Guarantee & Free 2-Day Shipping. Shop Now.",
+    "primary_metric": "ctr",
+    "secondary_metrics": [
+      "clicks"
+    ],
+    "baseline_metrics": {
+      "ctr": 3.0,
+      "clicks": 243
+    },
+    "start_date": "2026-07-01T00:00:00Z",
+    "end_date": "2026-07-22T00:00:00Z",
+    "status": "completed",
+    "created_at": "2026-06-30T10:00:00Z"
+  },
+  {
+    "experiment_id": "exp_008",
+    "project_id": "searchmind-demo-store",
+    "url": "https://demo-searchmind-store.example/products/lightweight-summit-backpack-45l",
+    "experiment_type": "content_refresh",
+    "hypothesis": "Adding bear canister fit specification and load tables may reduce bounce rate and improve rankings.",
+    "control_description": "Standard pack specs without dimensions table",
+    "treatment_description": "Detailed canister fit chart with photos and certified capacity limits",
+    "primary_metric": "position",
+    "secondary_metrics": [
+      "ctr",
+      "clicks"
+    ],
+    "baseline_metrics": {
+      "position": 2.8,
+      "clicks": 228,
+      "ctr": 6.0
+    },
+    "start_date": "2026-07-05T00:00:00Z",
+    "end_date": "2026-07-26T00:00:00Z",
+    "status": "completed",
+    "created_at": "2026-07-04T12:00:00Z"
+  },
+  {
+    "experiment_id": "exp_009",
+    "project_id": "searchmind-demo-store",
+    "url": "https://demo-searchmind-store.example/guides/how-to-choose-hiking-boots",
+    "experiment_type": "internal_linking",
+    "hypothesis": "Contextual product callout cards within high-traffic guide may boost linked product page impressions.",
+    "control_description": "Text hyperlinks in conclusion only",
+    "treatment_description": "Prominent contextual comparison cards embedded within guide sections",
+    "primary_metric": "clicks",
+    "secondary_metrics": [
+      "ctr"
+    ],
+    "baseline_metrics": {
+      "clicks": 754.0,
+      "ctr": 13.0
+    },
+    "start_date": "2026-07-08T00:00:00Z",
+    "end_date": "2026-07-29T00:00:00Z",
+    "status": "completed",
+    "created_at": "2026-07-07T14:00:00Z"
+  },
+  {
+    "experiment_id": "exp_010",
+    "project_id": "searchmind-demo-store",
+    "url": "https://demo-searchmind-store.example/products/pro-grip-bouldering-shoes",
+    "experiment_type": "schema_update",
+    "hypothesis": "Adding complete schema.org/Product structured data may earn star rating snippet.",
+    "control_description": "Basic OpenGraph tags without structured product markup",
+    "treatment_description": "Full schema.org JSON-LD with aggregateRating, offers, and brand",
+    "primary_metric": "ctr",
+    "secondary_metrics": [
+      "clicks"
+    ],
+    "baseline_metrics": {
+      "ctr": 4.29,
+      "clicks": 266
+    },
+    "start_date": "2026-07-10T00:00:00Z",
+    "end_date": "2026-07-31T00:00:00Z",
+    "status": "completed",
+    "created_at": "2026-07-09T09:00:00Z"
+  },
+  {
+    "experiment_id": "exp_011",
+    "project_id": "searchmind-demo-store",
+    "url": "https://demo-searchmind-store.example/comparisons/trail-vs-road-running-shoes",
+    "experiment_type": "title_tag_test",
+    "hypothesis": "Adding current year [2026] to comparison title may boost click-through rate.",
+    "control_description": "Trail Running vs Road Running Shoes: Key Differences",
+    "treatment_description": "Trail vs Road Running Shoes: Differences & Full 2026 Guide",
+    "primary_metric": "ctr",
+    "secondary_metrics": [
+      "clicks"
+    ],
+    "baseline_metrics": {
+      "ctr": 12.0,
+      "clicks": 864
+    },
+    "start_date": "2026-07-15T00:00:00Z",
+    "end_date": "2026-08-05T00:00:00Z",
+    "status": "completed",
+    "created_at": "2026-07-14T11:00:00Z"
+  },
+  {
+    "experiment_id": "exp_012",
+    "project_id": "searchmind-demo-store",
+    "url": "https://demo-searchmind-store.example/products/thermal-merino-base-layer",
+    "experiment_type": "title_tag_test",
+    "hypothesis": "Truncating title to generic term 'Merino Wool Shirt' may hurt specificity and lower CTR.",
+    "control_description": "250gsm Merino Wool Long Sleeve Base Layer | SearchMind",
+    "treatment_description": "Merino Wool Shirt - Warm Long Sleeve",
+    "primary_metric": "ctr",
+    "secondary_metrics": [
+      "clicks",
+      "position"
+    ],
+    "baseline_metrics": {
+      "ctr": 4.59,
+      "clicks": 317,
+      "position": 2.9
+    },
+    "start_date": "2026-07-18T00:00:00Z",
+    "end_date": "2026-08-08T00:00:00Z",
+    "status": "completed",
+    "created_at": "2026-07-17T10:00:00Z"
+  },
+  {
+    "experiment_id": "exp_013",
+    "project_id": "searchmind-demo-store",
+    "url": "https://demo-searchmind-store.example/products/ultra-cushion-marathon-shoes",
+    "experiment_type": "content_refresh",
+    "hypothesis": "Deleting detailed foam density specs to make page shorter may hurt technical ranking signals.",
+    "control_description": "Comprehensive technical foam description with durometer ratings",
+    "treatment_description": "Simplified marketing bullet points without technical measurements",
+    "primary_metric": "position",
+    "secondary_metrics": [
+      "impressions",
+      "clicks"
+    ],
+    "baseline_metrics": {
+      "position": 5.1,
+      "impressions": 4100,
+      "clicks": 118
+    },
+    "start_date": "2026-07-20T00:00:00Z",
+    "end_date": "2026-08-10T00:00:00Z",
+    "status": "completed",
+    "created_at": "2026-07-19T09:00:00Z"
+  },
+  {
+    "experiment_id": "exp_014",
+    "project_id": "searchmind-demo-store",
+    "url": "https://demo-searchmind-store.example/products/rugged-terrain-trekking-boots",
+    "experiment_type": "title_tag_test",
+    "hypothesis": "Testing promotional discount keyword in title tag on commercial product page.",
+    "control_description": "Trekker XT Heavy-Duty Backpacking Boots | SearchMind",
+    "treatment_description": "Cheap Trekker XT Backpacking Boots - Huge Discount Sale",
+    "primary_metric": "ctr",
+    "secondary_metrics": [
+      "clicks",
+      "position"
+    ],
+    "baseline_metrics": {
+      "ctr": 2.69,
+      "clicks": 159,
+      "position": 6.2
+    },
+    "start_date": "2026-07-25T00:00:00Z",
+    "end_date": "2026-08-15T00:00:00Z",
+    "status": "completed",
+    "created_at": "2026-07-24T10:00:00Z"
+  },
+  {
+    "experiment_id": "exp_015",
+    "project_id": "searchmind-demo-store",
+    "url": "https://demo-searchmind-store.example/products/hydration-pack-vest-10l",
+    "experiment_type": "image_alt_update",
+    "hypothesis": "Updating image alt text tags from 'vest-photo-1' to keyword-rich descriptive alt tags.",
+    "control_description": "Default generic file names in alt attributes",
+    "treatment_description": "Descriptive alt text including trail running hydration vest angles",
+    "primary_metric": "impressions",
+    "secondary_metrics": [
+      "clicks"
+    ],
+    "baseline_metrics": {
+      "impressions": 5100,
+      "clicks": 234
+    },
+    "start_date": "2026-08-01T00:00:00Z",
+    "end_date": "2026-08-22T00:00:00Z",
+    "status": "completed",
+    "created_at": "2026-07-31T12:00:00Z"
+  },
+  {
+    "experiment_id": "exp_016",
+    "project_id": "searchmind-demo-store",
+    "url": "https://demo-searchmind-store.example/products/compact-camping-stove",
+    "experiment_type": "meta_description_test",
+    "hypothesis": "Swapping order of fuel efficiency vs boil time in meta description.",
+    "control_description": "Sub-2oz titanium backpacking stove boiling 1 liter in 3 minutes.",
+    "treatment_description": "Boils 1 liter in under 3 minutes with ultra-light sub-2oz titanium frame.",
+    "primary_metric": "ctr",
+    "secondary_metrics": [
+      "clicks"
+    ],
+    "baseline_metrics": {
+      "ctr": 6.5,
+      "clicks": 299
+    },
+    "start_date": "2026-08-05T00:00:00Z",
+    "end_date": "2026-08-26T00:00:00Z",
+    "status": "completed",
+    "created_at": "2026-08-04T10:00:00Z"
+  },
+  {
+    "experiment_id": "exp_017",
+    "project_id": "searchmind-demo-store",
+    "url": "https://demo-searchmind-store.example/products/all-weather-trail-socks",
+    "experiment_type": "internal_linking",
+    "hypothesis": "Adding footer links from all product pages to socks category.",
+    "control_description": "Standard footer without specific trail socks anchor link",
+    "treatment_description": "Sitewide footer link with anchor 'Anti-Blister Running Socks'",
+    "primary_metric": "position",
+    "secondary_metrics": [
+      "clicks"
+    ],
+    "baseline_metrics": {
+      "position": 2.1,
+      "clicks": 246
+    },
+    "start_date": "2026-08-10T00:00:00Z",
+    "end_date": "2026-08-31T00:00:00Z",
+    "status": "completed",
+    "created_at": "2026-08-09T14:00:00Z"
+  },
+  {
+    "experiment_id": "exp_018",
+    "project_id": "searchmind-demo-store",
+    "url": "https://demo-searchmind-store.example/products/polarized-trail-sunglasses",
+    "experiment_type": "title_tag_test",
+    "hypothesis": "Adding brand suffix to title tag during peak summer glare season.",
+    "control_description": "Veloce Polarized Anti-Fog Running Sunglasses",
+    "treatment_description": "Veloce Polarized Anti-Fog Running Sunglasses | SearchMind Eyewear",
+    "primary_metric": "ctr",
+    "secondary_metrics": [
+      "clicks"
+    ],
+    "baseline_metrics": {
+      "ctr": 3.5,
+      "clicks": 133
+    },
+    "start_date": "2026-08-15T00:00:00Z",
+    "end_date": "2026-09-05T00:00:00Z",
+    "status": "completed",
+    "created_at": "2026-08-14T09:00:00Z"
+  },
+  {
+    "experiment_id": "exp_019",
+    "project_id": "searchmind-demo-store",
+    "url": "https://demo-searchmind-store.example/products/collapsible-trekking-poles",
+    "experiment_type": "content_refresh",
+    "hypothesis": "Restructuring product specifications into comparison tabs during Google algorithm update.",
+    "control_description": "Standard linear bulleted specifications list",
+    "treatment_description": "Tabbed interactive specification layout",
+    "primary_metric": "position",
+    "secondary_metrics": [
+      "clicks",
+      "impressions"
+    ],
+    "baseline_metrics": {
+      "position": 3.2,
+      "clicks": 218,
+      "impressions": 4200
+    },
+    "start_date": "2026-08-20T00:00:00Z",
+    "end_date": "2026-09-10T00:00:00Z",
+    "status": "completed",
+    "created_at": "2026-08-19T11:00:00Z"
+  },
+  {
+    "experiment_id": "exp_020",
+    "project_id": "searchmind-demo-store",
+    "url": "https://demo-searchmind-store.example/products/insulated-down-jacket-800",
+    "experiment_type": "title_tag_test",
+    "hypothesis": "Testing '800-Fill' technical warmth rating vs 'Ultralight' in title tag before early fall season.",
+    "control_description": "Apex 800-Fill Ultralight Packable Down Hoodie | SearchMind",
+    "treatment_description": "Apex Ultralight Packable Down Jacket - 800 Fill Power",
+    "primary_metric": "ctr",
+    "secondary_metrics": [
+      "clicks",
+      "position"
+    ],
+    "baseline_metrics": {
+      "ctr": 2.69,
+      "clicks": 183,
+      "position": 5.8
+    },
+    "start_date": "2026-08-25T00:00:00Z",
+    "end_date": "2026-09-15T00:00:00Z",
+    "status": "completed",
+    "created_at": "2026-08-24T16:00:00Z"
+  }
+]

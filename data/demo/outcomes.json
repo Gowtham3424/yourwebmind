@@ -1,0 +1,328 @@
+[
+  {
+    "outcome_id": "out_001",
+    "experiment_id": "exp_001",
+    "project_id": "searchmind-demo-store",
+    "primary_metric_before": 1.8,
+    "primary_metric_after": 2.7,
+    "absolute_change": 0.9,
+    "percentage_change": 50.0,
+    "outcome_class": "positive",
+    "confidence_note": "Significant lift observed across 15,400 impressions over 20-day test window.",
+    "interpretation": "On this commercial product page, aligning the title with purchase intent ('Buy' and 'Free Returns') coincided with improved CTR from 1.8% to 2.7% during the measured period.",
+    "metric_results": {
+      "clicks_before": 277,
+      "clicks_after": 415,
+      "position_after": 3.1
+    },
+    "measured_at": "2026-07-11T09:00:00Z"
+  },
+  {
+    "outcome_id": "out_002",
+    "experiment_id": "exp_002",
+    "project_id": "searchmind-demo-store",
+    "primary_metric_before": 11.4,
+    "primary_metric_after": 8.7,
+    "absolute_change": -2.7,
+    "percentage_change": -23.68,
+    "outcome_class": "positive",
+    "confidence_note": "Position improved steadily from page 2 to page 1 top-10.",
+    "interpretation": "Adding 350 words of buyer guidance to the category page was associated with crossing from page 2 (#11.4) into page 1 (#8.7) over 25 days.",
+    "metric_results": {
+      "impressions_after": 9800,
+      "clicks_after": 196
+    },
+    "measured_at": "2026-07-16T10:00:00Z"
+  },
+  {
+    "outcome_id": "out_004",
+    "experiment_id": "exp_004",
+    "project_id": "searchmind-demo-store",
+    "primary_metric_before": 3900.0,
+    "primary_metric_after": 5100.0,
+    "absolute_change": 1200.0,
+    "percentage_change": 30.77,
+    "outcome_class": "positive",
+    "confidence_note": "Captured 2 new People Also Ask features for beginner queries.",
+    "interpretation": "On this informational beginner guide, structured FAQ content coincided with a 30.8% increase in organic search impressions.",
+    "metric_results": {
+      "clicks_after": 535,
+      "ctr_after": 10.49
+    },
+    "measured_at": "2026-07-21T11:00:00Z"
+  },
+  {
+    "outcome_id": "out_007",
+    "experiment_id": "exp_007",
+    "project_id": "searchmind-demo-store",
+    "primary_metric_before": 3.0,
+    "primary_metric_after": 3.6,
+    "absolute_change": 0.6,
+    "percentage_change": 20.0,
+    "outcome_class": "positive",
+    "confidence_note": "Higher snippet CTR achieved while average rank remained stable at 4.8.",
+    "interpretation": "Incorporating clear warranty and shipping guarantees into the product meta description correlated with a 0.6 percentage point increase in CTR.",
+    "metric_results": {
+      "clicks_after": 295
+    },
+    "measured_at": "2026-07-23T14:00:00Z"
+  },
+  {
+    "outcome_id": "out_009",
+    "experiment_id": "exp_009",
+    "project_id": "searchmind-demo-store",
+    "primary_metric_before": 754.0,
+    "primary_metric_after": 980.0,
+    "absolute_change": 226.0,
+    "percentage_change": 29.97,
+    "outcome_class": "positive",
+    "confidence_note": "Click growth on linked product pages tracked via internal analytics tags.",
+    "interpretation": "Adding contextual product cards inside an informational boot-buying guide coincided with a 30% click increase across linked boots.",
+    "metric_results": {
+      "target_product_sessions": "+42%"
+    },
+    "measured_at": "2026-07-30T10:00:00Z"
+  },
+  {
+    "outcome_id": "out_010",
+    "experiment_id": "exp_010",
+    "project_id": "searchmind-demo-store",
+    "primary_metric_before": 4.29,
+    "primary_metric_after": 4.95,
+    "absolute_change": 0.66,
+    "percentage_change": 15.38,
+    "outcome_class": "positive",
+    "confidence_note": "Rich review snippet badge verified in Google SERP after 12 days.",
+    "interpretation": "Adding full schema.org/Product structured data coincided with star ratings appearing in search results and a 15.4% lift in CTR.",
+    "metric_results": {
+      "rich_results_active": true
+    },
+    "measured_at": "2026-08-01T09:30:00Z"
+  },
+  {
+    "outcome_id": "out_012",
+    "experiment_id": "exp_012",
+    "project_id": "searchmind-demo-store",
+    "primary_metric_before": 4.59,
+    "primary_metric_after": 3.72,
+    "absolute_change": -0.87,
+    "percentage_change": -18.95,
+    "outcome_class": "negative",
+    "confidence_note": "Measured across 3 weeks; users searching for thermal base layers skipped generic shirt titles.",
+    "interpretation": "Removing specific fabric weight and technical descriptors in favor of a simplified generic title coincided with an 18.9% decrease in CTR.",
+    "metric_results": {
+      "clicks_after": 257,
+      "position_after": 3.2
+    },
+    "measured_at": "2026-08-09T10:00:00Z"
+  },
+  {
+    "outcome_id": "out_013",
+    "experiment_id": "exp_013",
+    "project_id": "searchmind-demo-store",
+    "primary_metric_before": 5.1,
+    "primary_metric_after": 7.4,
+    "absolute_change": 2.3,
+    "percentage_change": 45.1,
+    "outcome_class": "negative",
+    "confidence_note": "Rank fell from position 5.1 to 7.4 after text removal.",
+    "interpretation": "Pruning technical foam specifications to create a minimalist layout was followed by a 2.3 position drop in ranking for cushioning terms.",
+    "metric_results": {
+      "impressions_after": 3200,
+      "clicks_after": 86
+    },
+    "measured_at": "2026-08-11T12:00:00Z"
+  },
+  {
+    "outcome_id": "out_014",
+    "experiment_id": "exp_014",
+    "project_id": "searchmind-demo-store",
+    "primary_metric_before": 2.69,
+    "primary_metric_after": 2.15,
+    "absolute_change": -0.54,
+    "percentage_change": -20.07,
+    "outcome_class": "negative",
+    "confidence_note": "Click-through rate dropped sharply; cheap/discount wording appeared to deter premium mountaineering buyers.",
+    "interpretation": "Inserting discount and sale keywords into the title tag for a high-end $280 trekking boot correlated with lower CTR and perceived brand misalignment.",
+    "metric_results": {
+      "clicks_after": 127
+    },
+    "measured_at": "2026-08-16T11:00:00Z"
+  },
+  {
+    "outcome_id": "out_005",
+    "experiment_id": "exp_005",
+    "project_id": "searchmind-demo-store",
+    "primary_metric_before": 8.3,
+    "primary_metric_after": 8.9,
+    "absolute_change": 0.6,
+    "percentage_change": 7.23,
+    "outcome_class": "negative",
+    "confidence_note": "Rank continued sliding from #8.3 to #8.9 despite technical table addition.",
+    "interpretation": "Adding a comparison table to the category page did not arrest the ranking decline, indicating the drop was driven by broader competitor domain authority.",
+    "metric_results": {
+      "impressions_after": 6900
+    },
+    "measured_at": "2026-07-26T15:00:00Z"
+  },
+  {
+    "outcome_id": "out_017",
+    "experiment_id": "exp_017",
+    "project_id": "searchmind-demo-store",
+    "primary_metric_before": 2.1,
+    "primary_metric_after": 2.4,
+    "absolute_change": 0.3,
+    "percentage_change": 14.29,
+    "outcome_class": "negative",
+    "confidence_note": "Sitewide footer links triggered no positive ranking movement and slightly degraded anchor equity.",
+    "interpretation": "Sitewide exact-match footer linking did not improve category rankings and coincided with mild position volatility.",
+    "metric_results": {
+      "rank_volatility": "high"
+    },
+    "measured_at": "2026-09-01T12:00:00Z"
+  },
+  {
+    "outcome_id": "out_003",
+    "experiment_id": "exp_003",
+    "project_id": "searchmind-demo-store",
+    "primary_metric_before": 2.1,
+    "primary_metric_after": 2.14,
+    "absolute_change": 0.04,
+    "percentage_change": 1.9,
+    "outcome_class": "neutral",
+    "confidence_note": "Measured difference falls within normal observational noise margin.",
+    "interpretation": "Shortening the title tag for mobile devices resulted in negligible CTR movement (2.1% to 2.14%) over the two-week test.",
+    "metric_results": {
+      "clicks_after": 395
+    },
+    "measured_at": "2026-07-07T09:00:00Z"
+  },
+  {
+    "outcome_id": "out_008",
+    "experiment_id": "exp_008",
+    "project_id": "searchmind-demo-store",
+    "primary_metric_before": 2.8,
+    "primary_metric_after": 2.8,
+    "absolute_change": 0.0,
+    "percentage_change": 0.0,
+    "outcome_class": "neutral",
+    "confidence_note": "Rank held steady at position 2.8 with unchanged CTR.",
+    "interpretation": "Adding bear canister compatibility specifications improved user dwell time slightly but produced no change in organic search rankings.",
+    "metric_results": {
+      "dwell_time_delta": "+14s"
+    },
+    "measured_at": "2026-07-27T10:00:00Z"
+  },
+  {
+    "outcome_id": "out_011",
+    "experiment_id": "exp_011",
+    "project_id": "searchmind-demo-store",
+    "primary_metric_before": 12.0,
+    "primary_metric_after": 12.1,
+    "absolute_change": 0.1,
+    "percentage_change": 0.83,
+    "outcome_class": "neutral",
+    "confidence_note": "CTR remained essentially flat across 7,200 impressions.",
+    "interpretation": "Adding the year [2026] to an evergreen comparison guide title produced no statistically distinguishable change in CTR.",
+    "metric_results": {
+      "clicks_after": 871
+    },
+    "measured_at": "2026-08-06T14:00:00Z"
+  },
+  {
+    "outcome_id": "out_015",
+    "experiment_id": "exp_015",
+    "project_id": "searchmind-demo-store",
+    "primary_metric_before": 5100.0,
+    "primary_metric_after": 5150.0,
+    "absolute_change": 50.0,
+    "percentage_change": 0.98,
+    "outcome_class": "neutral",
+    "confidence_note": "No measurable change in Google Image or Web Search impressions.",
+    "interpretation": "Updating product image alt text with descriptive keywords produced no observable difference in web search impressions over 3 weeks.",
+    "metric_results": {
+      "image_search_clicks": 14
+    },
+    "measured_at": "2026-08-23T11:00:00Z"
+  },
+  {
+    "outcome_id": "out_016",
+    "experiment_id": "exp_016",
+    "project_id": "searchmind-demo-store",
+    "primary_metric_before": 6.5,
+    "primary_metric_after": 6.45,
+    "absolute_change": -0.05,
+    "percentage_change": -0.77,
+    "outcome_class": "neutral",
+    "confidence_note": "Google rewrote the meta description snippet dynamically for 60% of search queries.",
+    "interpretation": "Reordering clauses in the meta description had no impact because search engines dynamically generated their own snippets for the query cluster.",
+    "metric_results": {
+      "snippet_display_rate": "40%"
+    },
+    "measured_at": "2026-08-27T10:00:00Z"
+  },
+  {
+    "outcome_id": "out_006",
+    "experiment_id": "exp_006",
+    "project_id": "searchmind-demo-store",
+    "primary_metric_before": 3.79,
+    "primary_metric_after": 4.1,
+    "absolute_change": 0.31,
+    "percentage_change": 8.18,
+    "outcome_class": "inconclusive",
+    "confidence_note": "Major competitor ran aggressive paid ads during test window, skewing organic click patterns.",
+    "interpretation": "While CTR showed a slight 0.31 percentage point gain, concurrent paid advertising competition created confounding external variance.",
+    "metric_results": {
+      "external_confounder": "heavy competitor PPC campaign"
+    },
+    "measured_at": "2026-07-20T12:00:00Z"
+  },
+  {
+    "outcome_id": "out_018",
+    "experiment_id": "exp_018",
+    "project_id": "searchmind-demo-store",
+    "primary_metric_before": 3.5,
+    "primary_metric_after": 3.9,
+    "absolute_change": 0.4,
+    "percentage_change": 11.43,
+    "outcome_class": "inconclusive",
+    "confidence_note": "Search impressions dropped 35% seasonal mid-August across the sunglasses category.",
+    "interpretation": "Mild CTR rise coincided with a category-wide seasonal demand drop, rendering causal attribution inconclusive.",
+    "metric_results": {
+      "seasonal_drop_pct": -35.0
+    },
+    "measured_at": "2026-09-06T15:00:00Z"
+  },
+  {
+    "outcome_id": "out_019",
+    "experiment_id": "exp_019",
+    "project_id": "searchmind-demo-store",
+    "primary_metric_before": 3.2,
+    "primary_metric_after": 3.6,
+    "absolute_change": 0.4,
+    "percentage_change": 12.5,
+    "outcome_class": "inconclusive",
+    "confidence_note": "Google core algorithm update rolled out between August 24 and September 4.",
+    "interpretation": "Ranking fluctuations between position 2.9 and 4.1 overlapped with an unconfirmed search core update, preventing definitive conclusion.",
+    "metric_results": {
+      "serp_volatility_score": 8.8
+    },
+    "measured_at": "2026-09-11T14:00:00Z"
+  },
+  {
+    "outcome_id": "out_020",
+    "experiment_id": "exp_020",
+    "project_id": "searchmind-demo-store",
+    "primary_metric_before": 2.69,
+    "primary_metric_after": 2.82,
+    "absolute_change": 0.13,
+    "percentage_change": 4.83,
+    "outcome_class": "inconclusive",
+    "confidence_note": "Test duration of 3 weeks had low impression volume (1,200 total) before early winter demand.",
+    "interpretation": "Small sample size during late August shoulder season yielded insufficient statistical power to verify the title adjustment impact.",
+    "metric_results": {
+      "sample_size_confidence": "low"
+    },
+    "measured_at": "2026-09-16T12:00:00Z"
+  }
+]

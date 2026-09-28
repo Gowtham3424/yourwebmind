@@ -1,0 +1,360 @@
+[
+  {
+    "decision_id": "dec_001",
+    "project_id": "searchmind-demo-store",
+    "url": "https://demo-searchmind-store.example/products/waterproof-alpine-hiking-boots",
+    "observation_ids": [
+      "obs_001"
+    ],
+    "decision_type": "title_update",
+    "hypothesis": "Emphasizing commercial purchase intent and key benefits in title may increase click-through rate.",
+    "rationale": "Page ranks #3 for 'waterproof hiking boots' but title lacks value propositions like warranty or free shipping.",
+    "expected_effect": "CTR recovery toward 2.8% - 3.2%",
+    "proposed_changes": {
+      "title": {
+        "from": "Waterproof Alpine Hiking Boots",
+        "to": "Buy Waterproof Alpine Hiking Boots | 100% Leather & Free Returns"
+      }
+    },
+    "decided_at": "2026-06-16T10:00:00Z"
+  },
+  {
+    "decision_id": "dec_002",
+    "project_id": "searchmind-demo-store",
+    "url": "https://demo-searchmind-store.example/collections/running-shoes",
+    "observation_ids": [
+      "obs_002"
+    ],
+    "decision_type": "category_copy_update",
+    "hypothesis": "Adding contextual category copy and sub-heading anchors may lift keyword rank into page 1.",
+    "rationale": "Query sits on page 2 threshold (#11) with growing impressions; extra topical depth could push it over.",
+    "expected_effect": "Position lift to top 8",
+    "proposed_changes": {
+      "category_copy": "Add 350-word buyers intro covering terrain types"
+    },
+    "decided_at": "2026-06-16T11:00:00Z"
+  },
+  {
+    "decision_id": "dec_003",
+    "project_id": "searchmind-demo-store",
+    "url": "https://demo-searchmind-store.example/products/trail-blazer-running-shoes",
+    "observation_ids": [
+      "obs_003"
+    ],
+    "decision_type": "title_update",
+    "hypothesis": "Shortening brand prefix and leading with high-intent keywords may lift CTR.",
+    "rationale": "Mobile SERPs truncate current title at 45 characters.",
+    "expected_effect": "+0.5% CTR lift",
+    "proposed_changes": {
+      "title": {
+        "from": "Trail Blazer Pro Running Shoes | SearchMind Store",
+        "to": "Trail Blazer Pro - Men's Vibram Trail Running Shoes"
+      }
+    },
+    "decided_at": "2026-06-17T09:00:00Z"
+  },
+  {
+    "decision_id": "dec_004",
+    "project_id": "searchmind-demo-store",
+    "url": "https://demo-searchmind-store.example/guides/best-running-shoes-beginners",
+    "observation_ids": [
+      "obs_004"
+    ],
+    "decision_type": "FAQ_content",
+    "hypothesis": "Adding an FAQ accordion addressing common shoe durability questions may capture PAA snippets.",
+    "rationale": "High impression velocity indicates user demand for specific beginner queries like drop and sizing.",
+    "expected_effect": "Gain featured snippet positions for 3 secondary terms",
+    "proposed_changes": {
+      "faq": "Add 4 structured Q&As on trail shoe break-in"
+    },
+    "decided_at": "2026-06-19T13:00:00Z"
+  },
+  {
+    "decision_id": "dec_005",
+    "project_id": "searchmind-demo-store",
+    "url": "https://demo-searchmind-store.example/collections/outdoor-jackets",
+    "observation_ids": [
+      "obs_005"
+    ],
+    "decision_type": "content_refresh",
+    "hypothesis": "Comprehensive technical refresh comparing 2L vs 3L jacket breathability may stem rank decline.",
+    "rationale": "Competitors gained positions by introducing technical lab test comparisons.",
+    "expected_effect": "Recover ranking from #8 to top 5",
+    "proposed_changes": {
+      "content": "Insert waterproof breathability testing matrix"
+    },
+    "decided_at": "2026-06-21T10:00:00Z"
+  },
+  {
+    "decision_id": "dec_006",
+    "project_id": "searchmind-demo-store",
+    "url": "https://demo-searchmind-store.example/products/apex-carbon-road-shoes",
+    "observation_ids": [
+      "obs_006"
+    ],
+    "decision_type": "keyword_alignment",
+    "hypothesis": "Refocusing product page copy from generic marathon terminology toward 'carbon plate racers' may align intent.",
+    "rationale": "Users searching for carbon road shoes want weight and energy return specs, not training tips.",
+    "expected_effect": "Improve engagement and conversion rate",
+    "proposed_changes": {
+      "headings": "Add energy return % and carbon plate geometry"
+    },
+    "decided_at": "2026-06-23T11:30:00Z"
+  },
+  {
+    "decision_id": "dec_007",
+    "project_id": "searchmind-demo-store",
+    "url": "https://demo-searchmind-store.example/products/goretex-weather-jacket",
+    "observation_ids": [
+      "obs_007"
+    ],
+    "decision_type": "meta_description_test",
+    "hypothesis": "Testing an active action-oriented meta description with warranty callout may boost CTR.",
+    "rationale": "Current meta description is purely descriptive without a hook.",
+    "expected_effect": "+0.4% CTR increase",
+    "proposed_changes": {
+      "meta": "Add 'Lifetime Storm Guarantee & Free 2-Day Shipping'"
+    },
+    "decided_at": "2026-06-26T14:00:00Z"
+  },
+  {
+    "decision_id": "dec_008",
+    "project_id": "searchmind-demo-store",
+    "url": "https://demo-searchmind-store.example/products/lightweight-summit-backpack-45l",
+    "observation_ids": [
+      "obs_008"
+    ],
+    "decision_type": "content_refresh",
+    "hypothesis": "Adding gear compatibility specifications and pack load capacity tables may increase dwell time.",
+    "rationale": "Thru-hikers need to know if specific bear canisters fit horizontally.",
+    "expected_effect": "Reduce bounce rate by 15%",
+    "proposed_changes": {
+      "table": "Insert bear canister fit guide"
+    },
+    "decided_at": "2026-06-29T16:00:00Z"
+  },
+  {
+    "decision_id": "dec_009",
+    "project_id": "searchmind-demo-store",
+    "url": "https://demo-searchmind-store.example/guides/how-to-choose-hiking-boots",
+    "observation_ids": [
+      "obs_009"
+    ],
+    "decision_type": "internal_linking",
+    "hypothesis": "Adding high-intent contextual link widgets to top product pages may drive commercial traffic.",
+    "rationale": "Guide gets 750+ monthly clicks but transfers minimal page equity to product pages.",
+    "expected_effect": "+35% internal product page clicks",
+    "proposed_changes": {
+      "links": "Add contextual product cards for top boots"
+    },
+    "decided_at": "2026-07-02T10:00:00Z"
+  },
+  {
+    "decision_id": "dec_010",
+    "project_id": "searchmind-demo-store",
+    "url": "https://demo-searchmind-store.example/products/pro-grip-bouldering-shoes",
+    "observation_ids": [
+      "obs_010"
+    ],
+    "decision_type": "schema_update",
+    "hypothesis": "Enriching JSON-LD schema with complete aggregateRating and inStock status may trigger rich badges.",
+    "rationale": "Competitors exhibit star ratings and in-stock badges directly in SERP snippets.",
+    "expected_effect": "Trigger star ratings snippet in Google search",
+    "proposed_changes": {
+      "schema": "Implement complete schema.org/Product specification"
+    },
+    "decided_at": "2026-07-03T14:30:00Z"
+  },
+  {
+    "decision_id": "dec_011",
+    "project_id": "searchmind-demo-store",
+    "url": "https://demo-searchmind-store.example/products/goretex-weather-jacket",
+    "observation_ids": [
+      "obs_011"
+    ],
+    "decision_type": "title_update",
+    "hypothesis": "Updating page copy and structural headers for goretex rain jacket may align better with search intent.",
+    "rationale": "Observation obs_011 noted opportunity to improve organic visibility.",
+    "expected_effect": "+0.5% CTR or improved ranking stability",
+    "proposed_changes": {
+      "action": "Update headers and intro text"
+    },
+    "decided_at": "2026-07-13T11:00:00Z"
+  },
+  {
+    "decision_id": "dec_012",
+    "project_id": "searchmind-demo-store",
+    "url": "https://demo-searchmind-store.example/products/pro-grip-bouldering-shoes",
+    "observation_ids": [
+      "obs_012"
+    ],
+    "decision_type": "content_refresh",
+    "hypothesis": "Updating page copy and structural headers for bouldering shoes may align better with search intent.",
+    "rationale": "Observation obs_012 noted opportunity to improve organic visibility.",
+    "expected_effect": "+0.5% CTR or improved ranking stability",
+    "proposed_changes": {
+      "action": "Update headers and intro text"
+    },
+    "decided_at": "2026-07-14T11:00:00Z"
+  },
+  {
+    "decision_id": "dec_013",
+    "project_id": "searchmind-demo-store",
+    "url": "https://demo-searchmind-store.example/products/thermal-merino-base-layer",
+    "observation_ids": [
+      "obs_013"
+    ],
+    "decision_type": "title_update",
+    "hypothesis": "Updating page copy and structural headers for merino wool base layer may align better with search intent.",
+    "rationale": "Observation obs_013 noted opportunity to improve organic visibility.",
+    "expected_effect": "+0.5% CTR or improved ranking stability",
+    "proposed_changes": {
+      "action": "Update headers and intro text"
+    },
+    "decided_at": "2026-07-15T11:00:00Z"
+  },
+  {
+    "decision_id": "dec_014",
+    "project_id": "searchmind-demo-store",
+    "url": "https://demo-searchmind-store.example/products/ultra-cushion-marathon-shoes",
+    "observation_ids": [
+      "obs_014"
+    ],
+    "decision_type": "content_refresh",
+    "hypothesis": "Updating page copy and structural headers for max cushion running shoes may align better with search intent.",
+    "rationale": "Observation obs_014 noted opportunity to improve organic visibility.",
+    "expected_effect": "+0.5% CTR or improved ranking stability",
+    "proposed_changes": {
+      "action": "Update headers and intro text"
+    },
+    "decided_at": "2026-07-16T11:00:00Z"
+  },
+  {
+    "decision_id": "dec_015",
+    "project_id": "searchmind-demo-store",
+    "url": "https://demo-searchmind-store.example/products/rugged-terrain-trekking-boots",
+    "observation_ids": [
+      "obs_015"
+    ],
+    "decision_type": "title_update",
+    "hypothesis": "Updating page copy and structural headers for backpacking boots may align better with search intent.",
+    "rationale": "Observation obs_015 noted opportunity to improve organic visibility.",
+    "expected_effect": "+0.5% CTR or improved ranking stability",
+    "proposed_changes": {
+      "action": "Update headers and intro text"
+    },
+    "decided_at": "2026-07-17T11:00:00Z"
+  },
+  {
+    "decision_id": "dec_016",
+    "project_id": "searchmind-demo-store",
+    "url": "https://demo-searchmind-store.example/products/hydration-pack-vest-10l",
+    "observation_ids": [
+      "obs_016"
+    ],
+    "decision_type": "content_refresh",
+    "hypothesis": "Updating page copy and structural headers for running hydration vest may align better with search intent.",
+    "rationale": "Observation obs_016 noted opportunity to improve organic visibility.",
+    "expected_effect": "+0.5% CTR or improved ranking stability",
+    "proposed_changes": {
+      "action": "Update headers and intro text"
+    },
+    "decided_at": "2026-07-18T11:00:00Z"
+  },
+  {
+    "decision_id": "dec_017",
+    "project_id": "searchmind-demo-store",
+    "url": "https://demo-searchmind-store.example/products/compact-camping-stove",
+    "observation_ids": [
+      "obs_017"
+    ],
+    "decision_type": "title_update",
+    "hypothesis": "Updating page copy and structural headers for backpacking canister stove may align better with search intent.",
+    "rationale": "Observation obs_017 noted opportunity to improve organic visibility.",
+    "expected_effect": "+0.5% CTR or improved ranking stability",
+    "proposed_changes": {
+      "action": "Update headers and intro text"
+    },
+    "decided_at": "2026-07-19T11:00:00Z"
+  },
+  {
+    "decision_id": "dec_018",
+    "project_id": "searchmind-demo-store",
+    "url": "https://demo-searchmind-store.example/products/all-weather-trail-socks",
+    "observation_ids": [
+      "obs_018"
+    ],
+    "decision_type": "content_refresh",
+    "hypothesis": "Updating page copy and structural headers for anti blister running socks may align better with search intent.",
+    "rationale": "Observation obs_018 noted opportunity to improve organic visibility.",
+    "expected_effect": "+0.5% CTR or improved ranking stability",
+    "proposed_changes": {
+      "action": "Update headers and intro text"
+    },
+    "decided_at": "2026-07-20T11:00:00Z"
+  },
+  {
+    "decision_id": "dec_019",
+    "project_id": "searchmind-demo-store",
+    "url": "https://demo-searchmind-store.example/products/polarized-trail-sunglasses",
+    "observation_ids": [
+      "obs_019"
+    ],
+    "decision_type": "title_update",
+    "hypothesis": "Updating page copy and structural headers for running sunglasses polarized may align better with search intent.",
+    "rationale": "Observation obs_019 noted opportunity to improve organic visibility.",
+    "expected_effect": "+0.5% CTR or improved ranking stability",
+    "proposed_changes": {
+      "action": "Update headers and intro text"
+    },
+    "decided_at": "2026-07-21T11:00:00Z"
+  },
+  {
+    "decision_id": "dec_020",
+    "project_id": "searchmind-demo-store",
+    "url": "https://demo-searchmind-store.example/products/collapsible-trekking-poles",
+    "observation_ids": [
+      "obs_020"
+    ],
+    "decision_type": "content_refresh",
+    "hypothesis": "Updating page copy and structural headers for carbon fiber trekking poles may align better with search intent.",
+    "rationale": "Observation obs_020 noted opportunity to improve organic visibility.",
+    "expected_effect": "+0.5% CTR or improved ranking stability",
+    "proposed_changes": {
+      "action": "Update headers and intro text"
+    },
+    "decided_at": "2026-07-22T11:00:00Z"
+  },
+  {
+    "decision_id": "dec_021",
+    "project_id": "searchmind-demo-store",
+    "url": "https://demo-searchmind-store.example/products/insulated-down-jacket-800",
+    "observation_ids": [
+      "obs_021"
+    ],
+    "decision_type": "title_update",
+    "hypothesis": "Updating page copy and structural headers for ultralight down jacket may align better with search intent.",
+    "rationale": "Observation obs_021 noted opportunity to improve organic visibility.",
+    "expected_effect": "+0.5% CTR or improved ranking stability",
+    "proposed_changes": {
+      "action": "Update headers and intro text"
+    },
+    "decided_at": "2026-07-23T11:00:00Z"
+  },
+  {
+    "decision_id": "dec_022",
+    "project_id": "searchmind-demo-store",
+    "url": "https://demo-searchmind-store.example/guides/best-running-shoes-beginners",
+    "observation_ids": [
+      "obs_022"
+    ],
+    "decision_type": "content_refresh",
+    "hypothesis": "Updating page copy and structural headers for best trail running shoes for beginners may align better with search intent.",
+    "rationale": "Observation obs_022 noted opportunity to improve organic visibility.",
+    "expected_effect": "+0.5% CTR or improved ranking stability",
+    "proposed_changes": {
+      "action": "Update headers and intro text"
+    },
+    "decided_at": "2026-07-24T11:00:00Z"
+  }
+]

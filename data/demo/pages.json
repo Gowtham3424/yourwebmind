@@ -1,0 +1,579 @@
+[
+  {
+    "project_id": "searchmind-demo-store",
+    "url": "https://demo-searchmind-store.example/",
+    "page_type": "homepage",
+    "title": "SearchMind Outdoor Gear & Trail Equipment | Quality Backcountry Store",
+    "meta_description": "Explore premium trail running shoes, hiking boots, ultralight packs, and backcountry apparel.",
+    "primary_keyword": "outdoor trail equipment",
+    "secondary_keywords": [
+      "backcountry gear",
+      "trail running store",
+      "hiking equipment"
+    ],
+    "search_intent": "commercial",
+    "word_count": 850,
+    "canonical_url": "https://demo-searchmind-store.example/",
+    "indexable": true,
+    "status_code": 200,
+    "observed_at": "2026-06-01T08:00:00Z"
+  },
+  {
+    "project_id": "searchmind-demo-store",
+    "url": "https://demo-searchmind-store.example/collections/running-shoes",
+    "page_type": "category",
+    "title": "Trail & Road Running Shoes | SearchMind Outdoor",
+    "meta_description": "Shop high-performance trail running and road running shoes engineered for distance and grip.",
+    "primary_keyword": "running shoes",
+    "secondary_keywords": [
+      "trail runners",
+      "marathon running shoes"
+    ],
+    "search_intent": "commercial",
+    "word_count": 620,
+    "canonical_url": "https://demo-searchmind-store.example/collections/running-shoes",
+    "indexable": true,
+    "status_code": 200,
+    "observed_at": "2026-06-01T08:00:00Z"
+  },
+  {
+    "project_id": "searchmind-demo-store",
+    "url": "https://demo-searchmind-store.example/collections/trail-running",
+    "page_type": "category",
+    "title": "Men's & Women's Trail Running Gear | SearchMind Outdoor",
+    "meta_description": "High-traction trail running footwear, hydration vests, and lightweight apparel.",
+    "primary_keyword": "trail running gear",
+    "secondary_keywords": [
+      "trail footwear",
+      "mountain running gear"
+    ],
+    "search_intent": "commercial",
+    "word_count": 580,
+    "canonical_url": "https://demo-searchmind-store.example/collections/trail-running",
+    "indexable": true,
+    "status_code": 200,
+    "observed_at": "2026-06-01T08:00:00Z"
+  },
+  {
+    "project_id": "searchmind-demo-store",
+    "url": "https://demo-searchmind-store.example/collections/hiking-boots",
+    "page_type": "category",
+    "title": "Waterproof Hiking Boots & Trekking Footwear | SearchMind Store",
+    "meta_description": "Durable, waterproof leather and synthetic hiking boots designed for rocky alpine trails.",
+    "primary_keyword": "hiking boots",
+    "secondary_keywords": [
+      "waterproof trekking boots",
+      "backpacking footwear"
+    ],
+    "search_intent": "commercial",
+    "word_count": 710,
+    "canonical_url": "https://demo-searchmind-store.example/collections/hiking-boots",
+    "indexable": true,
+    "status_code": 200,
+    "observed_at": "2026-06-01T08:00:00Z"
+  },
+  {
+    "project_id": "searchmind-demo-store",
+    "url": "https://demo-searchmind-store.example/collections/backpacking-gear",
+    "page_type": "category",
+    "title": "Ultralight Backpacking Gear & Tents | SearchMind Backcountry",
+    "meta_description": "Multi-day backpacking packs, sleeping systems, and ultralight shelters for extended trips.",
+    "primary_keyword": "backpacking gear",
+    "secondary_keywords": [
+      "ultralight backpacking",
+      "hiking backpacks"
+    ],
+    "search_intent": "commercial",
+    "word_count": 640,
+    "canonical_url": "https://demo-searchmind-store.example/collections/backpacking-gear",
+    "indexable": true,
+    "status_code": 200,
+    "observed_at": "2026-06-01T08:00:00Z"
+  },
+  {
+    "project_id": "searchmind-demo-store",
+    "url": "https://demo-searchmind-store.example/collections/outdoor-jackets",
+    "page_type": "category",
+    "title": "Waterproof Rain Jackets & Hardshells | SearchMind Apparel",
+    "meta_description": "Breathable 3-layer waterproof jackets, windbreakers, and technical hardshell outerwear.",
+    "primary_keyword": "outdoor jackets",
+    "secondary_keywords": [
+      "waterproof rain jacket",
+      "hardshell jacket"
+    ],
+    "search_intent": "commercial",
+    "word_count": 590,
+    "canonical_url": "https://demo-searchmind-store.example/collections/outdoor-jackets",
+    "indexable": true,
+    "status_code": 200,
+    "observed_at": "2026-06-01T08:00:00Z"
+  },
+  {
+    "project_id": "searchmind-demo-store",
+    "url": "https://demo-searchmind-store.example/collections/climbing-shoes",
+    "page_type": "category",
+    "title": "Rock Climbing & Bouldering Shoes | SearchMind Store",
+    "meta_description": "Precision bouldering slippers, aggressive downturned climbing shoes, and gym footwear.",
+    "primary_keyword": "climbing shoes",
+    "secondary_keywords": [
+      "bouldering shoes",
+      "rock climbing footwear"
+    ],
+    "search_intent": "commercial",
+    "word_count": 530,
+    "canonical_url": "https://demo-searchmind-store.example/collections/climbing-shoes",
+    "indexable": true,
+    "status_code": 200,
+    "observed_at": "2026-06-01T08:00:00Z"
+  },
+  {
+    "project_id": "searchmind-demo-store",
+    "url": "https://demo-searchmind-store.example/products/trail-blazer-running-shoes",
+    "page_type": "product",
+    "title": "Trail Blazer Pro Running Shoes | SearchMind Store",
+    "meta_description": "All-terrain trail runner featuring Vibram lug outsole and rock protection plate.",
+    "primary_keyword": "trail running shoes",
+    "secondary_keywords": [
+      "vibram trail runner",
+      "cushioned trail shoe"
+    ],
+    "search_intent": "transactional",
+    "word_count": 920,
+    "canonical_url": "https://demo-searchmind-store.example/products/trail-blazer-running-shoes",
+    "indexable": true,
+    "status_code": 200,
+    "observed_at": "2026-06-01T08:00:00Z"
+  },
+  {
+    "project_id": "searchmind-demo-store",
+    "url": "https://demo-searchmind-store.example/products/waterproof-alpine-hiking-boots",
+    "page_type": "product",
+    "title": "Waterproof Alpine Hiking Boots | SearchMind Store",
+    "meta_description": "Full-grain nubuck waterproof alpine boots with ankle stabilization for rocky ascents.",
+    "primary_keyword": "waterproof hiking boots",
+    "secondary_keywords": [
+      "alpine boots",
+      "leather trekking footwear"
+    ],
+    "search_intent": "transactional",
+    "word_count": 890,
+    "canonical_url": "https://demo-searchmind-store.example/products/waterproof-alpine-hiking-boots",
+    "indexable": true,
+    "status_code": 200,
+    "observed_at": "2026-06-01T08:00:00Z"
+  },
+  {
+    "project_id": "searchmind-demo-store",
+    "url": "https://demo-searchmind-store.example/products/apex-carbon-road-shoes",
+    "page_type": "product",
+    "title": "Apex Carbon Plate Marathon Shoes | SearchMind Store",
+    "meta_description": "Ultra-light carbon fiber plate racing shoe engineered for sub-3 marathon efforts.",
+    "primary_keyword": "carbon plate running shoes",
+    "secondary_keywords": [
+      "marathon racing flat",
+      "carbon road racer"
+    ],
+    "search_intent": "transactional",
+    "word_count": 760,
+    "canonical_url": "https://demo-searchmind-store.example/products/apex-carbon-road-shoes",
+    "indexable": true,
+    "status_code": 200,
+    "observed_at": "2026-06-01T08:00:00Z"
+  },
+  {
+    "project_id": "searchmind-demo-store",
+    "url": "https://demo-searchmind-store.example/products/lightweight-summit-backpack-45l",
+    "page_type": "product",
+    "title": "Summit 45L Ultralight Backpack | SearchMind Backcountry",
+    "meta_description": "Frameless 45-liter Dyneema pack with roll-top closure and ergonomic hip belt.",
+    "primary_keyword": "ultralight backpack 45l",
+    "secondary_keywords": [
+      "thru hiking pack",
+      "frameless backpack"
+    ],
+    "search_intent": "transactional",
+    "word_count": 810,
+    "canonical_url": "https://demo-searchmind-store.example/products/lightweight-summit-backpack-45l",
+    "indexable": true,
+    "status_code": 200,
+    "observed_at": "2026-06-01T08:00:00Z"
+  },
+  {
+    "project_id": "searchmind-demo-store",
+    "url": "https://demo-searchmind-store.example/products/goretex-weather-jacket",
+    "page_type": "product",
+    "title": "StormGuard 3L Waterproof Hardshell Jacket | SearchMind",
+    "meta_description": "Heavy storm protection with pit zips, helmet-compatible hood, and taped seams.",
+    "primary_keyword": "goretex rain jacket",
+    "secondary_keywords": [
+      "waterproof hardshell",
+      "storm jacket"
+    ],
+    "search_intent": "transactional",
+    "word_count": 840,
+    "canonical_url": "https://demo-searchmind-store.example/products/goretex-weather-jacket",
+    "indexable": true,
+    "status_code": 200,
+    "observed_at": "2026-06-01T08:00:00Z"
+  },
+  {
+    "project_id": "searchmind-demo-store",
+    "url": "https://demo-searchmind-store.example/products/pro-grip-bouldering-shoes",
+    "page_type": "product",
+    "title": "ProGrip Aggressive Bouldering Shoes | SearchMind Store",
+    "meta_description": "Downturned toe box with ultra-sticky rubber for overhung gym routes and outdoor granite.",
+    "primary_keyword": "bouldering shoes",
+    "secondary_keywords": [
+      "aggressive climbing shoe",
+      "sticky rubber slipper"
+    ],
+    "search_intent": "transactional",
+    "word_count": 720,
+    "canonical_url": "https://demo-searchmind-store.example/products/pro-grip-bouldering-shoes",
+    "indexable": true,
+    "status_code": 200,
+    "observed_at": "2026-06-01T08:00:00Z"
+  },
+  {
+    "project_id": "searchmind-demo-store",
+    "url": "https://demo-searchmind-store.example/products/thermal-merino-base-layer",
+    "page_type": "product",
+    "title": "250gsm Merino Wool Long Sleeve Base Layer | SearchMind",
+    "meta_description": "100% natural merino wool thermals for cold alpine ascents and multi-day trail odor resistance.",
+    "primary_keyword": "merino wool base layer",
+    "secondary_keywords": [
+      "thermal underwear top",
+      "merino wool crew"
+    ],
+    "search_intent": "transactional",
+    "word_count": 680,
+    "canonical_url": "https://demo-searchmind-store.example/products/thermal-merino-base-layer",
+    "indexable": true,
+    "status_code": 200,
+    "observed_at": "2026-06-01T08:00:00Z"
+  },
+  {
+    "project_id": "searchmind-demo-store",
+    "url": "https://demo-searchmind-store.example/products/ultra-cushion-marathon-shoes",
+    "page_type": "product",
+    "title": "CloudStrider Max Cushion Road Running Shoes | SearchMind",
+    "meta_description": "Plush 40mm stack height road shoe designed for recovery runs and high-mileage road training.",
+    "primary_keyword": "max cushion running shoes",
+    "secondary_keywords": [
+      "plush running shoes",
+      "marathon training shoe"
+    ],
+    "search_intent": "transactional",
+    "word_count": 750,
+    "canonical_url": "https://demo-searchmind-store.example/products/ultra-cushion-marathon-shoes",
+    "indexable": true,
+    "status_code": 200,
+    "observed_at": "2026-06-01T08:00:00Z"
+  },
+  {
+    "project_id": "searchmind-demo-store",
+    "url": "https://demo-searchmind-store.example/products/rugged-terrain-trekking-boots",
+    "page_type": "product",
+    "title": "Trekker XT Heavy-Duty Backpacking Boots | SearchMind",
+    "meta_description": "Stiff-shank mountaineering and long-distance backpacking boots for 50lb+ loads.",
+    "primary_keyword": "backpacking boots",
+    "secondary_keywords": [
+      "heavy duty hiking boots",
+      "stiff sole trekking boots"
+    ],
+    "search_intent": "transactional",
+    "word_count": 820,
+    "canonical_url": "https://demo-searchmind-store.example/products/rugged-terrain-trekking-boots",
+    "indexable": true,
+    "status_code": 200,
+    "observed_at": "2026-06-01T08:00:00Z"
+  },
+  {
+    "project_id": "searchmind-demo-store",
+    "url": "https://demo-searchmind-store.example/products/hydration-pack-vest-10l",
+    "page_type": "product",
+    "title": "Enduro 10L Ultra Running Hydration Vest | SearchMind",
+    "meta_description": "Bounce-free trail running vest with dual 500ml soft flasks and rear bladder compartment.",
+    "primary_keyword": "running hydration vest",
+    "secondary_keywords": [
+      "trail running vest",
+      "marathon hydration pack"
+    ],
+    "search_intent": "transactional",
+    "word_count": 690,
+    "canonical_url": "https://demo-searchmind-store.example/products/hydration-pack-vest-10l",
+    "indexable": true,
+    "status_code": 200,
+    "observed_at": "2026-06-01T08:00:00Z"
+  },
+  {
+    "project_id": "searchmind-demo-store",
+    "url": "https://demo-searchmind-store.example/products/compact-camping-stove",
+    "page_type": "product",
+    "title": "MicroFlame Titanium Canister Camping Stove | SearchMind",
+    "meta_description": "Sub-2oz titanium backpacking stove boiling 1 liter of water in under 3 minutes.",
+    "primary_keyword": "backpacking canister stove",
+    "secondary_keywords": [
+      "ultralight camp stove",
+      "titanium gas stove"
+    ],
+    "search_intent": "transactional",
+    "word_count": 590,
+    "canonical_url": "https://demo-searchmind-store.example/products/compact-camping-stove",
+    "indexable": true,
+    "status_code": 200,
+    "observed_at": "2026-06-01T08:00:00Z"
+  },
+  {
+    "project_id": "searchmind-demo-store",
+    "url": "https://demo-searchmind-store.example/products/all-weather-trail-socks",
+    "page_type": "product",
+    "title": "Merino Anti-Blister Trail Socks (3-Pack) | SearchMind",
+    "meta_description": "Seamless toe cushioning merino trail running socks guaranteed anti-blister.",
+    "primary_keyword": "anti blister running socks",
+    "secondary_keywords": [
+      "merino hiking socks",
+      "cushioned trail socks"
+    ],
+    "search_intent": "transactional",
+    "word_count": 510,
+    "canonical_url": "https://demo-searchmind-store.example/products/all-weather-trail-socks",
+    "indexable": true,
+    "status_code": 200,
+    "observed_at": "2026-06-01T08:00:00Z"
+  },
+  {
+    "project_id": "searchmind-demo-store",
+    "url": "https://demo-searchmind-store.example/products/polarized-trail-sunglasses",
+    "page_type": "product",
+    "title": "Veloce Polarized Anti-Fog Running Sunglasses | SearchMind",
+    "meta_description": "Ultra-lightweight TR90 frame with UV400 polarized photochromic trail lenses.",
+    "primary_keyword": "running sunglasses polarized",
+    "secondary_keywords": [
+      "trail running eyewear",
+      "anti fog sport sunglasses"
+    ],
+    "search_intent": "transactional",
+    "word_count": 570,
+    "canonical_url": "https://demo-searchmind-store.example/products/polarized-trail-sunglasses",
+    "indexable": true,
+    "status_code": 200,
+    "observed_at": "2026-06-01T08:00:00Z"
+  },
+  {
+    "project_id": "searchmind-demo-store",
+    "url": "https://demo-searchmind-store.example/products/collapsible-trekking-poles",
+    "page_type": "product",
+    "title": "Carbon Summit Z-Fold Trekking Poles (Pair) | SearchMind",
+    "meta_description": "Three-section folding 100% carbon fiber poles with ergonomic cork grips and snow baskets.",
+    "primary_keyword": "carbon fiber trekking poles",
+    "secondary_keywords": [
+      "folding hiking sticks",
+      "ultralight walking poles"
+    ],
+    "search_intent": "transactional",
+    "word_count": 660,
+    "canonical_url": "https://demo-searchmind-store.example/products/collapsible-trekking-poles",
+    "indexable": true,
+    "status_code": 200,
+    "observed_at": "2026-06-01T08:00:00Z"
+  },
+  {
+    "project_id": "searchmind-demo-store",
+    "url": "https://demo-searchmind-store.example/products/insulated-down-jacket-800",
+    "page_type": "product",
+    "title": "Apex 800-Fill Ultralight Packable Down Hoodie | SearchMind",
+    "meta_description": "Hydrophobic goose down jacket packing down into its own chest pocket for cold summits.",
+    "primary_keyword": "ultralight down jacket",
+    "secondary_keywords": [
+      "packable down coat",
+      "800 fill down hoodie"
+    ],
+    "search_intent": "transactional",
+    "word_count": 780,
+    "canonical_url": "https://demo-searchmind-store.example/products/insulated-down-jacket-800",
+    "indexable": true,
+    "status_code": 200,
+    "observed_at": "2026-06-01T08:00:00Z"
+  },
+  {
+    "project_id": "searchmind-demo-store",
+    "url": "https://demo-searchmind-store.example/guides/best-running-shoes-beginners",
+    "page_type": "guide",
+    "title": "10 Best Trail Running Shoes for Beginners (2026 Guide) | SearchMind",
+    "meta_description": "A beginner's breakdown of cushion, drop, and traction for starting on trail.",
+    "primary_keyword": "best trail running shoes for beginners",
+    "secondary_keywords": [
+      "beginner trail shoes",
+      "first trail running shoe guide"
+    ],
+    "search_intent": "informational",
+    "word_count": 2150,
+    "canonical_url": "https://demo-searchmind-store.example/guides/best-running-shoes-beginners",
+    "indexable": true,
+    "status_code": 200,
+    "observed_at": "2026-06-01T08:00:00Z"
+  },
+  {
+    "project_id": "searchmind-demo-store",
+    "url": "https://demo-searchmind-store.example/guides/how-to-choose-hiking-boots",
+    "page_type": "guide",
+    "title": "How to Choose Hiking Boots: Fit, Waterproofing & Traction | SearchMind",
+    "meta_description": "Everything you need to know before buying hiking boots: sizing, break-in, and terrain matching.",
+    "primary_keyword": "how to choose hiking boots",
+    "secondary_keywords": [
+      "hiking boot buying guide",
+      "boot sizing guide"
+    ],
+    "search_intent": "informational",
+    "word_count": 2400,
+    "canonical_url": "https://demo-searchmind-store.example/guides/how-to-choose-hiking-boots",
+    "indexable": true,
+    "status_code": 200,
+    "observed_at": "2026-06-01T08:00:00Z"
+  },
+  {
+    "project_id": "searchmind-demo-store",
+    "url": "https://demo-searchmind-store.example/guides/waterproof-jacket-buying-guide",
+    "page_type": "guide",
+    "title": "Waterproof Jacket Guide: 2L vs 2.5L vs 3L Hardshells Explained",
+    "meta_description": "Learn the difference between membrane laminates, DWR coatings, and breathability ratings.",
+    "primary_keyword": "waterproof jacket guide",
+    "secondary_keywords": [
+      "hardshell layering guide",
+      "3l waterproof jacket explained"
+    ],
+    "search_intent": "informational",
+    "word_count": 1850,
+    "canonical_url": "https://demo-searchmind-store.example/guides/waterproof-jacket-buying-guide",
+    "indexable": true,
+    "status_code": 200,
+    "observed_at": "2026-06-01T08:00:00Z"
+  },
+  {
+    "project_id": "searchmind-demo-store",
+    "url": "https://demo-searchmind-store.example/guides/backpack-sizing-and-fit-guide",
+    "page_type": "guide",
+    "title": "How to Measure Your Torso for Backpack Fit: Step-by-Step Guide",
+    "meta_description": "Get accurate measurements of your iliac crest and C7 vertebra for optimal pack weight transfer.",
+    "primary_keyword": "how to measure torso for backpack",
+    "secondary_keywords": [
+      "backpack fit guide",
+      "hiking backpack sizing"
+    ],
+    "search_intent": "informational",
+    "word_count": 1620,
+    "canonical_url": "https://demo-searchmind-store.example/guides/backpack-sizing-and-fit-guide",
+    "indexable": true,
+    "status_code": 200,
+    "observed_at": "2026-06-01T08:00:00Z"
+  },
+  {
+    "project_id": "searchmind-demo-store",
+    "url": "https://demo-searchmind-store.example/guides/trail-running-essential-gear-checklist",
+    "page_type": "guide",
+    "title": "Trail Running Essential Gear Checklist: What to Pack for 5k to 50k",
+    "meta_description": "Comprehensive packing guide for day runs and ultramarathons: hydration, navigation, and nutrition.",
+    "primary_keyword": "trail running gear checklist",
+    "secondary_keywords": [
+      "ultramarathon packing list",
+      "what to carry trail running"
+    ],
+    "search_intent": "informational",
+    "word_count": 1950,
+    "canonical_url": "https://demo-searchmind-store.example/guides/trail-running-essential-gear-checklist",
+    "indexable": true,
+    "status_code": 200,
+    "observed_at": "2026-06-01T08:00:00Z"
+  },
+  {
+    "project_id": "searchmind-demo-store",
+    "url": "https://demo-searchmind-store.example/comparisons/trail-vs-road-running-shoes",
+    "page_type": "comparison",
+    "title": "Trail Running vs Road Running Shoes: Key Differences & Trade-Offs",
+    "meta_description": "Can you wear trail runners on pavement? We compare lugs, outsoles, cushioning, and durability.",
+    "primary_keyword": "trail vs road running shoes",
+    "secondary_keywords": [
+      "can you wear trail shoes on road",
+      "trail vs road comparison"
+    ],
+    "search_intent": "informational",
+    "word_count": 1780,
+    "canonical_url": "https://demo-searchmind-store.example/comparisons/trail-vs-road-running-shoes",
+    "indexable": true,
+    "status_code": 200,
+    "observed_at": "2026-06-01T08:00:00Z"
+  },
+  {
+    "project_id": "searchmind-demo-store",
+    "url": "https://demo-searchmind-store.example/comparisons/waterproof-vs-breathable-hiking-boots",
+    "page_type": "comparison",
+    "title": "Waterproof vs Non-Waterproof Hiking Boots: When to Choose Gore-Tex",
+    "meta_description": "Why waterproof boots might make your feet sweatier in hot weather. Full pros and cons analysis.",
+    "primary_keyword": "waterproof vs breathable hiking boots",
+    "secondary_keywords": [
+      "gore tex boots pros and cons",
+      "breathable trail shoes vs waterproof"
+    ],
+    "search_intent": "commercial",
+    "word_count": 1650,
+    "canonical_url": "https://demo-searchmind-store.example/comparisons/waterproof-vs-breathable-hiking-boots",
+    "indexable": true,
+    "status_code": 200,
+    "observed_at": "2026-06-01T08:00:00Z"
+  },
+  {
+    "project_id": "searchmind-demo-store",
+    "url": "https://demo-searchmind-store.example/comparisons/cushioned-vs-minimalist-running-shoes",
+    "page_type": "comparison",
+    "title": "Maximalist Cushioned vs Barefoot Minimalist Shoes: Impact & Form",
+    "meta_description": "Compare zero-drop minimalist shoes with max stack cushion road shoes for injury prevention.",
+    "primary_keyword": "cushioned vs minimalist running shoes",
+    "secondary_keywords": [
+      "barefoot running comparison",
+      "maximalist running shoes pros cons"
+    ],
+    "search_intent": "informational",
+    "word_count": 1820,
+    "canonical_url": "https://demo-searchmind-store.example/comparisons/cushioned-vs-minimalist-running-shoes",
+    "indexable": true,
+    "status_code": 200,
+    "observed_at": "2026-06-01T08:00:00Z"
+  },
+  {
+    "project_id": "searchmind-demo-store",
+    "url": "https://demo-searchmind-store.example/comparisons/merino-wool-vs-synthetic-layers",
+    "page_type": "comparison",
+    "title": "Merino Wool vs Synthetic Base Layers: Warmth, Odor & Drying Time",
+    "meta_description": "Head-to-head testing of merino wool and polyester fleeces in mountain environments.",
+    "primary_keyword": "merino wool vs synthetic base layer",
+    "secondary_keywords": [
+      "merino vs polyester hiking",
+      "best thermal layer material"
+    ],
+    "search_intent": "commercial",
+    "word_count": 1590,
+    "canonical_url": "https://demo-searchmind-store.example/comparisons/merino-wool-vs-synthetic-layers",
+    "indexable": true,
+    "status_code": 200,
+    "observed_at": "2026-06-01T08:00:00Z"
+  },
+  {
+    "project_id": "searchmind-demo-store",
+    "url": "https://demo-searchmind-store.example/comparisons/hardshell-vs-softshell-jackets",
+    "page_type": "comparison",
+    "title": "Hardshell vs Softshell Jackets: Weather Protection vs Breathability",
+    "meta_description": "Understand when you need a rigid waterproof hardshell vs a flexible, breathable softshell.",
+    "primary_keyword": "hardshell vs softshell jacket",
+    "secondary_keywords": [
+      "when to wear softshell",
+      "difference between hard and soft shell"
+    ],
+    "search_intent": "informational",
+    "word_count": 1720,
+    "canonical_url": "https://demo-searchmind-store.example/comparisons/hardshell-vs-softshell-jackets",
+    "indexable": true,
+    "status_code": 200,
+    "observed_at": "2026-06-01T08:00:00Z"
+  }
+]

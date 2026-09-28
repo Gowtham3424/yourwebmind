@@ -200,3 +200,33 @@ The smoke test validates:
 2. **Retain:** Stores test SEO memory in bank `searchmind-smoke-test`.
 3. **Recall:** Recalls memories using semantic natural language query.
 4. **Reflect:** Asks Hindsight to synthesize reasoning over the retrieved memories.
+
+---
+
+## Synthetic SEO Dataset & Demo Memory Seeding
+
+SearchMind includes an e-commerce SEO benchmark dataset under `data/demo/` representing 4 months (June–September 2026) of search performance for an outdoor gear brand (`searchmind-demo-store`).
+
+### Dataset Overview
+* **Pages (`pages.json`):** 32 URLs across homepage, categories, products, and buyer guides.
+* **Keywords (`keywords.json`):** 105 tracked search terms spanning informational, commercial, and transactional search intents.
+* **Rankings (`rankings.json`):** 75 SERP tracking measurements across 5 historical dates.
+* **Observations (`observations.json`):** 42 empirical diagnostic signals (CTR dips, ranking gains, thin content).
+* **Decisions (`decisions.json`):** 22 optimization proposals with hypotheses and proposed code/content changes.
+* **Experiments (`experiments.json`):** 20 controlled SEO A/B trials tracking control vs. treatment implementations.
+* **Outcomes (`outcomes.json`):** 20 measured results with balanced empirical distribution (6 positive, 5 negative, 5 neutral, 4 inconclusive).
+
+### Seeding Hindsight Memory
+The synthetic dataset can be ingested directly into Hindsight to provide persistent episodic and semantic memory:
+
+```powershell
+# Ingest 20 experiment narratives into the 'searchmind-demo' memory bank:
+.\.venv\Scripts\python.exe -m app.seeding.demo
+
+# Dry-run validation only (no external API calls):
+.\.venv\Scripts\python.exe -m app.seeding.demo --dry-run
+
+# Run dataset unit tests (strictly deterministic):
+.\.venv\Scripts\python.exe -m pytest tests/test_demo_dataset.py -v
+```
+
