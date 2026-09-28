@@ -95,6 +95,44 @@ YourWebMind explicitly surfaces conflicting evidence and contextual caveats rath
 
 ---
 
+## Product Preview
+
+A visual walkthrough of YourWebMind's memory-driven SEO intelligence interface and evidence-based learning loop:
+
+### 1. Workspace Overview & Observed SEO Signal
+![YourWebMind Workspace Overview](docs/screenshots/01-overview.png)
+*Section 1: Initial organic CTR drop observation (`1.80%` down from `3.20%`) on high-ranking commercial hiking boots.*
+
+### 2. Historical Memory & Precedents
+![Historical Memory Retrieval](docs/screenshots/02-historical-memory.png)
+*Section 2: Contextual recall from Vectorize Hindsight surfacing 9 relevant historical experiments across balanced outcome classes.*
+
+### 3. Historical Precedent Evidence & Conflicting Data
+![Historical Precedent Details](docs/screenshots/03-historical-memory-detail.png)
+*Detailed inspection of supporting and conflicting precedents (`EXP_014` discount phrasing causing CTR degradation).*
+
+### 4. Recommendation & Human Approval Gateway
+![Recommendation and Human Approval](docs/screenshots/04-recommendation.png)
+*Section 4: Contextual action with bounded confidence (57%), halted at `PENDING HUMAN APPROVAL`.*
+
+### 5. Operator Approval Decision
+![Operator Approval Decision](docs/screenshots/05-recommendation-result.png)
+*Explicit human approval recorded with audit note, unlocking controlled experiment execution.*
+
+### 6. Controlled Experiment Result
+![Controlled Experiment Execution](docs/screenshots/06-experimental-result.png)
+*Section 5: Empirical A/B trial outcome measuring `+50.0%` relative CTR lift (`1.80%` → `2.70%`, `POSITIVE`).*
+
+### 7. What YourWebMind Learned (Memory Retention)
+![What YourWebMind Learned](docs/screenshots/07-what-yourwebmind-learned.png)
+*Section 6: Persistent lesson retained into Hindsight (`seo_exp_021_demo`) to inform future recommendations.*
+
+### 8. Historical Memory Browser
+![Historical Memory Browser](docs/screenshots/08-historical-memory-browser.png)
+*Section 7: Search and filter across 20 persistent historical SEO experiment records in the demo library.*
+
+---
+
 ## Operating Modes
 
 YourWebMind is architected with a strict separation between its **Evaluator Demo Mode** and its **Live Hindsight Verification Mode**:
