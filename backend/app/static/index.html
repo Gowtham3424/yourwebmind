@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SearchMind — Memory-Driven SEO Intelligence</title>
+  <meta name="description" content="An SEO agent that remembers what happened, learns what worked, and gets smarter over time.">
+  <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+  <!-- Top Navigation & Project Bar -->
+  <header class="top-bar">
+    <div class="top-bar-inner">
+      <div class="brand-group">
+        <h1 class="brand-title">SEARCHMIND</h1>
+        <span class="brand-subtitle">Memory-driven SEO intelligence</span>
+      </div>
+      <div class="project-group">
+        <div class="project-info">
+          <span class="label">Project</span>
+          <span class="project-name">SearchMind Demo Store</span>
+        </div>
+        <span class="badge badge-demo" title="Synthetic SEO experiment dataset for evaluation">DEMO DATA</span>
+        <button id="btn-run-analysis" class="btn btn-primary" type="button" aria-label="Analyze current SEO issue">
+          Analyze Current SEO Issue
+        </button>
+        <button id="btn-reset" class="btn btn-secondary" type="button" aria-label="Reset demo to initial state">
+          Reset Demo
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- The Learning Loop: 10-Stage Workflow Indicator -->
+  <nav class="loop-nav" aria-label="SearchMind Learning Loop Stages">
+    <div class="loop-nav-inner">
+      <div class="loop-header">
+        <span class="label">The Learning Loop</span>
+        <span class="loop-sublabel" id="loop-current-status">Stage: Human Approval Gateway</span>
+      </div>
+      <ol class="loop-steps" id="loop-steps">
+        <li class="step step-completed" data-step="current_data">
+          <span class="step-num">1</span>
+          <span class="step-name">Current Data</span>
+        </li>
+        <li class="step step-completed" data-step="recall">
+          <span class="step-num">2</span>
+          <span class="step-name">Recall</span>
+        </li>
+        <li class="step step-completed" data-step="historical_evidence">
+          <span class="step-num">3</span>
+          <span class="step-name">Historical Evidence</span>
+        </li>
+        <li class="step step-completed" data-step="reflect">
+          <span class="step-num">4</span>
+          <span class="step-name">Reflect</span>
+        </li>
+        <li class="step step-completed" data-step="recommend">
+          <span class="step-num">5</span>
+          <span class="step-name">Recommend</span>
+        </li>
+        <li class="step step-active" data-step="approval">
+          <span class="step-num">6</span>
+          <span class="step-name">Approval</span>
+        </li>
+        <li class="step" data-step="experiment">
+          <span class="step-num">7</span>
+          <span class="step-name">Experiment</span>
+        </li>
+        <li class="step" data-step="outcome">
+          <span class="step-num">8</span>
+          <span class="step-name">Outcome</span>
+        </li>
+        <li class="step" data-step="retain">
+          <span class="step-num">9</span>
+          <span class="step-name">Retain</span>
+        </li>
+        <li class="step" data-step="future_learning">
+          <span class="step-num">10</span>
+          <span class="step-name">Future Learning</span>
+        </li>
+      </ol>
+    </div>
+  </nav>
+
+  <!-- Main Workspace Layout -->
+  <main class="main-container">
+    <div class="workspace-grid">
+
+      <!-- LEFT COLUMN: Primary Evidence & Decision Flow -->
+      <div class="col-primary">
+
+        <!-- 1. CURRENT SEO SIGNAL -->
+        <section class="card" id="section-signal" aria-labelledby="heading-signal">
+          <div class="card-header">
+            <span class="section-tag">CURRENT EVIDENCE</span>
+            <h2 id="heading-signal" class="card-title">Current SEO Signal</h2>
+          </div>
+          <div class="card-body">
+            <div class="meta-row">
+              <div class="meta-item">
+                <span class="meta-label">Page</span>
+                <span class="meta-value font-mono" id="signal-page">Waterproof Alpine Hiking Boots</span>
+                <a href="#" class="url-link font-mono" id="signal-url" target="_blank" rel="noopener">https://demo-searchmind-store.example/products/waterproof-alpine-hiking-boots</a>
+              </div>
+            </div>
+
+            <div class="stats-grid">
+              <div class="stat-box">
+                <span class="stat-label">Target Keyword</span>
+                <span class="stat-value" id="signal-keyword">waterproof hiking boots</span>
+                <span class="stat-sub">Commercial Intent</span>
+              </div>
+              <div class="stat-box">
+                <span class="stat-label">Current CTR</span>
+                <span class="stat-value text-alert" id="signal-current-ctr">1.80%</span>
+                <span class="stat-sub" id="signal-prev-ctr">Previous: 3.20% (delta: -1.40 pp)</span>
+              </div>
+              <div class="stat-box">
+                <span class="stat-label">SERP Position</span>
+                <span class="stat-value" id="signal-rank">3.1</span>
+                <span class="stat-sub" id="signal-rank-sub">Maintained top-3 rank</span>
+              </div>
+              <div class="stat-box">
+                <span class="stat-label">Volume Context</span>
+                <span class="stat-value" id="signal-impressions">15,400</span>
+                <span class="stat-sub" id="signal-clicks">277 clicks (observed)</span>
+              </div>
+            </div>
+
+            <div class="signal-alert">
+              <span class="signal-dot" aria-hidden="true"></span>
+              <div class="signal-text">
+                <strong>Signal:</strong> <span id="signal-summary">Organic CTR declined by 1.40 pp despite maintaining top-3 SERP rank (3.1). Indicates potential snippet misalignment or search intent mismatch.</span>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- 2. RECOMMENDATION & HUMAN APPROVAL -->
+        <section class="card" id="section-recommendation" aria-labelledby="heading-recommendation">
+          <div class="card-header">
+            <span class="section-tag">RECOMMENDATION</span>
+            <h2 id="heading-recommendation" class="card-title">Recommended Test</h2>
+            <div class="header-badges">
+              <span class="badge badge-approval" id="badge-approval-status">PENDING APPROVAL</span>
+            </div>
+          </div>
+          <div class="card-body">
+            <div class="recommendation-content">
+              <p class="rec-action" id="rec-action-text">
+                Test a revised title tag placing the primary search keyword “waterproof hiking boots” near the front of the snippet, while strictly retaining the brand name and avoiding aggressive promotional discount modifiers.
+              </p>
+              
+              <div class="rec-details-grid">
+                <div class="detail-item">
+                  <span class="detail-label">Rationale</span>
+                  <span class="detail-value" id="rec-rationale">Contextual precedent indicates keyword-intent alignment recovers CTR while strictly preserving brand trust.</span>
+                </div>
+                <div class="detail-item">
+                  <span class="detail-label">Expected Impact</span>
+                  <span class="detail-value" id="rec-impact">Estimated +15% to +30% CTR improvement if promotional discount phrasing is avoided.</span>
+                </div>
+                <div class="detail-item">
+                  <span class="detail-label">Confidence</span>
+                  <span class="detail-value font-mono" id="rec-confidence"><strong>0.57</strong> <span class="text-muted">(Bounded: 0.10 to 0.85 per deterministic evidence rules)</span></span>
+                </div>
+                <div class="detail-item">
+                  <span class="detail-label">Approval Gate</span>
+                  <span class="detail-value"><strong>REQUIRED</strong> <span class="text-muted">(Autonomous execution strictly blocked)</span></span>
+                </div>
+              </div>
+            </div>
+
+            <!-- HUMAN APPROVAL GATEWAY INTERACTION -->
+            <div class="approval-gateway" id="approval-gateway">
+              <div class="gateway-header">
+                <span class="gateway-tag">HUMAN APPROVAL GATEWAY</span>
+                <span class="gateway-notice">Operator review required before experiment creation</span>
+              </div>
+
+              <!-- State 1: Pending Approval -->
+              <div id="approval-pending-controls" class="approval-controls">
+                <div class="operator-note-group">
+                  <label for="input-operator-note" class="note-label">Operator Guardrail / Directive (optional):</label>
+                  <input type="text" id="input-operator-note" class="input-text font-mono" value="Approved keyword-first title test. Exclude aggressive discount phrasing.">
+                </div>
+                <div class="button-row">
+                  <button id="btn-approve" class="btn btn-primary" type="button">
+                    Approve Recommendation
+                  </button>
+                  <button id="btn-reject" class="btn btn-outline" type="button">
+                    Reject
+                  </button>
+                </div>
+              </div>
+
+              <!-- State 2: Approved Confirmation -->
+              <div id="approval-approved-banner" class="approval-banner banner-approved hidden" role="status">
+                <div class="banner-status-line">
+                  <span class="badge badge-positive">STATUS: APPROVED</span>
+                  <span class="banner-timestamp" id="approved-timestamp">Decision recorded by operator</span>
+                </div>
+                <p class="banner-note" id="approved-note-display">Operator note: Approved keyword-first title test. Exclude aggressive discount phrasing.</p>
+                <div class="launch-experiment-box">
+                  <p class="launch-explainer">The experiment is approved but has not run. To execute the controlled test and evaluate empirical results:</p>
+                  <button id="btn-run-experiment" class="btn btn-primary btn-launch" type="button">
+                    Run Controlled Experiment
+                  </button>
+                </div>
+              </div>
+
+              <!-- State 3: Rejected Banner -->
+              <div id="approval-rejected-banner" class="approval-banner banner-rejected hidden" role="status">
+                <span class="badge badge-negative">STATUS: REJECTED</span>
+                <p class="banner-note" id="rejected-note-display">Execution halted by operator. No experiment will be created or run.</p>
+                <button id="btn-reconsider" class="btn btn-secondary btn-sm" type="button">Re-open Decision</button>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- 3. EXPERIMENT RESULT (Revealed after running) -->
+        <section class="card hidden" id="section-experiment" aria-labelledby="heading-experiment">
+          <div class="card-header">
+            <span class="section-tag">OBSERVED RESULT</span>
+            <h2 id="heading-experiment" class="card-title">Controlled Experiment Execution</h2>
+            <div class="header-badges">
+              <span class="badge badge-positive" id="badge-outcome-class">OUTCOME: POSITIVE</span>
+            </div>
+          </div>
+          <div class="card-body">
+            <div class="experiment-grid">
+              <div class="exp-stat-item">
+                <span class="exp-label">Experiment ID</span>
+                <span class="exp-val font-mono" id="exp-id">exp_021_demo</span>
+              </div>
+              <div class="exp-stat-item">
+                <span class="exp-label">Primary Metric</span>
+                <span class="exp-val" id="exp-metric">CTR</span>
+              </div>
+              <div class="exp-stat-item">
+                <span class="exp-label">Pre-Trial Baseline</span>
+                <span class="exp-val font-mono" id="exp-baseline">1.80%</span>
+              </div>
+              <div class="exp-stat-item">
+                <span class="exp-label">Measured Value</span>
+                <span class="exp-val font-mono text-positive" id="exp-measured">2.70%</span>
+              </div>
+              <div class="exp-stat-item">
+                <span class="exp-label">Absolute Change</span>
+                <span class="exp-val font-mono text-positive" id="exp-abs-change">+0.90 pp</span>
+              </div>
+              <div class="exp-stat-item">
+                <span class="exp-label">Relative Change</span>
+                <span class="exp-val font-mono text-positive" id="exp-rel-change">+50.0%</span>
+              </div>
+            </div>
+
+            <div class="factual-statement-box">
+              <span class="label">Empirical Evaluation</span>
+              <p class="factual-text" id="exp-factual-text">
+                “Observed positive result in this experiment.”
+              </p>
+              <p class="caveat-text">
+                Note: Measured across controlled trial window with verified site uptime and consistent tracking telemetry.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <!-- 4. RETAINED LESSON & MEMORY UPDATE -->
+        <section class="card hidden" id="section-retained-lesson" aria-labelledby="heading-retained">
+          <div class="card-header">
+            <span class="section-tag">RETAINED LESSON</span>
+            <h2 id="heading-retained" class="card-title">Memory Updated</h2>
+            <span class="badge badge-demo">PERSISTED TO HINDSIGHT</span>
+          </div>
+          <div class="card-body">
+            <div class="lesson-box">
+              <p class="lesson-text" id="lesson-text">
+                Observed positive CTR uplift (+50.0%, 1.8 → 2.7) after testing a balanced title-tag change on this page.
+              </p>
+            </div>
+
+            <div class="lesson-meta-grid">
+              <div class="lesson-meta-item">
+                <span class="meta-label">Context</span>
+                <span class="meta-val">Observed on this target page (Waterproof Alpine Hiking Boots).</span>
+              </div>
+              <div class="lesson-meta-item">
+                <span class="meta-label">Caveat</span>
+                <span class="meta-val">Not universal proof. Validated within commercial hiking footwear category.</span>
+              </div>
+              <div class="lesson-meta-item">
+                <span class="meta-label">Hindsight Document ID</span>
+                <span class="meta-val font-mono" id="retained-doc-id">seo_exp_021_demo</span>
+              </div>
+              <div class="lesson-meta-item">
+                <span class="meta-label">Memory Bank</span>
+                <span class="meta-val font-mono">searchmind-demo</span>
+              </div>
+            </div>
+
+            <div class="future-learning-notice">
+              <span class="future-icon" aria-hidden="true">✔</span>
+              <div class="future-text">
+                <strong>Future Learning:</strong> This result has been retained and is immediately available to future SearchMind analysis and recall queries.
+                <div class="verification-line font-mono" id="future-verification-text">
+                  Verification: Retrieved seo_exp_021_demo in subsequent recall query matching 'waterproof hiking boots'.
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+      </div>
+
+      <!-- RIGHT COLUMN: Historical Memory, Learning & Memory Browser -->
+      <div class="col-secondary">
+
+        <!-- 5. HISTORICAL MEMORY OVERVIEW -->
+        <section class="card" id="section-historical" aria-labelledby="heading-historical">
+          <div class="card-header">
+            <span class="section-tag">HISTORICAL EVIDENCE</span>
+            <h2 id="heading-historical" class="card-title">Historical Memory</h2>
+            <span class="source-tag font-mono">searchmind-demo</span>
+          </div>
+          <div class="card-body">
+            <div class="memory-stats-bar">
+              <div class="mem-stat">
+                <span class="mem-stat-num" id="mem-total-count">9</span>
+                <span class="mem-stat-label">Relevant Tests</span>
+              </div>
+              <div class="mem-stat stat-positive">
+                <span class="mem-stat-num" id="mem-pos-count">2</span>
+                <span class="mem-stat-label">Positive</span>
+              </div>
+              <div class="mem-stat stat-negative">
+                <span class="mem-stat-num" id="mem-neg-count">3</span>
+                <span class="mem-stat-label">Negative</span>
+              </div>
+              <div class="mem-stat stat-neutral">
+                <span class="mem-stat-num" id="mem-neu-count">2</span>
+                <span class="mem-stat-label">Neutral</span>
+              </div>
+              <div class="mem-stat stat-inconclusive">
+                <span class="mem-stat-num" id="mem-inc-count">2</span>
+                <span class="mem-stat-label">Inconclusive</span>
+              </div>
+            </div>
+
+            <div class="evidence-list-container">
+              <span class="sub-heading">Precedent Evidence (Unfiltered)</span>
+              <ul class="evidence-list" id="evidence-compact-list">
+                <!-- Injected via JS -->
+              </ul>
+            </div>
+          </div>
+        </section>
+
+        <!-- 6. WHAT SEARCHMIND LEARNED (REASONING & REFLECT) -->
+        <section class="card" id="section-reasoning" aria-labelledby="heading-reasoning">
+          <div class="card-header">
+            <span class="section-tag">HISTORICAL REASONING</span>
+            <h2 id="heading-reasoning" class="card-title">What SearchMind Learned</h2>
+          </div>
+          <div class="card-body">
+            <div class="synthesis-quote">
+              <p class="quote-text" id="reasoning-synthesis">
+                “Past trials indicate keyword-first commercial alignment improved CTR in a comparable hiking-boot page, while promotional discount modifiers produced a negative result.”
+              </p>
+            </div>
+
+            <div class="reasoning-points">
+              <div class="point-item">
+                <span class="point-bullet bullet-pos">●</span>
+                <div class="point-content">
+                  <strong>Supporting Precedent:</strong> <span id="reasoning-supporting">exp_001 achieved +50.0% CTR lift on hiking boots with commercial title alignment.</span>
+                </div>
+              </div>
+              <div class="point-item">
+                <span class="point-bullet bullet-neg">●</span>
+                <div class="point-content">
+                  <strong>Conflicting Precedent:</strong> <span id="reasoning-conflicting">exp_014 saw -20.1% CTR drop when adding discount/promotional modifiers on trekking boots.</span>
+                </div>
+              </div>
+              <div class="point-item">
+                <span class="point-bullet bullet-caveat">●</span>
+                <div class="point-content">
+                  <strong>Contextual Caveat:</strong> <span id="reasoning-caveat">Historical outcomes are contextual to observed page templates and seasonal intent, not universal SEO rules.</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="reflect-notice" id="reflect-status-notice">
+              <span class="reflect-dot" aria-hidden="true"></span>
+              <span id="reflect-note-text">Reasoning synthesized via contextual precedent evaluation.</span>
+            </div>
+          </div>
+        </section>
+
+        <!-- 7. MEMORY BROWSER (SEARCHABLE HISTORICAL DATABASE) -->
+        <section class="card" id="section-browser" aria-labelledby="heading-browser">
+          <div class="card-header">
+            <span class="section-tag">MEMORY</span>
+            <h2 id="heading-browser" class="card-title">Search Historical SEO Memory</h2>
+          </div>
+          <div class="card-body">
+            <p class="browser-intro">
+              Query persistent experiment records retained in Hindsight to explore precedents across positive, negative, and inconclusive tests.
+            </p>
+
+            <form class="search-form" id="form-memory-search" onsubmit="return false;">
+              <div class="search-input-group">
+                <input
+                  type="text"
+                  id="input-memory-search"
+                  class="search-input font-mono"
+                  placeholder="e.g. waterproof hiking boots, title tag, promotional..."
+                  value="waterproof hiking boots"
+                  aria-label="Search historical memory"
+                >
+                <button type="submit" id="btn-search-memory" class="btn btn-secondary">
+                  Search
+                </button>
+              </div>
+            </form>
+
+            <div class="filter-pills" role="radiogroup" aria-label="Outcome Filter">
+              <button type="button" class="pill pill-active" data-outcome="all">All (<span id="count-all">20</span>)</button>
+              <button type="button" class="pill" data-outcome="positive">Positive (<span id="count-pos">5</span>)</button>
+              <button type="button" class="pill" data-outcome="negative">Negative (<span id="count-neg">6</span>)</button>
+              <button type="button" class="pill" data-outcome="neutral">Neutral (<span id="count-neu">4</span>)</button>
+              <button type="button" class="pill" data-outcome="inconclusive">Inconclusive (<span id="count-inc">5</span>)</button>
+            </div>
+
+            <div class="memory-cards-container" id="memory-cards-list" role="region" aria-live="polite">
+              <!-- Dynamically populated via JS -->
+            </div>
+          </div>
+        </section>
+
+      </div>
+
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-inner">
+      <span>SearchMind &bull; Powered by Vectorize Hindsight Persistent Memory</span>
+      <span class="font-mono text-muted">Zero-Token Deterministic Fixture Mode &bull; Hackathon Submission</span>
+    </div>
+  </footer>
+
+  <script src="/static/app.js"></script>
+</body>
+</html>

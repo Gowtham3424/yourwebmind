@@ -283,29 +283,47 @@ SearchMind's core workflow treats Hindsight Reflect as an optional reasoning enh
 ### Token Conservation Policy
 During ordinary test execution and agent workflow development, SearchMind executes all analysis, retrieval, and decision rules deterministically in local memory with zero external LLM calls. Live Hindsight/Groq calls are preserved for persistent memory storage and milestone integration tests.
 
-### Running the Deterministic SEO Agent Demo
+### Running the Deterministic SEO Agent Demo & Evaluator Frontend
 ```powershell
 # From the backend directory:
 cd backend
 
-# Execute the zero-token deterministic end-to-end learning loop demo:
+# Option A: Start the FastAPI server and open the Evaluator Frontend:
+.\.venv\Scripts\python.exe -m uvicorn app.main:app --host 127.0.0.1 --port 8000
+# Open http://localhost:8000 or http://127.0.0.1:8000 in your browser.
+
+# Option B: Execute the zero-token CLI learning loop demo runner:
 .\.venv\Scripts\python.exe -m app.agents.demo_scenario
 
-# Run the complete test suite (102 passed, 0 tokens consumed):
+# Run the complete test suite (108 passed, 0 tokens consumed):
 .\.venv\Scripts\python.exe -m pytest -v -m "not integration"
 
-# Run audit and fallback tests specifically:
-.\.venv\Scripts\python.exe -m pytest tests/test_audit_and_fallback.py -v
+# Run frontend agent API tests specifically:
+.\.venv\Scripts\python.exe -m pytest tests/test_agent_api.py -v
 ```
 
 ---
 
-## Future Frontend Design Principles
+## Evaluator Frontend Architecture & Design System
 
-SearchMind is an evidence-first analytical platform. Future UI implementations adhere to strict minimalist standards:
-* **Minimalist Aesthetics:** Primarily monochrome / neutral color palette with restrained, functional accent colors.
-* **Clarity Over Flash:** Thin borders, generous whitespace, clean tabular data, and readable typography.
-* **Zero Decorative Noise:** No gradients, no glassmorphism, no decorative 3D illustrations, no distracting layout animations, and no bloated CSS frameworks.
-* **Evidence Precedence:** Empirical measurements, historical comparisons, confidence bounds, and learning narratives must remain the focal point of every view.
+The SearchMind frontend is a minimal, evidence-first editorial workbench built for hackathon evaluators. Adhering to the principle **“Results speak more than design”**, the UI prioritizes empirical clarity over decorative noise.
+
+### Design Language & Standards
+* **Palette:** Crisp off-white (`#fcfcfc`), dark charcoal typography (`#111111`), and subtle 1px gray borders (`#e5e5e5`).
+* **Zero Decorative Noise:** Strictly zero gradients, glassmorphism, glowing cards, neon colors, excessive shadows, or bloated CSS frameworks.
+* **Restrained Status Badges:** Accessible, subtle borders and background tints for `Positive` (green), `Negative` (crimson), `Neutral` (slate), and `Inconclusive` (amber).
+* **Zero-Token Demo Mode:** Operates completely client-to-server locally using deterministic fixture data and in-memory adapters with zero external Groq token consumption.
+
+### Primary Workspace Sections
+1. **The Learning Loop (10-Stage Workflow Indicator):**
+   `CURRENT DATA` → `RECALL` → `HISTORICAL EVIDENCE` → `REFLECT` → `RECOMMEND` → `APPROVAL` → `EXPERIMENT` → `OUTCOME` → `RETAIN` → `FUTURE LEARNING`
+2. **Current SEO Signal:** Displays URL, commercial search intent, top-3 SERP rank (3.1), and CTR decline (-1.40 pp).
+3. **Historical Evidence:** Compact summary of relevant precedents (2 positive, 3 negative, 2 neutral, 2 inconclusive) with unfiltered conflicting evidence.
+4. **What SearchMind Learned:** Contextual precedent synthesis quote, supporting evidence (`exp_001`), conflicting evidence (`exp_014`), and contextual caveats.
+5. **Recommendation & Human Approval Gateway:** Context-aware trial proposal with bounded confidence (0.57) and enforced approval gateway (`PENDING APPROVAL` → `APPROVED` / `REJECTED`). Autonomous experiment execution is strictly blocked.
+6. **Controlled Experiment Execution:** Activated only when the operator explicitly clicks `[Run Controlled Experiment]`. Reports empirical metric movements (`+0.90 pp (+50.0%) CTR`) and outcome (`POSITIVE`).
+7. **Memory Updated (Retained Lesson):** Shows retained factual lesson, context, caveat, Hindsight document ID (`seo_exp_021_demo`), and future recall verification confirmation.
+8. **Memory Browser:** Interactive search and filtering tool across historical SEO experiments in Hindsight memory.
+
 
 
