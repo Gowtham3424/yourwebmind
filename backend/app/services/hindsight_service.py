@@ -35,6 +35,11 @@ class HindsightService:
         Sets up the daemon with configured LLM and database settings.
         Returns True if initialization succeeded, False otherwise.
         """
+        if self.settings.SEARCHMIND_DEMO_MODE:
+            logger.info("Hindsight initialization skipped: SEARCHMIND_DEMO_MODE is enabled.")
+            self._last_error = "Demo mode active (live Hindsight disabled)"
+            return False
+
         if not self.settings.is_llm_configured:
             logger.warning(
                 "Hindsight initialization skipped: LLM API key not configured. "

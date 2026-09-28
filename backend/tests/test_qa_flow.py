@@ -241,3 +241,36 @@ def test_security_no_secrets_exposed():
         body = res.text
         for token in forbidden_tokens:
             assert token not in body, f"Security violation: found token '{token}' in response from {ep}!"
+
+
+# -----------------------------------------------------------------------------
+# 8. Offline Evaluator Startup & Diagnostic Mode QA
+# -----------------------------------------------------------------------------
+def test_offline_evaluator_health_and_diagnostics():
+    """Verify that in SEARCHMIND_DEMO_MODE, health and diagnostic report explicit demo status."""
+    # Health endpoint
+    res_health = client.get("/health")
+    assert res_health.status_code == 200
+    h_data = res_health.json()
+    assert h_data["service"] == "searchmind"
+    assert h_data["mode"] == "demo"
+    assert h_data["hindsight_live"] is False
+    assert h_data["llm_calls"] == 0
+
+    # Diagnostic endpoint
+    res_diag = client.get("/api/v1/diagnostic")
+    assert res_diag.status_code == 200
+    d_data = res_diag.json()
+    assert d_data["service"] == "searchmind"
+    assert d_data["mode"] == "demo"
+    assert d_data["hindsight_live"] is False
+    assert d_data["llm_calls"] == 0
+    assert d_data["hindsight"]["initialized"] is False
+    assert d_data["hindsight"]["live"] is False
+
+    # Smoke test safety guard in demo mode
+    res_smoke = client.post("/api/v1/diagnostic/smoke-test")
+    assert res_smoke.status_code == 200
+    s_data = res_smoke.json()
+    assert s_data["status"] == "skipped"
+

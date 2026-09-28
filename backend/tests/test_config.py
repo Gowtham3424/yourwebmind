@@ -48,3 +48,13 @@ def test_custom_provider_settings():
     assert settings.HINDSIGHT_API_LLM_PROVIDER == "gemini"
     assert settings.HINDSIGHT_API_LLM_MODEL == "gemini-1.5-flash"
     assert settings.is_llm_configured is True
+
+
+def test_demo_mode_configuration():
+    """Verify SEARCHMIND_DEMO_MODE setting defaults to False and can be toggled."""
+    s_default = Settings(HINDSIGHT_API_LLM_API_KEY="", _env_file=None)
+    assert s_default.SEARCHMIND_DEMO_MODE is False
+
+    s_demo = Settings(SEARCHMIND_DEMO_MODE=True, _env_file=None)
+    assert s_demo.SEARCHMIND_DEMO_MODE is True
+

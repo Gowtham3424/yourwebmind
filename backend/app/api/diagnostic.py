@@ -20,14 +20,19 @@ def get_diagnostics(
 
     Does not expose sensitive credentials.
     """
+    is_demo = settings.SEARCHMIND_DEMO_MODE
     return {
         "service": "searchmind",
         "environment": settings.ENVIRONMENT,
+        "mode": "demo" if is_demo else "live",
+        "hindsight_live": False if is_demo else hindsight.is_connected,
+        "llm_calls": 0,
         "hindsight": {
-            "initialized": hindsight.is_connected,
+            "initialized": False if is_demo else hindsight.is_connected,
+            "live": False if is_demo else hindsight.is_connected,
             "profile": settings.HINDSIGHT_PROFILE,
             "database_url": settings.HINDSIGHT_API_DATABASE_URL,
-            "last_error": hindsight.last_error,
+            "last_error": "Demo mode active (live Hindsight skipped)" if is_demo else hindsight.last_error,
         },
         "llm": {
             "configured": settings.is_llm_configured,
@@ -43,4 +48,9 @@ def trigger_smoke_test(
     settings: Settings = Depends(get_settings),
 ) -> Dict[str, Any]:
     """Trigger the Retain -> Recall -> Reflect smoke test on the development server."""
+    if settings.SEARCHMIND_DEMO_MODE:
+        return {
+            "status": "skipped",
+            "message": "Smoke test skipped: SEARCHMIND_DEMO_MODE is active. Disable demo mode to run live smoke test.",
+        }
     return run_smoke_test()

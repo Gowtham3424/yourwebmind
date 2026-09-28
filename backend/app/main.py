@@ -27,6 +27,16 @@ logger = logging.getLogger("searchmind")
 async def lifespan(app: FastAPI):
     """Application lifespan manager handling startup and shutdown of Hindsight."""
     logger.info("=== Starting SearchMind Backend ===")
+
+    if settings.SEARCHMIND_DEMO_MODE:
+        logger.info(
+            "SEARCHMIND_DEMO_MODE is active. Skipping live Hindsight Embedded daemon initialization "
+            "and external LLM provider calls. Operating in deterministic offline evaluator mode."
+        )
+        yield
+        logger.info("=== Shutting down SearchMind Backend (Demo Mode) ===")
+        return
+
     hindsight = get_hindsight_service()
 
     if settings.is_llm_configured:

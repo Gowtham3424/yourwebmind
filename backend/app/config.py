@@ -20,6 +20,11 @@ class Settings(BaseSettings):
     HOST: str = "127.0.0.1"
     PORT: int = 8000
 
+    # Offline Evaluator Demo Mode
+    # When enabled (true), disables live HindsightEmbedded initialization on startup
+    # and prevents external LLM provider calls, allowing the evaluator UI to run offline.
+    SEARCHMIND_DEMO_MODE: bool = False
+
     # Hindsight Core Configuration
     HINDSIGHT_API_LLM_PROVIDER: str = "openai"
     HINDSIGHT_API_LLM_API_KEY: str = ""

@@ -335,13 +335,22 @@ SearchMind is architected for deterministic reliability, low cognitive overhead,
 * **Stateful Embedded Database (`pg0-embedded`):** Vectorize Hindsight runs on an embedded PostgreSQL instance that binds locally and persists memory units to disk.
 * **Persistent Host Requirement:** SearchMind requires a persistent environment with a writable local filesystem or persistent volume (e.g., Docker container, Linux/Windows VM, AWS EC2, GCP Compute Engine, or Fly.io/Render with persistent disks).
 * **Serverless Incompatibility:** Due to the background daemon requirements of `pg0`, SearchMind cannot be deployed to stateless ephemeral serverless platforms (e.g., AWS Lambda, Vercel Serverless Functions) without configuring an external managed PostgreSQL database URL via `HINDSIGHT_API_DATABASE_URL`.
-* **Zero-Token Local Mode:** The evaluator UI, workflow engine, and deterministic demo endpoints operate entirely offline with zero external LLM token consumption.
-* **Production LLM Key:** Live Retain/Recall/Reflect operations in production require a valid Groq/OpenAI API key configured in `.env`.
+### Operating Modes: Offline Evaluator Demo vs. Live Hindsight
+* **Offline Evaluator Demo Mode (`SEARCHMIND_DEMO_MODE=true`):**
+  - Designed for local testing and evaluator demonstrations without network dependencies or LLM rate limits.
+  - Skips `HindsightEmbedded` daemon initialization and external Groq API requests on FastAPI startup.
+  - The evaluator UI and workflow engine operate deterministically using in-memory adapters populated from `data/demo/`.
+  - Zero Groq tokens consumed; completely immune to external HTTP 429 quota exhaustion.
+  - Preserves the intact 133-unit persistent `searchmind-demo` memory bank.
+* **Live Hindsight Mode (`SEARCHMIND_DEMO_MODE=false`):**
+  - Requires a valid LLM API key (`HINDSIGHT_API_LLM_API_KEY`) configured in `.env`.
+  - Initializes `HindsightEmbedded` with native Windows `pg0` embedded PostgreSQL daemon.
+  - Enables live episodic Retain, semantic Recall, and qualitative Reflect synthesis across the memory bank.
 
 ### Verification Suite
 Execute the verified test suite from `backend/`:
 ```powershell
 .\.venv\Scripts\python.exe -m pytest -v -m "not integration"
 ```
-* **Status:** 115 tests passing, 1 live integration test deselected.
+* **Status:** 118 tests passing, 1 live integration test deselected.
 * **Token Cost:** 0 tokens consumed.

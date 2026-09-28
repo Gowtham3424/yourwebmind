@@ -56,3 +56,31 @@ def test_health_connected():
     assert data["provider"] == "openai"
     # Never leak secret keys
     assert "sk-secret-key" not in str(data)
+
+
+def test_health_demo_mode():
+    """Verify health endpoint response in explicit demo mode."""
+    test_settings = Settings(
+        SEARCHMIND_DEMO_MODE=True,
+        HINDSIGHT_API_LLM_API_KEY="sk-secret-key",
+        _env_file=None,
+    )
+    mock_hindsight = MagicMock(spec=HindsightService)
+    mock_hindsight.is_connected = False
+
+    app.dependency_overrides[get_settings] = lambda: test_settings
+    app.dependency_overrides[get_hindsight_service] = lambda: mock_hindsight
+
+    client = TestClient(app)
+    response = client.get("/health")
+    app.dependency_overrides.clear()
+
+    assert response.status_code == 200
+    data = response.json()
+    assert data["service"] == "searchmind"
+    assert data["status"] == "ok"
+    assert data["mode"] == "demo"
+    assert data["hindsight_live"] is False
+    assert data["llm_calls"] == 0
+    assert data["hindsight"] == "offline"
+
