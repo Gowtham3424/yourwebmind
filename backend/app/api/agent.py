@@ -459,13 +459,18 @@ def browse_memory(
 
     # Filter by search query if supplied
     if q and q.strip():
-        query_norm = q.strip().lower()
+        tokens = [t for t in q.strip().lower().split() if len(t) > 2]
+        if not tokens:
+            tokens = [q.strip().lower()]
         items = [
             it for it in items
-            if query_norm in it["experiment_id"].lower()
-            or query_norm in it["technique"].lower()
-            or query_norm in it["url"].lower()
-            or query_norm in it["context"].lower()
+            if any(
+                tok in it["experiment_id"].lower()
+                or tok in it["technique"].lower()
+                or tok in it["url"].lower()
+                or tok in it["context"].lower()
+                for tok in tokens
+            )
         ]
 
     # Filter by outcome if supplied

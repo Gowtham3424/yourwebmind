@@ -325,5 +325,23 @@ The SearchMind frontend is a minimal, evidence-first editorial workbench built f
 7. **Memory Updated (Retained Lesson):** Shows retained factual lesson, context, caveat, Hindsight document ID (`seo_exp_021_demo`), and future recall verification confirmation.
 8. **Memory Browser:** Interactive search and filtering tool across historical SEO experiments in Hindsight memory.
 
+---
 
+## Deployment Readiness & Runtime Requirements
 
+SearchMind is architected for deterministic reliability, low cognitive overhead, and auditable evidence loops.
+
+### Runtime Architecture & Constraints
+* **Stateful Embedded Database (`pg0-embedded`):** Vectorize Hindsight runs on an embedded PostgreSQL instance that binds locally and persists memory units to disk.
+* **Persistent Host Requirement:** SearchMind requires a persistent environment with a writable local filesystem or persistent volume (e.g., Docker container, Linux/Windows VM, AWS EC2, GCP Compute Engine, or Fly.io/Render with persistent disks).
+* **Serverless Incompatibility:** Due to the background daemon requirements of `pg0`, SearchMind cannot be deployed to stateless ephemeral serverless platforms (e.g., AWS Lambda, Vercel Serverless Functions) without configuring an external managed PostgreSQL database URL via `HINDSIGHT_API_DATABASE_URL`.
+* **Zero-Token Local Mode:** The evaluator UI, workflow engine, and deterministic demo endpoints operate entirely offline with zero external LLM token consumption.
+* **Production LLM Key:** Live Retain/Recall/Reflect operations in production require a valid Groq/OpenAI API key configured in `.env`.
+
+### Verification Suite
+Execute the verified test suite from `backend/`:
+```powershell
+.\.venv\Scripts\python.exe -m pytest -v -m "not integration"
+```
+* **Status:** 115 tests passing, 1 live integration test deselected.
+* **Token Cost:** 0 tokens consumed.
