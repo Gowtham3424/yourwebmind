@@ -52,3 +52,47 @@ def build_memory_query(
         query = f"What happened in past experiments involving {t} on {context_str}?"
 
     return query
+
+
+def build_reflection_query(
+    page_type: Optional[str] = None,
+    search_intent: Optional[str] = None,
+    target_keyword: Optional[str] = None,
+    technique: Optional[str] = None,
+) -> str:
+    """
+    Construct a targeted, deterministic reasoning query for Hindsight Reflect.
+
+    Synthesizes patterns, successful approaches, failed approaches, caveats, and
+    contextual factors across historical experiments relevant to the current page context.
+    """
+    t = (technique or "optimization").lower().replace("_", " ").strip()
+    if "test" in t:
+        t = t.replace("test", "optimization").strip()
+    if not t.endswith("optimization") and not t.endswith("addition") and not t.endswith("changes"):
+        t = f"{t} optimization"
+
+    pt = (page_type or "page").lower().strip()
+    if pt in ("product", "category", "guide"):
+        pt_str = f"{pt} pages"
+    elif pt == "homepage":
+        pt_str = "the homepage"
+    else:
+        pt_str = "pages"
+
+    intent = (search_intent or "").lower().strip()
+    context_str = f"{intent} {pt_str}" if intent else pt_str
+
+    if target_keyword:
+        kw = target_keyword.strip()
+        return (
+            f"Across historical SEO experiments involving {t} on {context_str} targeting '{kw}', "
+            "what patterns, successful approaches, failed approaches, caveats, and contextual factors "
+            "should inform the recommendation?"
+        )
+
+    return (
+        f"Across historical SEO experiments involving {t} on {context_str}, "
+        "what patterns, successful approaches, failed approaches, caveats, and contextual factors "
+        "should inform the recommendation?"
+    )

@@ -218,6 +218,7 @@ class InMemoryRecallAdapter(BaseRecallAdapter):
 
     def __init__(self, fixture_memories: Optional[List[Dict[str, Any]]] = None):
         self.fixture_memories: List[Dict[str, Any]] = fixture_memories or []
+        self.calls_count: int = 0
 
     def add_fixture_memory(
         self,
@@ -250,6 +251,7 @@ class InMemoryRecallAdapter(BaseRecallAdapter):
         max_tokens: int = 2000,
     ) -> List[RecalledMemoryItem]:
         """Return memory items from the in-memory fixture list matching the query."""
+        self.calls_count += 1
         results: List[RecalledMemoryItem] = []
         for m in self.fixture_memories:
             # Simple keyword or substring matching for test simulation

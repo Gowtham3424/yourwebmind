@@ -29,6 +29,9 @@ from app.memory import (
     BaseRecallAdapter,
     InMemoryRecallAdapter,
     build_memory_query,
+    BaseReflectAdapter,
+    ReflectResult,
+    build_reflection_query,
 )
 
 logger = logging.getLogger("searchmind.agents.workflow")
@@ -42,9 +45,10 @@ class SEOWorkflowEngine:
     1. Distillation of current SEO data into structured evidence
     2. Deterministic memory query generation and Hindsight Recall retrieval
     3. Context-aware synthesis of historical memory and domain precedents
-    4. Generation of qualified, non-dogmatic recommendations
-    5. Mandatory halt at Human-in-the-loop Approval Gateway (requires_approval = True)
-    6. Controlled generation of experiment proposals ONLY upon explicit human approval
+    4. Optional Hindsight Reflect reasoning enhancement with graceful fallback
+    5. Generation of qualified, non-dogmatic recommendations
+    6. Mandatory halt at Human-in-the-loop Approval Gateway (requires_approval = True)
+    7. Controlled generation of experiment proposals ONLY upon explicit human approval
     """
 
     def __init__(
@@ -52,11 +56,15 @@ class SEOWorkflowEngine:
         historical_analyzer: Optional[HistoricalAnalyzer] = None,
         recommendation_engine: Optional[RecommendationEngine] = None,
         recall_adapter: Optional[BaseRecallAdapter] = None,
+        reflect_adapter: Optional[BaseReflectAdapter] = None,
+        enable_reflect: bool = False,
         default_bank_id: str = "searchmind-demo",
     ):
         self.analyzer = historical_analyzer or HistoricalAnalyzer()
         self.recommendation_engine = recommendation_engine or RecommendationEngine()
         self.recall_adapter = recall_adapter
+        self.reflect_adapter = reflect_adapter
+        self.enable_reflect = enable_reflect
         self.default_bank_id = default_bank_id
 
     def extract_current_evidence(self, request: SEOAnalysisRequest) -> CurrentSEOEvidence:
@@ -171,6 +179,7 @@ class SEOWorkflowEngine:
         self,
         request: SEOAnalysisRequest,
         memory_bank: Optional[str] = None,
+        enable_reflect: Optional[bool] = None,
     ) -> SEOWorkflowResult:
         """
         Execute the analysis workflow up to the Human Approval Gateway.
@@ -179,8 +188,9 @@ class SEOWorkflowEngine:
         1. Extract current SEO evidence
         2. Formulate deterministic memory query and retrieve historical memories via recall adapter
         3. Retrieve and synthesize historical context from memory and domain dataset
-        4. Generate context-aware recommendation
-        5. HALT at Human Approval Gateway (status = PENDING_APPROVAL, proposal = None)
+        4. (Optional) Synthesize reasoning across precedents via Hindsight Reflect
+        5. Generate context-aware recommendation
+        6. HALT at Human Approval Gateway (status = PENDING_APPROVAL, proposal = None)
         """
         # Step 1: Current SEO state
         current_evidence = self.extract_current_evidence(request)
@@ -228,6 +238,54 @@ class SEOWorkflowEngine:
             memory_query=memory_query,
         )
 
+        # Step 4.5: Optional Hindsight Reflect reasoning enhancement
+        reflection_result: Optional[ReflectResult] = None
+        should_reflect = (
+            enable_reflect
+            if enable_reflect is not None
+            else (getattr(request, "enable_reflect", False) or self.enable_reflect)
+        )
+        if should_reflect and self.reflect_adapter is not None:
+            target_bank = memory_bank or self.default_bank_id
+            reflect_query = build_reflection_query(
+                page_type=current_evidence.page_type,
+                search_intent=current_evidence.search_intent,
+                target_keyword=current_evidence.keyword,
+                technique=tech_focus,
+            )
+            # Pass existing recall and historical evidence as context to prevent redundant recall calls
+            reflect_context = historical_context.to_evidence_text()
+            try:
+                reflection_result = self.reflect_adapter.reflect(
+                    query=reflect_query,
+                    bank_id=target_bank,
+                    context=reflect_context,
+                )
+                if reflection_result and reflection_result.success:
+                    historical_context = self.analyzer.merge_reflection(
+                        historical_context=historical_context,
+                        reflection_result=reflection_result,
+                    )
+                else:
+                    err_msg = reflection_result.error if reflection_result else "Unknown failure"
+                    logger.warning(
+                        f"Hindsight Reflect returned unsuccessful ({err_msg}); "
+                        "falling back cleanly to deterministic historical analysis."
+                    )
+            except Exception as exc:
+                logger.warning(
+                    f"Hindsight Reflect encountered exception ({exc}); "
+                    "falling back cleanly to deterministic historical analysis."
+                )
+                reflection_result = ReflectResult(
+                    source="hindsight",
+                    memory_bank=target_bank,
+                    query=reflect_query,
+                    synthesis_text="",
+                    success=False,
+                    error=str(exc),
+                )
+
         # Step 5: Recommendation generation
         recommendation = self.recommendation_engine.generate_recommendation(
             project_id=request.project_id,
@@ -244,6 +302,7 @@ class SEOWorkflowEngine:
             approval_status=ApprovalStatus.PENDING_APPROVAL,
             workflow_stopped_at_approval=True,
             experiment_proposal=None,
+            reflection_result=reflection_result,
         )
 
     def process_human_approval(
@@ -267,6 +326,7 @@ class SEOWorkflowEngine:
                 approval_status=ApprovalStatus.REJECTED,
                 workflow_stopped_at_approval=True,
                 experiment_proposal=None,
+                reflection_result=workflow_result.reflection_result,
             )
 
         # Build formal experiment proposal upon operator approval
@@ -308,4 +368,5 @@ class SEOWorkflowEngine:
             approval_status=ApprovalStatus.APPROVED,
             workflow_stopped_at_approval=False,
             experiment_proposal=proposal,
+            reflection_result=workflow_result.reflection_result,
         )

@@ -13,7 +13,7 @@ from app.agents.schemas import SEOAnalysisRequest, SEOWorkflowResult
 from app.agents.workflow import SEOWorkflowEngine
 
 
-from app.memory import BaseRecallAdapter
+from app.memory import BaseRecallAdapter, BaseReflectAdapter
 
 
 class SEOAgent:
@@ -29,6 +29,8 @@ class SEOAgent:
         dataset_dir: Optional[Path] = None,
         workflow_engine: Optional[SEOWorkflowEngine] = None,
         recall_adapter: Optional[BaseRecallAdapter] = None,
+        reflect_adapter: Optional[BaseReflectAdapter] = None,
+        enable_reflect: bool = False,
         default_bank_id: str = "searchmind-demo",
     ):
         if workflow_engine is not None:
@@ -40,6 +42,8 @@ class SEOAgent:
                 historical_analyzer=analyzer,
                 recommendation_engine=rec_engine,
                 recall_adapter=recall_adapter,
+                reflect_adapter=reflect_adapter,
+                enable_reflect=enable_reflect,
                 default_bank_id=default_bank_id,
             )
 
@@ -47,13 +51,18 @@ class SEOAgent:
         self,
         request: SEOAnalysisRequest,
         memory_bank: Optional[str] = None,
+        enable_reflect: Optional[bool] = None,
     ) -> SEOWorkflowResult:
         """
         Analyze current SEO state and generate a context-aware recommendation.
 
         Always halts at the Human Approval Gateway (status = PENDING_APPROVAL).
         """
-        return self.workflow.run_analysis_workflow(request, memory_bank=memory_bank)
+        return self.workflow.run_analysis_workflow(
+            request=request,
+            memory_bank=memory_bank,
+            enable_reflect=enable_reflect,
+        )
 
     def approve(
         self,

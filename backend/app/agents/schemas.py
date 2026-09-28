@@ -41,6 +41,10 @@ class SEOAnalysisRequest(BaseDomainModel):
         default=None,
         description="Specific question or issue operator is investigating",
     )
+    enable_reflect: bool = Field(
+        default=False,
+        description="Whether to invoke optional Hindsight Reflect reasoning synthesis",
+    )
 
 
 class CurrentSEOEvidence(BaseDomainModel):
@@ -196,4 +200,8 @@ class SEOWorkflowResult(BaseDomainModel):
     experiment_proposal: Optional[SEOExperiment] = Field(
         default=None,
         description="Experiment proposal generated only upon explicit approval",
+    )
+    reflection_result: Optional[Any] = Field(
+        default=None,
+        description="Optional structured Hindsight Reflect reasoning result",
     )

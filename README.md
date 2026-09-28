@@ -236,26 +236,34 @@ The synthetic dataset can be ingested directly into Hindsight to provide persist
 
 SearchMind's SEO Agent coordinates evidence-based diagnostic analysis and context-aware optimization decisions through a deterministic, human-in-the-loop workflow:
 
-```
+```text
 CURRENT SEO DATA
         ↓
-HISTORICAL CONTEXT (Hindsight Memory)
+HINDSIGHT RECALL (Semantic & Keyword Memory Search)
         ↓
-SYNTHESIZED REFLECTION
+HISTORICAL CONTEXT (Local Deterministic Analyzer)
+        ↓
+OPTIONAL HINDSIGHT REFLECT (Thematic Reasoning & Cross-Experiment Synthesis)
+  └─► Graceful Fallback to Local Analysis if Quota Blocked or Offline
         ↓
 CONTEXT-AWARE RECOMMENDATION
         ↓
 HUMAN APPROVAL GATEWAY (requires_approval = True)
         ↓
 PLANNED EXPERIMENT PROPOSAL
+        ↓
+MEASURED OUTCOME & LESSON
+        ↓
+HINDSIGHT RETAIN (Idempotent update_mode="replace")
 ```
 
 ### Strict Separation of Evidence & Reasoning
-SearchMind strictly distinguishes four cognitive components:
+SearchMind strictly distinguishes five cognitive components:
 1. **Current Evidence:** Observable, empirical present-state measurements (SERP position, organic CTR, impression/click volumes, diagnostic observations, severity). Missing data is explicitly marked as unavailable rather than fabricated.
 2. **Historical Evidence:** Recalled experiment records and measured outcomes from past trials on similar page types and search intents, categorized into positive, negative, neutral, and inconclusive precedents.
-3. **Reflection:** Synthesized reasoning that weighs historical precedents against the current context, evaluating nuances, seasonal caveats, algorithm volatility, and keyword placement.
-4. **Recommendation:** An actionable, falsifiable optimization proposal with bounded, explainable confidence (`0.10` to `0.85`), expected impact, and an enforced human approval requirement (`requires_approval = True`).
+3. **Local Historical Analysis:** Deterministic, non-dogmatic rule-based precedent analysis and initial reflection narrative based on confirmed historical outcomes.
+4. **Hindsight Reflect (Optional Reasoning Enhancement):** Qualitative cross-experiment synthesis identifying thematic patterns, supporting evidence, conflicting evidence, and external caveats across retrieved precedents. Reflect is strictly non-dogmatic (never asserts universal rules) and falls back safely to local analysis if the provider is unavailable or quota is exhausted.
+5. **Recommendation & Bounded Confidence:** An actionable, falsifiable optimization proposal with bounded, explainable confidence (`0.10` to `0.85`), expected impact, and an enforced human approval requirement (`requires_approval = True`). Deterministic confidence calculations remain authoritative and are never overridden by LLM reflection.
 
 ### Decision Rules
 * **Rule A (Opportunity):** When CTR declines and relevant historical title precedents exist, propose a targeted title optimization trial.
@@ -264,6 +272,13 @@ SearchMind strictly distinguishes four cognitive components:
 * **Rule D (Inconclusive Precedent):** When past data was confounded by external factors (e.g. algorithm rollouts), propose a controlled measurement trial rather than guaranteed gains.
 * **Rule E (Contextual Divergence):** When page types or intents differ between precedents and the current target, reduce confidence and explicitly state the contextual difference.
 * **Rule F (Zero Precedent):** When no relevant experiments exist in memory, state that historical precedent is unavailable without inventing false confidence.
+
+### Optional Reflect Fallback Guarantee
+SearchMind's core workflow treats Hindsight Reflect as an optional reasoning enhancement, never as a single point of failure:
+- **No Extra Recall:** Reflect consumes already-retrieved memories as context, eliminating redundant network requests.
+- **Fail-Safe Fallback:** If Reflect fails, times out, or encounters a 429 quota exhaustion, the engine logs a warning and proceeds uninterrupted using deterministic local analysis.
+- **Non-Dogmatic Guardrails:** Reflection text is automatically sanitized to prevent over-generalized assertions ("always increases", "guarantees") from polluting recommendations.
+- **Authoritative Confidence:** Confidence scores are strictly computed by deterministic rules and cannot be inflated by reflection narrative.
 
 ### Token Conservation Policy
 During ordinary test execution and agent workflow development, SearchMind executes all analysis, retrieval, and decision rules deterministically in local memory with zero external LLM calls. Live Hindsight/Groq calls are preserved for persistent memory storage and milestone integration tests.

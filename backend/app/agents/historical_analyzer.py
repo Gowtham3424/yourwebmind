@@ -297,3 +297,47 @@ class HistoricalAnalyzer:
             has_contextual_mismatch=has_mismatch,
             mismatch_reason=mismatch_reason,
         )
+
+    def merge_reflection(
+        self,
+        historical_context: HistoricalSEOContext,
+        reflection_result: Any,
+    ) -> HistoricalSEOContext:
+        """
+        Merge Hindsight Reflect qualitative synthesis and caveats into historical context.
+
+        Preserves existing deterministic example categorization and confidence rules
+        while enriching the qualitative reasoning and contextual caveat disclosures.
+        """
+        if not reflection_result or not getattr(reflection_result, "success", False):
+            return historical_context
+
+        # 1. Enrich reflection narrative
+        reflect_text = getattr(reflection_result, "synthesis_text", "")
+        if reflect_text:
+            if historical_context.reflection:
+                combined_reflection = f"{historical_context.reflection}\n\n[Hindsight Reflect Synthesis]\n{reflect_text}"
+            else:
+                combined_reflection = f"[Hindsight Reflect Synthesis]\n{reflect_text}"
+        else:
+            combined_reflection = historical_context.reflection
+
+        # 2. Merge caveats and confounding factors
+        updated_caveats = list(historical_context.contextual_caveats)
+        for c in getattr(reflection_result, "caveats", []):
+            label = f"[Reflect Caveat] {c}"
+            if label not in updated_caveats and not any(c[:30] in existing for existing in updated_caveats):
+                updated_caveats.append(label)
+
+        # 3. Explicitly preserve conflicting evidence in caveats
+        for conf in getattr(reflection_result, "conflicting_evidence", []):
+            label = f"[Conflicting Evidence] {conf}"
+            if label not in updated_caveats and not any(conf[:30] in existing for existing in updated_caveats):
+                updated_caveats.append(label)
+
+        return historical_context.model_copy(
+            update={
+                "reflection": combined_reflection,
+                "contextual_caveats": updated_caveats,
+            }
+        )
