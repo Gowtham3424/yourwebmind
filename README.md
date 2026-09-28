@@ -1,12 +1,16 @@
-# SearchMind
+# YourWebMind
 
-> "An SEO agent that remembers what happened, learns what worked, and gets smarter over time."
+## Memory-driven SEO intelligence
 
-SearchMind is an SEO intelligence agent powered by **Vectorize Hindsight** persistent memory. Rather than performing stateless, one-off audits, SearchMind retains observations, optimization hypotheses, controlled A/B experiments, and measurable empirical outcomes to synthesize contextual, evidence-backed recommendations through continuous learning.
+> "An SEO agent that remembers what happened, learns from outcomes, and gets smarter over time."
+
+"YourWebMind compares today's SEO signal with previous experiments, reasons from historical evidence, and learns from every measured outcome."
+
+YourWebMind is a memory-driven SEO intelligence agent powered by **Vectorize Hindsight** persistent memory. Rather than performing stateless, one-off audits, YourWebMind retains observations, optimization hypotheses, controlled A/B experiments, and measurable empirical outcomes to synthesize contextual, evidence-backed recommendations through continuous learning.
 
 ---
 
-## Why SearchMind
+## Why YourWebMind
 
 ### The Problem with Traditional SEO Tooling
 Conventional SEO software (crawlers, rank trackers, keyword explorers) provides rich diagnostic snapshots of the current moment:
@@ -21,8 +25,8 @@ What is missing is **organizational memory**:
 
 Without persistent experiential memory, SEO teams repeatedly make the same mistakes, discard hard-won lessons across team turnover, and rely on dogmatic "best practices" that frequently fail in specific commercial contexts.
 
-### The SearchMind Solution
-SearchMind treats SEO as an **empirical, experimental science governed by contextual precedent**:
+### The YourWebMind Solution
+YourWebMind treats SEO as an **empirical, experimental science governed by contextual precedent**:
 1. **Persistent Memory:** Stores every observation, decision, experiment, and measured metric delta in Vectorize Hindsight.
 2. **Contextual Retrieval:** Recalls past experiments from comparable page types and search intents before formulating an action.
 3. **Evidence-Based Reasoning:** Weighs positive, negative, neutral, and inconclusive precedents to identify what worked and what backfired.
@@ -31,7 +35,7 @@ SearchMind treats SEO as an **empirical, experimental science governed by contex
 
 > [!NOTE]
 > **Scope & Realistic Expectations:**
-> SearchMind does not claim to replace established enterprise rank trackers or crawlers, nor does it assert universal SEO causality. SEO algorithms are dynamic external systems influenced by competition and seasonal shifts. SearchMind provides **contextual precedent intelligence** to replace blind guesswork with documented historical evidence.
+> YourWebMind does not claim to replace established enterprise rank trackers or crawlers, nor does it assert universal SEO causality. SEO algorithms are dynamic external systems influenced by competition and seasonal shifts. YourWebMind provides **contextual precedent intelligence** to replace blind guesswork with documented historical evidence.
 
 ---
 
@@ -45,9 +49,9 @@ CURRENT SEO DATA ──► [ GENERIC LLM PROMPT ] ──► "BEST PRACTICE" RECO
 
 This stateless approach has no memory of past failures and treats all websites and page types identically.
 
-### SearchMind's 10-Stage Biomimetic Memory Loop
+### YourWebMind's 10-Stage Biomimetic Memory Loop
 
-SearchMind implements a closed-loop evidence architecture:
+YourWebMind implements a closed-loop evidence architecture:
 
 ```text
 CURRENT SEO SIGNAL (Rank 3.1, CTR drop -1.40 pp on Product Page)
@@ -81,19 +85,19 @@ FUTURE RECOMMENDATIONS IMPROVE (Precedent is recalled for subsequent optimizatio
 ```
 
 ### Contextual Specificity vs. Dogmatic Rules
-Historical SEO experiments in SearchMind are classified into four balanced empirical categories:
+Historical SEO experiments in YourWebMind are classified into four balanced empirical categories:
 * **Positive Precedents:** Demonstrated measurable uplift under specific intent and page conditions.
 * **Negative Precedents (Cautionary Lessons):** Optimization tactics that harmed rankings, clicks, or conversion (e.g., aggressive discount keywords degrading brand trust).
 * **Neutral Precedents:** Changes whose variance fell within normal SERP noise without significant impact.
 * **Inconclusive Precedents:** Experiments confounded by external seasonality or concurrent algorithm updates.
 
-SearchMind explicitly surfaces conflicting evidence and contextual caveats rather than declaring any single experiment outcome a universal rule.
+YourWebMind explicitly surfaces conflicting evidence and contextual caveats rather than declaring any single experiment outcome a universal rule.
 
 ---
 
 ## Operating Modes
 
-SearchMind is architected with a strict separation between its **Evaluator Demo Mode** and its **Live Hindsight Verification Mode**:
+YourWebMind is architected with a strict separation between its **Evaluator Demo Mode** and its **Live Hindsight Verification Mode**:
 
 | Attribute | Offline Evaluator Demo Mode (`SEARCHMIND_DEMO_MODE=true`) | Live Hindsight Verification Mode (`SEARCHMIND_DEMO_MODE=false`) |
 | :--- | :--- | :--- |
@@ -108,7 +112,7 @@ SearchMind is architected with a strict separation between its **Evaluator Demo 
 
 ## Recommended Demo Flow (Evaluator Walkthrough)
 
-Follow this 12-step sequence to evaluate SearchMind's evidence-based learning loop:
+Follow this 12-step sequence to evaluate YourWebMind's evidence-based learning loop:
 
 ### Step 1: Launch in Offline Demo Mode
 Ensure `SEARCHMIND_DEMO_MODE=true` in `backend/.env` (default state), then start the backend:
@@ -125,67 +129,69 @@ http://127.0.0.1:8000/app
 Confirm the editorial workbench renders with the `DEMO DATA` disclosure badge visible in the navigation bar.
 
 ### Step 3: Inspect the Current SEO Signal
-Observe Section 1 (`CURRENT SEO SIGNAL`):
+Observe Section 1 (`01 / CURRENT SEO SIGNAL`):
 * **Page:** `Waterproof Alpine Hiking Boots` (`/products/waterproof-alpine-hiking-boots`)
 * **Search Intent:** `Commercial`
 * **SERP Ranking:** `3.1` (top-3 position maintained)
-* **CTR Decline:** `1.80%` down from `3.20%` (`-1.40 pp` delta)
+* **CTR Decline:** `1.80%` down from `3.20%` (`−1.40 pp` delta)
 * **Observed Clicks:** `277` clicks from `15,400` impressions
 
 ### Step 4: Examine Historical Memory & Relevant Precedents
-Observe Section 2 (`HISTORICAL MEMORY`):
+Observe Section 2 (`02 / HISTORICAL MEMORY`):
 * Displays **9 relevant historical experiments** retrieved from memory.
 * Balanced empirical distribution: **2 Positive, 3 Negative, 2 Neutral, 2 Inconclusive**.
-* Surfaces direct conflicting evidence: `EXP_014` saw a `-20.1%` CTR drop when discount modifiers were added to trekking boots.
+* Surfaces direct conflicting evidence: `EXP_014` saw a `−20.1%` CTR drop when discount modifiers were added to trekking boots.
 
 ### Step 5: Review Contextual Reasoning & Caveats
-Observe Section 3 (`WHAT SEARCHMIND LEARNED`):
+Observe Section 3 (`03 / EVIDENCE SYNTHESIS`):
 * **Precedent Synthesis:** Explains that keyword-first commercial alignment reliably recovered CTR on comparable product pages, whereas discount modifiers degraded performance.
 * **Notice:** Truthfully indicates `Reasoning synthesized via deterministic contextual precedent evaluation.`
 * **Contextual Caveat:** Emphasizes that historical outcomes are contextual to observed templates and seasonal intent, not universal laws.
 
 ### Step 6: Review the Recommendation & Bounded Confidence
-Observe Section 4 (`RECOMMENDATION & APPROVAL GATEWAY`):
+Observe Section 4 (`04 / RECOMMENDATION & APPROVAL GATEWAY`):
 * **Action:** Proposes revising the title tag to front-load "waterproof hiking boots", retain brand identity, and strictly avoid aggressive discount modifiers.
-* **Bounded Confidence:** Displays `0.57 (Bounded between 0.10 and 0.85 per deterministic evidence rules)`.
+* **Bounded Confidence:** Displays `57% (0.57 bounded: 0.10 to 0.85 per deterministic evidence rules)`.
 * **Impact Estimate:** Projected `+15% to +30% CTR` recovery.
 
 ### Step 7: Observe the Human Approval Gateway
 Notice the prominent status badge:
 ```
-PENDING APPROVAL
+PENDING HUMAN APPROVAL
 ```
-The `[Run Controlled Experiment]` button is disabled. SearchMind strictly blocks autonomous experiment execution without operator consent.
+The `[Run Controlled Experiment]` button is locked. YourWebMind strictly blocks autonomous experiment execution without operator consent.
+Subtitle: *"YourWebMind recommends. A human decides."*
 
 ### Step 8: Grant Operator Approval
 1. Enter an optional operator note in the input field:
    `"Approved keyword-first title test. Exclude aggressive discount phrasing."`
 2. Click **`[Approve Recommendation]`**.
 3. Observe the immediate transition to green `APPROVED` status with timestamp and recorded note.
-4. The **`[Run Controlled Experiment]`** action button is now unlocked.
+4. The **`[Run Controlled Experiment]`** action button is now unlocked under `READY TO RUN EXPERIMENT`.
 
 ### Step 9: Execute the Controlled Experiment
 Click **`[Run Controlled Experiment]`**:
 * Simulates the 4-week controlled A/B measurement period.
-* **Measured CTR:** `1.80%` baseline moves to `2.70%` (`+0.90 pp` absolute change).
-* **Relative Lift:** `+50.0%` organic CTR improvement.
-* **Outcome Classification:** Validated as `POSITIVE`.
+* **Measured CTR:** `1.80%` baseline moves to `2.70%` (`+0.90 percentage points` absolute change).
+* **Relative Lift:** `+50.0% relative change` organic CTR improvement.
+* **Outcome Classification:** Validated as `OUTCOME: POSITIVE`.
 
 ### Step 10: Verify Memory Retention (Retained Lesson)
-Observe Section 6 (`MEMORY UPDATED (RETAINED LESSON)`):
+Observe Section 6 (`06 / PERSISTENT LEARNING`):
 * Displays the structured lesson retained for future cycles.
 * **Memory Document ID:** `seo_exp_021_demo`
 * **Verification Confirmation:** Confirms future recall queries on commercial hiking boot pages will now incorporate `exp_021` as a positive precedent.
 
 ### Step 11: Explore the Memory Browser
-Scroll down to Section 7 (`SEARCH DEMO SEO MEMORY`):
+Scroll down to Section 7 (`07 / HISTORICAL EVIDENCE LIBRARY`):
+* Title: `Search YourWebMind SEO Memory`
 * Search across the 20 historical SEO experiment records using the search bar or filter pills (`Positive (5)`, `Negative (6)`, `Neutral (4)`, `Inconclusive (5)`).
 * Search for `"waterproof hiking boots"` to inspect the exact historical precedent cards that influenced the recommendation.
 
 ### Step 12: Reset Session to Initial State
 Click the **`[Reset Demo]`** button in the top navigation bar.
 * Verifies `POST /api/v1/agent/reset`.
-* Returns the in-memory session cleanly to the initial `PENDING APPROVAL` state without altering the underlying persistent database.
+* Returns the in-memory session cleanly to the initial `PENDING HUMAN APPROVAL` state without altering the underlying persistent database.
 
 ---
 
@@ -200,7 +206,7 @@ Click the **`[Reset Demo]`** button in the top navigation bar.
 
 ### Live Hindsight Verification
 
-SearchMind's live Hindsight integration was independently verified using the Google Gemini provider:
+YourWebMind's live Hindsight integration was independently verified using the Google Gemini provider:
 
 * **Provider:** `gemini` (via native `hindsight-all` provider engine)
 * **Model:** `gemini-3.5-flash-lite`
@@ -223,7 +229,7 @@ To run the single, isolated live integration test against Gemini:
 
 ## Verification & Test Suite
 
-SearchMind maintains a comprehensive deterministic test suite providing zero-token verification across all domain models, adapters, audit rules, and API endpoints:
+YourWebMind maintains a comprehensive deterministic test suite providing zero-token verification across all domain models, adapters, audit rules, and API endpoints:
 
 ```powershell
 cd backend
@@ -232,7 +238,7 @@ cd backend
 
 * **Test Suite Status:** **118 passed, 1 deselected** (the single deselected test is the optional live integration test).
 * **Token Cost:** **0 tokens consumed**.
-* **Duration:** ~25–65s depending on CPU disk I/O.
+* **Duration:** ~25–45s depending on CPU disk I/O.
 
 ### Verified Test Categories
 1. `test_models.py` (20 tests): Pydantic v2 validation, schema constraints, serialization, and enum boundaries.
@@ -252,8 +258,8 @@ cd backend
 ## Deployment Readiness & Constraints
 
 * **Stateful Embedded Database (`pg0-embedded`):** Vectorize Hindsight operates on a native embedded PostgreSQL instance that binds locally to port 5432 and stores memory units on disk.
-* **Persistent Host Requirement:** SearchMind is designed for local evaluation, dedicated VMs, or persistent container environments (e.g., Docker with mounted persistent volumes, AWS EC2, GCP Compute Engine).
-* **Stateless Serverless Incompatibility:** Due to the local process daemon requirements of embedded `pg0`, SearchMind cannot be deployed to stateless ephemeral platforms (e.g., AWS Lambda, Vercel Serverless) without configuring an external managed PostgreSQL database via `HINDSIGHT_API_DATABASE_URL`.
+* **Persistent Host Requirement:** YourWebMind is designed for local evaluation, dedicated VMs, or persistent container environments (e.g., Docker with mounted persistent volumes, AWS EC2, GCP Compute Engine).
+* **Stateless Serverless Incompatibility:** Due to the local process daemon requirements of embedded `pg0`, YourWebMind cannot be deployed to stateless ephemeral platforms (e.g., AWS Lambda, Vercel Serverless) without configuring an external managed PostgreSQL database via `HINDSIGHT_API_DATABASE_URL`.
 * **Production Deployment Path:** For cloud production deployments, point `HINDSIGHT_API_DATABASE_URL` to an external PostgreSQL instance (AWS RDS, Supabase, Cloud SQL) and run FastAPI via standard ASGI container infrastructure.
 
 ---

@@ -1,8 +1,8 @@
-# SearchMind Synthetic SEO Dataset
+# YourWebMind Synthetic SEO Dataset
 
-This directory contains the production-grade synthetic SEO dataset generated for **SearchMind** hackathon demonstrations, benchmarking, and persistent memory seeding.
+This directory contains the production-grade synthetic SEO dataset generated for **YourWebMind** hackathon demonstrations, benchmarking, and persistent memory seeding.
 
-All records are strictly validated against SearchMind's Pydantic domain models defined in `backend/app/models/`.
+All records are strictly validated against YourWebMind's Pydantic domain models defined in `backend/app/models/`.
 
 ---
 
@@ -33,7 +33,7 @@ The dataset consists of 7 interconnected JSON files with strict foreign-key rela
 
 ## 3. Experiment Outcome Balance
 
-SearchMind avoids dogmatic or "always positive" SEO assumptions. The 20 experiments reflect the reality of organic search testing:
+YourWebMind avoids dogmatic or "always positive" SEO assumptions. The 20 experiments reflect the reality of organic search testing:
 
 | Outcome Class | Count | Percentage | Real-World SEO Dynamic |
 | :--- | :--- | :--- | :--- |

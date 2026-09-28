@@ -179,15 +179,15 @@ def test_frontend_workspace_serving():
     res_html = client.get("/", headers={"Accept": "text/html,application/xhtml+xml"})
     assert res_html.status_code == 200
     assert "text/html" in res_html.headers.get("content-type", "")
-    assert "SearchMind" in res_html.text
+    assert "YourWebMind" in res_html.text
     assert "The Learning Loop" in res_html.text
 
     # Direct /app route
     res_app = client.get("/app")
     assert res_app.status_code == 200
-    assert "SearchMind" in res_app.text
+    assert "YourWebMind" in res_app.text
 
     # JSON request to root
     res_json = client.get("/", headers={"Accept": "application/json"})
     assert res_json.status_code == 200
-    assert res_json.json()["service"] == "SearchMind API"
+    assert res_json.json()["service"] == "YourWebMind API"

@@ -1,4 +1,4 @@
-"""Main FastAPI application entrypoint for SearchMind."""
+"""Main FastAPI application entrypoint for YourWebMind."""
 
 import logging
 from contextlib import asynccontextmanager
@@ -26,7 +26,7 @@ logger = logging.getLogger("searchmind")
 @asynccontextmanager
 async def lifespan(app: FastAPI):
     """Application lifespan manager handling startup and shutdown of Hindsight."""
-    logger.info("=== Starting SearchMind Backend ===")
+    logger.info("=== Starting YourWebMind Backend ===")
 
     if settings.SEARCHMIND_DEMO_MODE:
         logger.info(
@@ -34,7 +34,7 @@ async def lifespan(app: FastAPI):
             "and external LLM provider calls. Operating in deterministic offline evaluator mode."
         )
         yield
-        logger.info("=== Shutting down SearchMind Backend (Demo Mode) ===")
+        logger.info("=== Shutting down YourWebMind Backend (Demo Mode) ===")
         return
 
     hindsight = get_hindsight_service()
@@ -54,9 +54,9 @@ async def lifespan(app: FastAPI):
 
     yield
 
-    logger.info("=== Shutting down SearchMind Backend ===")
+    logger.info("=== Shutting down YourWebMind Backend ===")
     hindsight.shutdown()
-    logger.info("SearchMind shutdown complete.")
+    logger.info("YourWebMind shutdown complete.")
 
 
 app = FastAPI(
@@ -94,8 +94,8 @@ def get_root(request: Request):
     if "text/html" in accept and index_file.exists():
         return FileResponse(index_file)
     return {
-        "service": "SearchMind API",
-        "tagline": "An SEO agent that remembers what happened, learns what worked, and gets smarter over time.",
+        "service": "YourWebMind API",
+        "tagline": "An SEO agent that remembers what happened, learns from outcomes, and gets smarter over time.",
         "version": "0.1.0",
         "health_check": "/health",
         "docs": "/docs",
@@ -105,7 +105,7 @@ def get_root(request: Request):
 
 @app.get("/app")
 def get_app():
-    """Direct route to SearchMind workspace interface."""
+    """Direct route to YourWebMind workspace interface."""
     index_file = STATIC_DIR / "index.html"
     if index_file.exists():
         return FileResponse(index_file)

@@ -1,5 +1,5 @@
 /* ==========================================================================
-   SearchMind — Evaluator-First Editorial SaaS Design System
+   YourWebMind — Evaluator-First Editorial SaaS Design System
    Sophisticated minimalism, evidence-first typography, restrained palette.
    ========================================================================== */
 
@@ -1513,7 +1513,7 @@ a {
 }
 
 /* ==========================================================================
-   Section 6: What SearchMind Learned
+   Section 6: What YourWebMind Learned
    ========================================================================== */
 .learned-lesson-box {
   background-color: #fafaf9;
@@ -1925,6 +1925,11 @@ a {
 
   .top-bar {
     padding: 10px 14px;
+  }
+
+  .brand-logotype {
+    flex-wrap: wrap;
+    gap: 4px;
   }
 
   .main-container {

@@ -1,7 +1,7 @@
 /**
- * SearchMind — Evaluator-First Frontend Logic
+ * YourWebMind — Evaluator-First Frontend Logic
  * Pure vanilla JavaScript with zero external dependencies.
- * Consumes deterministic SearchMind backend APIs.
+ * Consumes deterministic YourWebMind backend APIs.
  */
 
 (function () {
@@ -255,7 +255,7 @@
     const headingBrowser = document.getElementById('heading-browser');
     const browserIntro = document.querySelector('.browser-intro');
     if (data.demo_mode) {
-      if (headingBrowser) headingBrowser.textContent = 'Search Demo SEO Memory';
+      if (headingBrowser) headingBrowser.textContent = 'Search YourWebMind SEO Memory';
       if (browserIntro) browserIntro.textContent = 'Search the deterministic demo experiment records to explore positive, negative, neutral, and inconclusive precedents.';
     } else {
       if (headingBrowser) headingBrowser.textContent = 'Search Hindsight SEO Memory';
@@ -389,7 +389,7 @@
 
   // 4. Reset Demo State
   async function handleResetDemo() {
-    if (!confirm('Reset the SearchMind demonstration back to the initial pre-approval state?')) return;
+    if (!confirm('Reset the YourWebMind demonstration back to the initial pre-approval state?')) return;
     try {
       await fetch(`${API_BASE}/agent/reset`, { method: 'POST' });
       sectionExperiment.classList.add('hidden');
