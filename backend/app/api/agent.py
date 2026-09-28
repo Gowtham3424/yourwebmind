@@ -2,7 +2,7 @@
 
 Exposes the 12-stage evidence-based SEO learning loop and memory browser
 to the minimal evaluator frontend.
-Zero external Groq calls, zero live data mutations.
+Zero external LLM calls, zero live data mutations.
 """
 
 from datetime import datetime, timezone
