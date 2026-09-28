@@ -18,6 +18,10 @@ class SEOExperiment(BaseDomainModel):
 
     experiment_id: str = Field(..., description="Unique experiment identifier")
     project_id: str = Field(..., description="Project identifier")
+    recommendation_id: Optional[str] = Field(
+        default=None,
+        description="Optional identifier of the SEORecommendation motivating this experiment",
+    )
     url: HttpUrl = Field(..., description="Target webpage URL being tested")
     experiment_type: str = Field(
         ...,
