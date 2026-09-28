@@ -1,5 +1,5 @@
 /**
- * SearchMind — Minimal Evaluator Frontend Logic
+ * SearchMind — Evaluator-First Frontend Logic
  * Pure vanilla JavaScript with zero external dependencies.
  * Consumes deterministic SearchMind backend APIs.
  */
@@ -10,7 +10,7 @@
   // API Base
   const API_BASE = '/api/v1';
 
-  // DOM Elements
+  // DOM Elements: Navigation & Loop
   const btnRunAnalysis = document.getElementById('btn-run-analysis');
   const btnReset = document.getElementById('btn-reset');
   const loopCurrentStatus = document.getElementById('loop-current-status');
@@ -104,21 +104,27 @@
     }
   }
 
-  // Update The Learning Loop Step Indicators
+  // Update The Learning Loop Step Indicators (10 stages)
   function updateLearningLoop(stage) {
     const steps = loopSteps.querySelectorAll('.step');
     const stageMap = {
+      'observe': 1,
       'current_data': 1,
       'recall': 2,
+      'compare': 3,
       'historical_evidence': 3,
+      'reason': 4,
       'reflect': 4,
       'recommend': 5,
+      'approve': 6,
       'approval': 6,
       'approved': 6,
       'rejected': 6,
       'experiment': 7,
+      'measure': 8,
       'outcome': 8,
       'retain': 9,
+      'learn': 10,
       'future_learning': 10,
       'completed': 10
     };
@@ -142,11 +148,11 @@
     if (stage === 'completed') {
       loopCurrentStatus.textContent = 'Stage 10/10: Complete — Lesson Retained & Available';
     } else if (stage === 'approved') {
-      loopCurrentStatus.textContent = 'Stage 6/10: Recommendation Approved — Ready to Run Experiment';
+      loopCurrentStatus.textContent = 'Stage 06/10: Recommendation Approved — Ready to Run Experiment';
     } else if (stage === 'rejected') {
-      loopCurrentStatus.textContent = 'Stage 6/10: Recommendation Rejected — Execution Halted';
+      loopCurrentStatus.textContent = 'Stage 06/10: Recommendation Rejected — Execution Halted';
     } else {
-      loopCurrentStatus.textContent = 'Stage 6/10: Human Approval Gateway (Pending)';
+      loopCurrentStatus.textContent = 'Stage 06/10: Human Approval Gateway (Pending)';
     }
   }
 
@@ -176,41 +182,67 @@
     signalUrl.href = sig.page_url;
     signalKeyword.textContent = sig.keyword;
     signalCurrentCtr.textContent = `${sig.current_ctr.toFixed(2)}%`;
-    signalPrevCtr.textContent = `Previous: ${sig.previous_ctr.toFixed(2)}% (delta: ${sig.ctr_delta > 0 ? '+' : ''}${sig.ctr_delta.toFixed(2)} pp)`;
+    signalPrevCtr.textContent = `${sig.previous_ctr.toFixed(2)}% previous`;
     signalRank.textContent = sig.rank.toFixed(1);
-    signalRankSub.textContent = `Previous: ${sig.previous_rank.toFixed(1)} (Maintained rank)`;
+    signalRankSub.textContent = `Maintained top-3 rank (prev: ${sig.previous_rank.toFixed(1)})`;
     signalImpressions.textContent = sig.impressions.toLocaleString();
     signalClicks.textContent = `${sig.clicks.toLocaleString()} clicks (observed)`;
     signalSummary.textContent = sig.signal_description;
 
-    // Historical Memory Section
+    // Historical Memory Section Counts
     memTotalCount.textContent = mem.relevant_count;
     memPosCount.textContent = mem.positive_count;
     memNegCount.textContent = mem.negative_count;
     memNeuCount.textContent = mem.neutral_count;
     memIncCount.textContent = mem.inconclusive_count;
 
-    // Render Compact Evidence List
+    // Render Compact Evidence Cards List
     evidenceCompactList.innerHTML = '';
     mem.evidence_list.forEach(item => {
       const li = document.createElement('li');
-      li.className = 'evidence-item';
+      const outcome = (item.outcome || '').toLowerCase();
+      const badgeCls = getOutcomeBadgeClass(item.outcome);
+
+      let roleLabel = 'Contextual Precedent';
+      let roleClass = 'role-contextual';
+      if (outcome === 'positive') {
+        roleLabel = 'Supporting precedent';
+        roleClass = 'role-supporting';
+      } else if (outcome === 'negative') {
+        roleLabel = 'Conflicting precedent';
+        roleClass = 'role-conflicting';
+      } else if (outcome === 'neutral') {
+        roleLabel = 'Neutral precedent';
+        roleClass = 'role-neutral';
+      } else if (outcome === 'inconclusive') {
+        roleLabel = 'Inconclusive precedent';
+        roleClass = 'role-inconclusive';
+      }
+
+      li.className = `evidence-card-item ${roleClass}`;
       li.innerHTML = `
-        <div class="evidence-item-header">
-          <span class="evidence-id">${item.experiment_id.toUpperCase()}</span>
-          <span class="badge ${getOutcomeBadgeClass(item.outcome)}">${item.outcome.toUpperCase()}</span>
-          <span class="evidence-delta font-mono">${item.delta}</span>
+        <div class="evidence-card-top">
+          <div class="evidence-identity">
+            <span class="evidence-id font-mono">${item.experiment_id.toUpperCase()}</span>
+            <span class="evidence-type">${item.technique || 'Title Tag Strategy'}</span>
+          </div>
+          <div class="evidence-outcome-wrap">
+            <span class="badge ${badgeCls}">${item.outcome.toUpperCase()}</span>
+            <span class="evidence-delta font-mono">${item.delta}</span>
+          </div>
         </div>
-        <div class="evidence-summary">${item.summary}</div>
+        <div class="evidence-summary-text">${item.summary}</div>
+        <div class="evidence-role-tag font-mono">${roleLabel}</div>
       `;
       evidenceCompactList.appendChild(li);
     });
 
-    // What SearchMind Learned Section
+    // Why This Recommendation / Evidence Synthesis Section
     reasoningSynthesis.textContent = `“${lrn.synthesis}”`;
     reasoningSupporting.textContent = lrn.relevant_evidence;
     reasoningConflicting.textContent = lrn.conflicting_evidence;
     reasoningCaveat.textContent = lrn.caveat;
+
     if (lrn.reflect_status_note) {
       reflectNoteText.textContent = lrn.reflect_status_note;
     } else if (data.demo_mode) {
@@ -219,7 +251,7 @@
       reflectNoteText.textContent = 'Reasoning synthesized with Hindsight Reflect.';
     }
 
-    // Dynamic Memory Browser Header
+    // Dynamic Memory Browser Header based on demo/live mode
     const headingBrowser = document.getElementById('heading-browser');
     const browserIntro = document.querySelector('.browser-intro');
     if (data.demo_mode) {
@@ -234,7 +266,7 @@
     recActionText.textContent = rec.action;
     recRationale.textContent = rec.rationale;
     recImpact.textContent = rec.expected_impact;
-    recConfidence.innerHTML = `<strong>${rec.confidence.toFixed(2)}</strong> <span class="text-muted">(${rec.confidence_bounds})</span>`;
+    recConfidence.innerHTML = `<strong>${Math.round(rec.confidence * 100)}%</strong> <span class="text-muted">(${rec.confidence.toFixed(2)} bounded: 0.10 to 0.85)</span>`;
 
     // Approval Gateway Initial State
     setApprovalState(data.approval.status, data.approval.operator_note);
@@ -341,8 +373,8 @@
     expMetric.textContent = exp.metric;
     expBaseline.textContent = `${exp.baseline.toFixed(2)}%`;
     expMeasured.textContent = `${exp.measured.toFixed(2)}%`;
-    expAbsChange.textContent = out.absolute_change;
-    expRelChange.textContent = out.relative_change;
+    expAbsChange.textContent = `${out.absolute_change} percentage points`;
+    expRelChange.textContent = `${out.relative_change} relative change`;
     expFactualText.textContent = `“${out.factual_statement}”`;
     badgeOutcomeClass.textContent = `OUTCOME: ${out.classification}`;
     badgeOutcomeClass.className = `badge ${getOutcomeBadgeClass(out.classification)}`;
@@ -394,7 +426,7 @@
   function renderMemoryCards(items) {
     memoryCardsList.innerHTML = '';
     if (!items || items.length === 0) {
-      memoryCardsList.innerHTML = '<div class="text-muted font-mono" style="padding: 16px; text-align: center;">No matching experiments found in memory bank.</div>';
+      memoryCardsList.innerHTML = '<div class="text-muted font-mono" style="padding: 24px; text-align: center;">No matching experiments found in memory bank.</div>';
       return;
     }
 
@@ -406,22 +438,24 @@
 
       card.innerHTML = `
         <div class="mem-card-top">
-          <div>
-            <span class="mem-card-id">${item.experiment_id}</span>
-            ${isRetainedDemo ? '<span class="badge badge-demo" style="margin-left: 6px; font-size: 0.65rem;">NEWLY RETAINED</span>' : ''}
+          <div class="mem-card-title-group">
+            <span class="mem-card-id font-mono">${item.experiment_id}</span>
+            ${isRetainedDemo ? '<span class="badge badge-demo badge-retained-new">NEWLY RETAINED PRECEDENT</span>' : ''}
           </div>
-          <span class="badge ${badgeCls}">${(item.outcome || 'UNKNOWN').toUpperCase()}</span>
-          <span class="mem-card-delta">${item.delta}</span>
+          <div class="mem-card-status-group">
+            <span class="badge ${badgeCls}">${(item.outcome || 'UNKNOWN').toUpperCase()}</span>
+            <span class="mem-card-delta font-mono">${item.delta}</span>
+          </div>
         </div>
         <div class="mem-card-tech">${item.technique}</div>
         <div class="mem-card-context">${item.context || ''}</div>
-        ${item.caveat ? `<div class="mem-card-caveat">Caveat: ${item.caveat}</div>` : ''}
+        ${item.caveat ? `<div class="mem-card-caveat font-mono">Caveat: ${item.caveat}</div>` : ''}
       `;
       memoryCardsList.appendChild(card);
     });
   }
 
-  // Update Memory Counts in Pills
+  // Update Memory Counts in Filter Pills
   function updateMemoryCounts(items) {
     let pos = 0, neg = 0, neu = 0, inc = 0;
     items.forEach(it => {
