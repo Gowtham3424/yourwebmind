@@ -285,11 +285,17 @@ During ordinary test execution and agent workflow development, SearchMind execut
 
 ### Running the Deterministic SEO Agent Demo
 ```powershell
-# Run the deterministic local demonstration:
+# From the backend directory:
+cd backend
+
+# Execute the zero-token deterministic end-to-end learning loop demo:
 .\.venv\Scripts\python.exe -m app.agents.demo_scenario
 
-# Run the complete deterministic agent test suite:
-.\.venv\Scripts\python.exe -m pytest tests/test_seo_agent.py -v
+# Run the complete test suite (102 passed, 0 tokens consumed):
+.\.venv\Scripts\python.exe -m pytest -v -m "not integration"
+
+# Run audit and fallback tests specifically:
+.\.venv\Scripts\python.exe -m pytest tests/test_audit_and_fallback.py -v
 ```
 
 ---

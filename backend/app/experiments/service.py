@@ -165,7 +165,19 @@ class ExperimentExecutionService:
             lesson=lesson,
             project_id=experiment.project_id,
         )
-        return retain_adapter.retain_experiment_outcome(payload, bank_id=target_bank)
+        try:
+            return retain_adapter.retain_experiment_outcome(payload, bank_id=target_bank)
+        except Exception as exc:
+            logger.error(f"Retain adapter failed for experiment '{experiment.experiment_id}': {exc}")
+            return RetainResult(
+                source="error",
+                memory_bank=target_bank,
+                experiment_id=experiment.experiment_id,
+                retained=False,
+                document_id=payload.get("document_id"),
+                latency_seconds=0.0,
+                token_usage={"error": str(exc)},
+            )
 
     def execute_learning_loop(
         self,
